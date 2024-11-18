@@ -48,7 +48,7 @@ export const loginUser = async ({email, password, token}: LoginParams): Promise<
         const extractedToken = authorizationHeader?.split('Bearer ')[1] || null;
 
         // Extract the user data
-        const user = response.data?.status?.data?.user || null;
+        const user = response.data.user;
 
         return {
             user,
@@ -67,7 +67,7 @@ export const registerUser = async ({
                                        password,
                                        passwordConfirmation
                                    }: RegisterParams): Promise<LoginResponse> => {
-    const response = await apiClient.post<LoginResponse>('/users', {
+    const response = await apiClient.post('/users', {
         user: {
             name,
             email,
@@ -76,5 +76,13 @@ export const registerUser = async ({
         }
     });
 
-    return response.data;
+    const authorizationHeader = response.headers['authorization'] || response.headers['Authorization'];
+    const extractedToken = authorizationHeader?.split('Bearer ')[1] || null;
+
+    const user = response.data.user;
+
+    return {
+        user,
+        token: extractedToken,
+    };
 }

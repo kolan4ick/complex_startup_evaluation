@@ -26,7 +26,11 @@ export default function Register() {
 
         try {
             const response = await registerUser({name, email, password, passwordConfirmation});
-            const {token, user}: { token: string; user: User | null } = response;
+
+            const user = response.user;
+            const token = response.token;
+
+            console.log(user, token);
 
             dispatch(setUser(user));
             dispatch(setToken(token));

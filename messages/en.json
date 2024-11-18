@@ -3,6 +3,9 @@
     "titles": {
       "login": "Login"
     },
+    "descriptions": {
+      "login": "Login page"
+    },
     "errors": {
       "401": "Invalid username or password",
       "required": "This field is required.",
@@ -31,6 +34,9 @@
     "titles": {
       "registration": "Register"
     },
+    "descriptions": {
+      "registration": "Registration page"
+    },
     "errors": {
       "422": "Invalid input data",
       "unknown": "An error occurred",
@@ -58,6 +64,14 @@
     "links": {
       "alreadyHaveAccount": "Already have an account?",
       "login": "Login"
+    }
+  },
+  "HomePage": {
+    "titles": {
+      "home": "Home"
+    },
+    "descriptions": {
+      "home": "Home page"
     }
   }
 }

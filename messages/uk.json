@@ -3,6 +3,9 @@
     "titles": {
       "login": "Вхід"
     },
+    "descriptions": {
+        "login": "Сторінка входу"
+    },
     "errors": {
       "401": "Невірний логін або пароль",
       "required": "Це поле обов'язкове.",
@@ -31,6 +34,9 @@
     "titles": {
       "registration": "Реєстрація"
     },
+    "descriptions": {
+      "registration": "Сторінка реєстрації"
+    },
     "errors": {
       "422": "Невірні дані",
       "unknown": "Сталася помилка",
@@ -58,6 +64,14 @@
     "links": {
       "alreadyHaveAccount": "Вже маєте акаунт?",
       "login": "Увійти"
+    }
+  },
+  "HomePage": {
+    "titles": {
+      "home": "Головна"
+    },
+    "descriptions": {
+      "home": "Головна сторінка"
     }
   }
 }

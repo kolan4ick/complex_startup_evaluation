@@ -18,11 +18,11 @@ export default async function LocaleLayout({ children, params }: {
 
     const cookieStorage = await cookies();
     const token = cookieStorage.get("auth-token")?.value || null;
-    const messages = await getMessages({ locale });
+    const messages = await getMessages({locale});
     let user = null;
 
     if (token) {
-        const userData = await loginUser({ token });
+        const userData = await loginUser({token});
         user = userData?.user as User;
     }
 

@@ -6,6 +6,7 @@ import {loginUser} from '@/hooks/useUser';
 import {useTranslations} from "use-intl";
 import {useRouter} from "next/navigation";
 import {useForm} from 'react-hook-form';
+import Link from "next/link";
 
 interface FormData {
     email: string;
@@ -60,7 +61,7 @@ export default function Login() {
                                     message: t('errors.invalidEmail')
                                 }
                             })}
-                            className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                            className="mt-1 w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"
                             placeholder={t('placeholders.email')}
                         />
                         {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
@@ -96,9 +97,9 @@ export default function Login() {
                 </form>
                 <p className="text-sm text-center text-gray-600">
                     {`${t('links.dontHaveAnAccount')} `}
-                    <a href="/register" className="text-blue-600 hover:text-blue-700">
+                    <Link href="/register" className="text-blue-600 hover:text-blue-700">
                         {t('links.register')}
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>

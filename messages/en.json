@@ -73,5 +73,26 @@
     "descriptions": {
       "home": "Home page"
     }
+  },
+  "Navbar": {
+    "brandName": "ElevateX",
+    "welcome": "Welcome",
+    "links": {
+      "home": "Home",
+      "login": "Login",
+      "register": "Register"
+    },
+    "buttons": {
+      "logout": "Logout"
+    }
+  },
+  "Footer": {
+    "companyName": "MyApp",
+    "rightsReserved": "All rights reserved.",
+    "links": {
+      "home": "Home",
+      "about": "About Us",
+      "contact": "Contact"
+    }
   }
 }

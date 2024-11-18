@@ -7,6 +7,7 @@ import {registerUser} from '@/hooks/useUser';
 import {useTranslations} from "use-intl";
 import {useRouter} from "next/navigation";
 import {useForm} from 'react-hook-form';
+import Link from "next/link";
 
 interface FormData {
     name: string;
@@ -128,9 +129,9 @@ export default function Register() {
                 </form>
                 <p className="text-sm text-center text-gray-600">
                     {`${t('links.alreadyHaveAccount')} `}
-                    <a href="/login" className="text-blue-600 hover:text-blue-700">
+                    <Link href="/login" className="text-blue-600 hover:text-blue-700">
                         {t('links.login')}
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>

@@ -1,5 +1,48 @@
 {
-  "HomePage": {
-    "hello": "Привіт"
+  "LoginPage": {
+    "errors": {
+      "401": "Невірний логін або пароль",
+      "unknown": "Сталася помилка"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Пароль"
+    },
+    "placeholders": {
+      "email": "Ваш email",
+      "password": "Ваш пароль"
+    },
+    "buttons": {
+      "login": "Увійти"
+    },
+    "links": {
+      "forgotPassword": "Забули пароль?",
+      "register": "Реєстрація"
+    }
+  },
+  "RegisterPage": {
+    "errors": {
+      "422": "Невірні дані",
+      "unknown": "Сталася помилка"
+    },
+    "fields": {
+      "name": "Ім'я",
+      "email": "Email",
+      "password": "Пароль",
+      "passwordConfirmation": "Підтвердьте пароль"
+    },
+    "placeholders": {
+      "name": "Ваше ім'я",
+      "email": "Ваш email",
+      "password": "Ваш пароль",
+      "passwordConfirmation": "Підтвердьте ваш пароль"
+    },
+    "buttons": {
+      "register": "Зареєструватися"
+    },
+    "links": {
+      "alreadyHaveAccount": "Вже маєте акаунт?",
+      "login": "Увійти"
+    }
   }
 }

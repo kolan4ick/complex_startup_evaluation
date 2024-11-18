@@ -1,19 +1,40 @@
 'use server';
 
-import React from "react";
-import Providers from "@/providers";
+import "@/app/globals.css";
 
-export default async function LocaleLayout({children, params: {locale}}:
-                                           {
-                                               children: React.ReactNode;
-                                               params: { locale: string };
-                                           }) {
+import React from "react";
+import { cookies } from "next/headers";
+import { loginUser } from "@/hooks/useUser";
+import { User } from "@/lib/types/user";
+import { getMessages } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import StoreProvider from "@/app/StoreProvider";
+
+export default async function LocaleLayout({ children, params }: {
+    children: React.ReactNode;
+    params: Promise<{ locale: string }>;
+}) {
+    // Access `locale` from `params` after awaiting
+    const {locale} = await params;
+
+    const cookieStorage = await cookies();
+    const token = cookieStorage.get("auth-token")?.value || null;
+    const messages = await getMessages(locale);
+    let user = null;
+
+    if (token) {
+        const userData = await loginUser({ token });
+        user = userData?.user as User;
+    }
+
     return (
         <html lang={locale}>
             <body>
-                <Providers locale={locale}>
-                    {children}
-                </Providers>
+                <NextIntlClientProvider messages={messages} locale={locale}>
+                    <StoreProvider user={user} token={token}>
+                        {children}
+                    </StoreProvider>
+                </NextIntlClientProvider>
             </body>
         </html>
     );

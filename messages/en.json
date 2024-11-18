@@ -1,5 +1,48 @@
 {
-  "HomePage": {
-    "hello": "Hello"
+  "LoginPage": {
+    "errors": {
+      "401": "Invalid username or password",
+      "unknown": "An error occurred"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "placeholders": {
+      "email": "Your email",
+      "password": "Your password"
+    },
+    "buttons": {
+      "login": "Login"
+    },
+    "links": {
+      "forgotPassword": "Forgot password?",
+      "register": "Register"
+    }
+  },
+  "RegisterPage": {
+    "errors": {
+      "422": "Invalid input data",
+      "unknown": "An error occurred"
+    },
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirmation": "Confirm Password"
+    },
+    "placeholders": {
+      "name": "Your name",
+      "email": "Your email",
+      "password": "Your password",
+      "passwordConfirmation": "Confirm your password"
+    },
+    "buttons": {
+      "register": "Register"
+    },
+    "links": {
+      "alreadyHaveAccount": "Already have an account?",
+      "login": "Login"
+    }
   }
 }

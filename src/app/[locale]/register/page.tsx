@@ -1,10 +1,10 @@
 'use server';
 
-import Login from "@/app/components/Users/Login";
+import Register from "@/app/components/Users/Register";
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 
-export default async function LoginPage() {
+export default async function RegisterPage() {
     return <ProtectedRoute reverse={true}>
-        <Login></Login>
+        <Register></Register>
     </ProtectedRoute>;
 }

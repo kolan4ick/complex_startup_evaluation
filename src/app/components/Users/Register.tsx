@@ -31,8 +31,6 @@ export default function Register() {
             const user = response.user;
             const token = response.token;
 
-            console.log(user, token);
-
             dispatch(setUser(user));
             dispatch(setToken(token));
 
@@ -40,8 +38,10 @@ export default function Register() {
 
             router.push('/');
         } catch (err: any) {
-            console.log(err);
-            alert(t(`errors.${err.status}`) || t('errors.unknown'));
+            if(err.response.data.message){
+                alert(err.response.data.message);
+            } else
+                alert(t(`errors.${err.status}`));
         }
     };
 

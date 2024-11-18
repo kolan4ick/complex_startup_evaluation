@@ -30,11 +30,9 @@ export default function Login() {
 
                 router.push('/');
             } else {
-                console.error('Either user or token is missing.');
                 alert(t('errors.unknown'));
             }
         } catch (err: any) {
-            console.error('Login error:', err);
             if (err.status) {
                 alert(t(`errors.${err.status}`));
             } else {

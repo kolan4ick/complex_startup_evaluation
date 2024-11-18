@@ -23,7 +23,6 @@ export const loginUser = async ({email, password, token}: LoginParams): Promise<
     let response;
 
     try {
-        // Handle login with token
         if (token) {
             response = await apiClient.post('/users/sign_in', {}, {
                 headers: {
@@ -31,7 +30,6 @@ export const loginUser = async ({email, password, token}: LoginParams): Promise<
                 },
             });
         }
-        // Handle login with email and password
         else if (email && password) {
             response = await apiClient.post('/users/sign_in', {
                 user: {
@@ -43,11 +41,9 @@ export const loginUser = async ({email, password, token}: LoginParams): Promise<
             throw new Error('Either email and password or token must be provided');
         }
 
-        // Extract the token from the headers
         const authorizationHeader = response.headers['authorization'] || response.headers['Authorization'];
         const extractedToken = authorizationHeader?.split('Bearer ')[1] || null;
 
-        // Extract the user data
         const user = response.data.user;
 
         return {
@@ -55,7 +51,6 @@ export const loginUser = async ({email, password, token}: LoginParams): Promise<
             token: extractedToken,
         };
     } catch (error) {
-        console.error('Login error:', error);
         throw error;
     }
 };

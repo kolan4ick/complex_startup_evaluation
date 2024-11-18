@@ -29,7 +29,7 @@
   },
   "RegisterPage": {
     "titles": {
-      "registrations": "Register"
+      "registration": "Register"
     },
     "errors": {
       "422": "Invalid input data",

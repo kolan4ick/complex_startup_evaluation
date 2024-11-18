@@ -18,16 +18,21 @@ export default async function LocaleLayout({ children, params }: {
 
     const cookieStorage = await cookies();
     const token = cookieStorage.get("auth-token")?.value || null;
-    const messages = await getMessages({ locale });
+    const messages = await getMessages({locale});
     let user = null;
 
     if (token) {
-        const userData = await loginUser({ token });
+        const userData = await loginUser({token});
         user = userData?.user as User;
     }
 
     return (
         <html lang={locale}>
+            <head>
+                <meta charSet="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <title>ElevateX</title>
+            </head>
             <body>
                 <NextIntlClientProvider messages={messages} locale={locale}>
                     <StoreProvider user={user} token={token}>

@@ -1,10 +1,12 @@
-import {useTranslations} from 'next-intl';
+'use server';
 
-export default function HomePage() {
-    const t = useTranslations('HomePage');
+import ProtectedRoute from "@/app/components/ProtectedRoute";
+import Home from "@/app/components/Pages/Home";
+export default async function HomePage() {
+
     return (
-        <div>
-            <h1>{t('hello')}</h1>
-        </div>
+        <ProtectedRoute>
+            <Home></Home>
+        </ProtectedRoute>
     );
 }

@@ -1,5 +1,63 @@
 {
-  "HomePage": {
-    "hello": "Привіт"
+  "LoginPage": {
+    "titles": {
+      "login": "Вхід"
+    },
+    "errors": {
+      "401": "Невірний логін або пароль",
+      "required": "Це поле обов'язкове.",
+      "invalidEmail": "Будь ласка, введіть дійсну адресу електронної пошти.",
+      "passwordMinLength": "Пароль повинен містити принаймні 6 символів.",
+      "unknown": "Сталася помилка"
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Пароль"
+    },
+    "placeholders": {
+      "email": "Ваш email",
+      "password": "Ваш пароль"
+    },
+    "buttons": {
+      "login": "Увійти",
+      "submitting": "Вхід..."
+    },
+    "links": {
+      "dontHaveAnAccount": "Не маєте акаунту?",
+      "register": "Реєстрація"
+    }
+  },
+  "RegisterPage": {
+    "titles": {
+      "registration": "Реєстрація"
+    },
+    "errors": {
+      "422": "Невірні дані",
+      "unknown": "Сталася помилка",
+      "required": "Це поле обов'язкове.",
+      "invalidEmail": "Будь ласка, введіть дійсну адресу електронної пошти.",
+      "passwordMinLength": "Пароль повинен містити принаймні 6 символів.",
+      "passwordsDoNotMatch": "Паролі не співпадають."
+    },
+    "fields": {
+      "name": "Ім'я",
+      "email": "Email",
+      "password": "Пароль",
+      "passwordConfirmation": "Підтвердьте пароль"
+    },
+    "placeholders": {
+      "name": "Ваше ім'я",
+      "email": "Ваш email",
+      "password": "Ваш пароль",
+      "passwordConfirmation": "Підтвердьте ваш пароль"
+    },
+    "buttons": {
+      "register": "Зареєструватися",
+      "submitting": "Реєстрація..."
+    },
+    "links": {
+      "alreadyHaveAccount": "Вже маєте акаунт?",
+      "login": "Увійти"
+    }
   }
 }

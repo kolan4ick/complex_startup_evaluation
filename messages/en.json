@@ -1,5 +1,63 @@
 {
-  "HomePage": {
-    "hello": "Hello"
+  "LoginPage": {
+    "titles": {
+      "login": "Login"
+    },
+    "errors": {
+      "401": "Invalid username or password",
+      "required": "This field is required.",
+      "invalidEmail": "Please enter a valid email address.",
+      "passwordMinLength": "Password must be at least 6 characters.",
+      "unknown": "An unknown error occurred. Please try again."
+    },
+    "fields": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "placeholders": {
+      "email": "Your email",
+      "password": "Your password"
+    },
+    "buttons": {
+      "login": "Login",
+      "submitting": "Logging in..."
+    },
+    "links": {
+      "dontHaveAnAccount": "Don't have an account?",
+      "register": "Register"
+    }
+  },
+  "RegisterPage": {
+    "titles": {
+      "registration": "Register"
+    },
+    "errors": {
+      "422": "Invalid input data",
+      "unknown": "An error occurred",
+      "required": "This field is required.",
+      "invalidEmail": "Please enter a valid email address.",
+      "passwordMinLength": "Password must be at least 6 characters.",
+      "passwordsDoNotMatch": "Passwords do not match."
+    },
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "passwordConfirmation": "Confirm Password"
+    },
+    "placeholders": {
+      "name": "Your name",
+      "email": "Your email",
+      "password": "Your password",
+      "passwordConfirmation": "Confirm your password"
+    },
+    "buttons": {
+      "register": "Register",
+      "submitting": "Registering..."
+    },
+    "links": {
+      "alreadyHaveAccount": "Already have an account?",
+      "login": "Login"
+    }
   }
 }

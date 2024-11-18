@@ -1,32 +1,40 @@
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
-import {notFound} from 'next/navigation';
-import {routing} from '@/i18n/routing';
+'use server';
+
+import "@/app/globals.css";
+
 import React from "react";
+import { cookies } from "next/headers";
+import { loginUser } from "@/hooks/useUser";
+import { User } from "@/lib/types/user";
+import { getMessages } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import StoreProvider from "@/app/StoreProvider";
 
-export default async function LocaleLayout({
-                                               children,
-                                               params: {locale}
-                                           }: {
+export default async function LocaleLayout({ children, params }: {
     children: React.ReactNode;
-    params: { locale: string };
+    params: Promise<{ locale: string }>;
 }) {
-    // Ensure that the incoming `locale` is valid
-    if (!routing.locales.includes(locale as any)) {
-        notFound();
-    }
+    const {locale} = await params;
 
-    // Providing all messages to the client
-    // side is the easiest way to get started
-    const messages = await getMessages();
+    const cookieStorage = await cookies();
+    const token = cookieStorage.get("auth-token")?.value || null;
+    const messages = await getMessages({ locale });
+    let user = null;
+
+    if (token) {
+        const userData = await loginUser({ token });
+        user = userData?.user as User;
+    }
 
     return (
         <html lang={locale}>
-        <body>
-        <NextIntlClientProvider messages={messages}>
-            {children}
-        </NextIntlClientProvider>
-        </body>
+            <body>
+                <NextIntlClientProvider messages={messages} locale={locale}>
+                    <StoreProvider user={user} token={token}>
+                        {children}
+                    </StoreProvider>
+                </NextIntlClientProvider>
+            </body>
         </html>
     );
 }

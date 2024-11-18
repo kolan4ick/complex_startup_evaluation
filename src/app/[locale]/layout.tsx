@@ -11,6 +11,7 @@ import { NextIntlClientProvider } from "next-intl";
 import StoreProvider from "@/app/StoreProvider";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
+import {ThemeProvider} from "@/app/providers/ThemeProvider";
 
 export default async function LocaleLayout({ children, params }: {
     children: React.ReactNode;
@@ -31,14 +32,16 @@ export default async function LocaleLayout({ children, params }: {
     return (
         <html lang={locale} className="h-full">
         <body className="flex flex-col min-h-screen bg-gray-100">
-        <NextIntlClientProvider messages={messages} locale={locale}>
-            <StoreProvider user={user} token={token}>
-                <Navbar />
-                {/* Main content wrapper */}
-                <main className="flex-grow">{children}</main>
-                <Footer />
-            </StoreProvider>
-        </NextIntlClientProvider>
+        <ThemeProvider>
+            <NextIntlClientProvider messages={messages} locale={locale}>
+                <StoreProvider user={user} token={token}>
+                    <Navbar />
+                    {/* Main content wrapper */}
+                    <main className="flex-grow">{children}</main>
+                    <Footer />
+                </StoreProvider>
+            </NextIntlClientProvider>
+        </ThemeProvider>
         </body>
         </html>
     );

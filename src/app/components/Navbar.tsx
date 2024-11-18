@@ -1,12 +1,14 @@
 'use client';
 
-import { useMemo, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { setUser, setToken } from '@/lib/features/users/usersSlice';
-import { useLocale, useTranslations } from 'use-intl';
+import {useMemo, useEffect, useState} from 'react';
+import {useAppDispatch, useAppSelector} from '@/lib/hooks';
+import {setUser, setToken} from '@/lib/features/users/usersSlice';
+import {useLocale, useTranslations} from 'use-intl';
 import Link from 'next/link';
-import { useRouter, usePathname } from 'next/navigation';
+import {useRouter, usePathname} from 'next/navigation';
 import Image from 'next/image';
+import {useTheme} from '@/app/providers/ThemeProvider';
+import {SunIcon, MoonIcon} from '@heroicons/react/24/solid';
 
 export default function Navbar() {
     const t = useTranslations('Navbar');
@@ -15,6 +17,7 @@ export default function Navbar() {
     const pathname = usePathname();
     const locale = useLocale();
     const user = useAppSelector((state) => state.auth.user);
+    const {theme, toggleTheme} = useTheme();
 
     // Client-side only state to prevent hydration issues
     const [isMounted, setIsMounted] = useState(false);
@@ -23,7 +26,6 @@ export default function Navbar() {
         setIsMounted(true);
     }, []);
 
-    // Determine the main link based on authentication status
     const mainLink = user ? `/${locale}` : `/${locale}/login`;
 
     const authLink = useMemo(() => {
@@ -55,15 +57,13 @@ export default function Navbar() {
         }
     };
 
-    // Defer rendering of user-specific content until after hydration
     if (!isMounted) {
         return <nav className="bg-white text-black p-4"></nav>;
     }
 
     return (
-        <nav className="bg-white border-2 text-black p-4">
+        <nav className="bg-white dark:bg-gray-900 text-black dark:text-white border-2 p-4">
             <div className="container mx-auto flex justify-between items-center">
-                {/* Main logo link updated based on authentication status */}
                 <Link href={mainLink} className="flex items-center space-x-2">
                     <Image
                         src="/favicon.svg"
@@ -76,6 +76,24 @@ export default function Navbar() {
                     <span className="text-xl font-bold">{t('brandName')}</span>
                 </Link>
                 <ul className="flex items-center space-x-4">
+                    <li>
+                        <button
+                            onClick={toggleTheme}
+                            className="relative flex items-center w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-600 transition-colors duration-300"
+                        >
+                            <span
+                                className={`absolute flex items-center justify-center h-5 w-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
+                                    theme === 'dark' ? 'translate-x-6' : 'translate-x-1'
+                                }`}
+                            >
+                                {theme === 'dark' ? (
+                                    <MoonIcon className="h-4 w-4 text-gray-600 dark:text-gray-400"/>
+                                ) : (
+                                    <SunIcon className="h-4 w-4 text-gray-600 dark:text-gray-400"/>
+                                )}
+                            </span>
+                        </button>
+                    </li>
                     {user ? (
                         <>
                             <li>

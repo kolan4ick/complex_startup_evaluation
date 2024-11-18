@@ -83,7 +83,9 @@
       "register": "Register"
     },
     "buttons": {
-      "logout": "Logout"
+      "logout": "Logout",
+      "darkMode": "Dark Mode",
+      "lightMode": "Light Mode"
     }
   },
   "Footer": {

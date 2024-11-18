@@ -1,8 +1,14 @@
 {
   "LoginPage": {
+    "titles": {
+      "login": "Login"
+    },
     "errors": {
       "401": "Invalid username or password",
-      "unknown": "An error occurred"
+      "required": "This field is required.",
+      "invalidEmail": "Please enter a valid email address.",
+      "passwordMinLength": "Password must be at least 6 characters.",
+      "unknown": "An unknown error occurred. Please try again."
     },
     "fields": {
       "email": "Email",
@@ -13,17 +19,25 @@
       "password": "Your password"
     },
     "buttons": {
-      "login": "Login"
+      "login": "Login",
+      "submitting": "Logging in..."
     },
     "links": {
-      "forgotPassword": "Forgot password?",
+      "dontHaveAnAccount": "Don't have an account?",
       "register": "Register"
     }
   },
   "RegisterPage": {
+    "titles": {
+      "registrations": "Register"
+    },
     "errors": {
       "422": "Invalid input data",
-      "unknown": "An error occurred"
+      "unknown": "An error occurred",
+      "required": "This field is required.",
+      "invalidEmail": "Please enter a valid email address.",
+      "passwordMinLength": "Password must be at least 6 characters.",
+      "passwordsDoNotMatch": "Passwords do not match."
     },
     "fields": {
       "name": "Name",
@@ -38,7 +52,8 @@
       "passwordConfirmation": "Confirm your password"
     },
     "buttons": {
-      "register": "Register"
+      "register": "Register",
+      "submitting": "Registering..."
     },
     "links": {
       "alreadyHaveAccount": "Already have an account?",

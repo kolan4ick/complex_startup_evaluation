@@ -73,5 +73,26 @@
     "descriptions": {
       "home": "Головна сторінка"
     }
+  },
+  "Navbar": {
+    "brandName": "ElevateX",
+    "welcome": "Ласкаво просимо",
+    "links": {
+      "home": "Головна",
+      "login": "Увійти",
+      "register": "Реєстрація"
+    },
+    "buttons": {
+      "logout": "Вийти"
+    }
+  },
+  "Footer": {
+    "companyName": "ElevateX",
+    "rightsReserved": "Всі права захищені",
+    "links": {
+      "home": "Головна",
+      "about": "Про нас",
+      "contact": "Контакти"
+    }
   }
 }

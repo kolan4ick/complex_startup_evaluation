@@ -49,54 +49,55 @@ export default function Login() {
                     {t("titles.login")}
                 </h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <div>
-                        <label
-                            htmlFor="email"
-                            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                            {t('fields.email')}
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            {...register('email', {
+                    {[
+                        {
+                            id: 'email',
+                            label: t('fields.email'),
+                            type: 'email',
+                            placeholder: t('placeholders.email'),
+                            validation: {
                                 required: t('errors.required'),
                                 pattern: {
                                     value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                                    message: t('errors.invalidEmail')
-                                }
-                            })}
-                            className="mt-1 w-full px-4 py-2 border text-black dark:text-gray-200 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder={t('placeholders.email')}
-                        />
-                        {errors.email && (
-                            <p className="text-red-600 text-sm">{errors.email.message}</p>
-                        )}
-                    </div>
-                    <div>
-                        <label
-                            htmlFor="password"
-                            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                            {t('fields.password')}
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            {...register('password', {
+                                    message: t('errors.invalidEmail'),
+                                },
+                            },
+                            error: errors.email?.message,
+                        },
+                        {
+                            id: 'password',
+                            label: t('fields.password'),
+                            type: 'password',
+                            placeholder: t('placeholders.password'),
+                            validation: {
                                 required: t('errors.required'),
                                 minLength: {
                                     value: 6,
-                                    message: t('errors.passwordMinLength')
-                                }
-                            })}
-                            className="mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-black dark:text-gray-200 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder={t('placeholders.password')}
-                        />
-                        {errors.password && (
-                            <p className="text-red-600 text-sm">{errors.password.message}</p>
-                        )}
-                    </div>
+                                    message: t('errors.passwordMinLength'),
+                                },
+                            },
+                            error: errors.password?.message,
+                        },
+                    ].map(({ id, label, type, placeholder, validation, error }) => (
+                        <div key={id}>
+                            <label
+                                htmlFor={id}
+                                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                            >
+                                {label}
+                            </label>
+                            <input
+                                type={type}
+                                id={id}
+                                {...register(id as keyof FormData, validation)}
+                                className="mt-1 w-full px-4 py-2 border text-black dark:text-gray-200 border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                                placeholder={placeholder}
+                            />
+                            <div className="h-5">
+                                {error && <p className="text-red-600 text-sm">{error}</p>}
+                            </div>
+                        </div>
+                    ))}
                     <button
                         type="submit"
                         disabled={isSubmitting}
@@ -111,7 +112,10 @@ export default function Login() {
                 </form>
                 <p className="text-sm text-center text-gray-600 dark:text-gray-400">
                     {`${t('links.dontHaveAnAccount')} `}
-                    <Link href="/register" className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500">
+                    <Link
+                        href="/register"
+                        className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500"
+                    >
                         {t('links.register')}
                     </Link>
                 </p>

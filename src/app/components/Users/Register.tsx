@@ -48,90 +48,78 @@ export default function Register() {
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-center ">
+        <div className="flex min-h-screen items-center justify-center">
             <div className="w-full max-w-md p-8 space-y-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
                 <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200">
                     {t("titles.registration")}
                 </h2>
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                    <div>
-                        <label
-                            htmlFor="name"
-                            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                            {t('fields.name')}
-                        </label>
-                        <input
-                            type="text"
-                            id="name"
-                            {...register('name', { required: t('errors.required') })}
-                            className="text-gray-800 dark:text-gray-200 mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder={t('placeholders.name')}
-                        />
-                        {errors.name && <p className="text-red-600 text-sm">{errors.name.message}</p>}
-                    </div>
-                    <div>
-                        <label
-                            htmlFor="email"
-                            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                            {t('fields.email')}
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            {...register('email', {
+                    {[
+                        {
+                            id: 'name',
+                            label: t('fields.name'),
+                            type: 'text',
+                            placeholder: t('placeholders.name'),
+                            validation: { required: t('errors.required') },
+                            error: errors.name?.message,
+                        },
+                        {
+                            id: 'email',
+                            label: t('fields.email'),
+                            type: 'email',
+                            placeholder: t('placeholders.email'),
+                            validation: {
                                 required: t('errors.required'),
                                 pattern: {
                                     value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-                                    message: t('errors.invalidEmail')
-                                }
-                            })}
-                            className="text-gray-800 dark:text-gray-200 mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder={t('placeholders.email')}
-                        />
-                        {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
-                    </div>
-                    <div>
-                        <label
-                            htmlFor="password"
-                            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                            {t('fields.password')}
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            {...register('password', {
+                                    message: t('errors.invalidEmail'),
+                                },
+                            },
+                            error: errors.email?.message,
+                        },
+                        {
+                            id: 'password',
+                            label: t('fields.password'),
+                            type: 'password',
+                            placeholder: t('placeholders.password'),
+                            validation: {
                                 required: t('errors.required'),
-                                minLength: { value: 6, message: t('errors.passwordMinLength') }
-                            })}
-                            className="text-gray-800 dark:text-gray-200 mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder={t('placeholders.password')}
-                        />
-                        {errors.password && <p className="text-red-600 text-sm">{errors.password.message}</p>}
-                    </div>
-                    <div>
-                        <label
-                            htmlFor="passwordConfirmation"
-                            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                        >
-                            {t('fields.passwordConfirmation')}
-                        </label>
-                        <input
-                            type="password"
-                            id="passwordConfirmation"
-                            {...register('passwordConfirmation', {
+                                minLength: { value: 6, message: t('errors.passwordMinLength') },
+                            },
+                            error: errors.password?.message,
+                        },
+                        {
+                            id: 'passwordConfirmation',
+                            label: t('fields.passwordConfirmation'),
+                            type: 'password',
+                            placeholder: t('placeholders.passwordConfirmation'),
+                            validation: {
                                 required: t('errors.required'),
-                                validate: (value) => value === password || t('errors.passwordsDoNotMatch')
-                            })}
-                            className="text-gray-800 dark:text-gray-200 mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                            placeholder={t('placeholders.passwordConfirmation')}
-                        />
-                        {errors.passwordConfirmation && (
-                            <p className="text-red-600 text-sm">{errors.passwordConfirmation.message}</p>
-                        )}
-                    </div>
+                                validate: (value: string) =>
+                                    value === password || t('errors.passwordsDoNotMatch'),
+                            },
+                            error: errors.passwordConfirmation?.message,
+                        },
+                    ].map(({ id, label, type, placeholder, validation, error }) => (
+                        <div key={id}>
+                            <label
+                                htmlFor={id}
+                                className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                            >
+                                {label}
+                            </label>
+                            <input
+                                type={type}
+                                id={id}
+                                {...register(id as keyof FormData, validation)}
+                                className="text-gray-800 dark:text-gray-200 mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                                placeholder={placeholder}
+                            />
+                            <div className="h-5">
+                                {error && <p className="text-red-600 text-sm">{error}</p>}
+                            </div>
+                        </div>
+                    ))}
                     <button
                         type="submit"
                         disabled={isSubmitting}

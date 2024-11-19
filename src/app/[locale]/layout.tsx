@@ -5,7 +5,7 @@ import "@/app/globals.css";
 import React from "react";
 import { cookies } from "next/headers";
 import { loginUser } from "@/hooks/useUser";
-import { User } from "@/lib/types/user";
+import { User } from "@/lib/types/User";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import StoreProvider from "@/app/StoreProvider";

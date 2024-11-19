@@ -79,6 +79,7 @@
     "welcome": "Ласкаво просимо",
     "links": {
       "home": "Головна",
+      "profile": "Профіль",
       "login": "Увійти",
       "register": "Реєстрація"
     },
@@ -95,6 +96,46 @@
       "home": "Головна",
       "about": "Про нас",
       "contact": "Контакти"
+    }
+  },
+  "ProfilePage": {
+    "titles": {
+      "profile": "Профіль",
+      "editableFields": "Редаговані поля",
+      "userInformation": "Інформація про користувача",
+      "feasibilityLevels": "Рівні можливості",
+      "evaluationSettings": "Налаштування оцінювання"
+    },
+    "descriptions": {
+      "profile": "Сторінка профілю"
+    },
+    "fields": {
+      "email": "Email",
+      "name": "Ім'я",
+      "feasibilityThreshold": "Поріг можливості",
+      "adjustmentDelta": "Дельта коригування",
+      "linguistic": "Лінгвістичний",
+      "linguistics": {
+        "very_low": "Дуже низький",
+        "low": "Низький",
+        "middle": "Середній",
+        "above_middle": "Вище середнього",
+        "high": "Високий"
+      },
+      "title": "Назва",
+      "value": "Значення",
+      "createdAt": "Створено",
+      "updatedAt": "Оновлено"
+    },
+    "errors": {
+      "notLoggedIn": "Ви повинні увійти, щоб переглянути цю сторінку.",
+      "required": "Це поле обов'язкове.",
+      "invalidEmail": "Будь ласка, введіть дійсну адресу електронної пошти."
+    },
+    "buttons": {
+      "edit": "Редагувати",
+      "save": "Зберегти",
+      "cancel": "Скасувати"
     }
   }
 }

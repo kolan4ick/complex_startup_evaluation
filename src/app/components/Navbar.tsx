@@ -110,6 +110,14 @@ export default function Navbar() {
                                     {t('links.home')}
                                 </Link>
                             </li>
+                            <li>
+                                <Link
+                                    href={`/${locale}/profile`}
+                                    className="hover:text-blue-500 dark:hover:text-gray-400"
+                                >
+                                    {t('links.profile')}
+                                </Link>
+                            </li>
                             <li className="text-sm">{`${t('welcome')}, ${user.name}`}</li>
                             <li>
                                 <button

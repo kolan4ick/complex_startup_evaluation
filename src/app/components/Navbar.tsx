@@ -9,6 +9,9 @@ import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
+import ProfileIcon from "@/app/components/Icons/ProfileIcon";
+import LogoutIcon from "@/app/components/Icons/LogoutIcon";
+import HomeIcon from "@/app/components/Icons/HomeIcon";
 
 export default function Navbar() {
     const t = useTranslations('Navbar');
@@ -81,56 +84,56 @@ export default function Navbar() {
                     />
                     <span className="text-xl font-bold">{t('brandName')}</span>
                 </Link>
-                <ul className="flex items-center space-x-4">
+                <ul className="flex items-center space-x-4 h-full">
                     <li>
                         <button
                             onClick={toggleTheme}
                             className="relative flex items-center w-12 h-6 rounded-full bg-gray-300 dark:bg-gray-600 transition-colors duration-300"
                         >
-                            <span
-                                className={`absolute flex items-center justify-center h-5 w-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
-                                    theme === 'dark' ? 'translate-x-6' : 'translate-x-1'
-                                }`}
-                            >
-                                {theme === 'dark' ? (
-                                    <MoonIcon className="h-4 w-4 text-gray-400" />
-                                ) : (
-                                    <SunIcon className="h-4 w-4 text-gray-600" />
-                                )}
-                            </span>
+            <span
+                className={`absolute flex items-center justify-center h-5 w-5 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
+                    theme === 'dark' ? 'translate-x-6' : 'translate-x-1'
+                }`}
+            >
+                {theme === 'dark' ? (
+                    <MoonIcon className="h-4 w-4 text-gray-400"/>
+                ) : (
+                    <SunIcon className="h-4 w-4 text-gray-600"/>
+                )}
+            </span>
                         </button>
                     </li>
                     {user ? (
                         <>
+                            <li className="text-sm flex items-center">{`${t('welcome')}, ${user.name}`}</li>
                             <li>
                                 <Link
                                     href={`/${locale}`}
-                                    className="hover:text-blue-500 dark:hover:text-gray-400"
+                                    className="hover:text-blue-500 dark:hover:text-gray-400 flex items-center"
                                 >
-                                    {t('links.home')}
+                                    <HomeIcon/>
                                 </Link>
                             </li>
                             <li>
                                 <Link
                                     href={`/${locale}/profile`}
-                                    className="hover:text-blue-500 dark:hover:text-gray-400"
+                                    className="hover:text-blue-500 dark:hover:text-gray-400 flex items-center"
                                 >
-                                    {t('links.profile')}
+                                    <ProfileIcon/>
                                 </Link>
                             </li>
-                            <li className="text-sm">{`${t('welcome')}, ${user.name}`}</li>
                             <li>
-                                <button
+                            <button
                                     onClick={handleLogout}
                                     aria-label="Logout"
-                                    className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 dark:bg-gray-700 dark:hover:bg-gray-600"
+                                    className="hover:text-blue-500 dark:hover:text-gray-400 flex items-center"
                                 >
-                                    {t('buttons.logout')}
+                                    <LogoutIcon />
                                 </button>
                             </li>
                         </>
                     ) : (
-                        <li>{authLink}</li>
+                        <li className="flex items-center">{authLink}</li>
                     )}
                 </ul>
             </div>

@@ -2,7 +2,7 @@
 import { useRef } from 'react'
 import { Provider } from 'react-redux'
 import { makeStore, AppStore } from '@/lib/store'
-import {User} from "@/lib/types/user";
+import {User} from "@/lib/types/User";
 import {setUser, setToken} from "@/lib/features/users/usersSlice";
 
 

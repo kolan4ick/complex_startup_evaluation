@@ -80,6 +80,7 @@
     "links": {
       "home": "Home",
       "login": "Login",
+      "profile": "Profile",
       "register": "Register"
     },
     "buttons": {
@@ -95,6 +96,46 @@
       "home": "Home",
       "about": "About Us",
       "contact": "Contact"
+    }
+  },
+  "ProfilePage": {
+    "titles": {
+      "profile": "Profile",
+      "editableFields": "Editable Fields",
+      "userInformation": "User Information",
+      "evaluationSettings": "Evaluation Settings",
+      "feasibilityLevels": "Feasibility Levels"
+    },
+    "descriptions": {
+      "profile": "Profile page"
+    },
+    "fields": {
+      "title": "Title",
+      "value": "Value",
+      "email": "Email",
+      "name": "Name",
+      "feasibilityThreshold": "Feasibility Threshold",
+      "adjustmentDelta": "Adjustment Delta",
+      "linguistic": "Linguistic",
+      "linguistics": {
+        "very_low": "Very Low",
+        "low": "Low",
+        "middle": "Middle",
+        "above_middle": "Above Middle",
+        "high": "High"
+      },
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    },
+    "buttons": {
+      "cancel": "Cancel",
+      "save": "Save",
+      "edit": "Edit"
+    },
+    "errors": {
+      "notLoggedIn": "You must be logged in to view this page.",
+      "required": "This field is required.",
+      "invalidEmail": "Please enter a valid email address."
     }
   }
 }

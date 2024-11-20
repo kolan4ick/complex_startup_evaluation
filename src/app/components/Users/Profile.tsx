@@ -49,10 +49,6 @@ export default function Profile() {
         setIsEditing(false);
     };
 
-    if (!user) {
-        return <p className="text-center text-gray-500 dark:text-gray-400">{t('errors.notLoggedIn')}</p>;
-    }
-
     return (
         <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
             <div className="container mx-auto max-w-4xl p-6">

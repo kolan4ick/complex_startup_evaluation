@@ -12,6 +12,7 @@ import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import ProfileIcon from "@/app/components/Icons/ProfileIcon";
 import LogoutIcon from "@/app/components/Icons/LogoutIcon";
 import HomeIcon from "@/app/components/Icons/HomeIcon";
+import LocaleSwitcher from "@/app/components/LocaleSwitcher";
 
 export default function Navbar() {
     const t = useTranslations('Navbar');
@@ -103,13 +104,16 @@ export default function Navbar() {
             </span>
                         </button>
                     </li>
+                    <li>
+                        <LocaleSwitcher/>
+                    </li>
                     {user ? (
                         <>
                             <li className="text-sm flex items-center">{`${t('welcome')}, ${user.name}`}</li>
                             <li>
                                 <Link
                                     href={`/${locale}`}
-                                    className="hover:text-blue-500 dark:hover:text-gray-400 flex items-center"
+                                    className="p-2 flex items-center gap-2 text-gray-900 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <HomeIcon/>
                                 </Link>
@@ -117,7 +121,7 @@ export default function Navbar() {
                             <li>
                                 <Link
                                     href={`/${locale}/profile`}
-                                    className="hover:text-blue-500 dark:hover:text-gray-400 flex items-center"
+                                    className="p-2 flex items-center gap-2 text-gray-900 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <ProfileIcon/>
                                 </Link>
@@ -126,7 +130,7 @@ export default function Navbar() {
                             <button
                                     onClick={handleLogout}
                                     aria-label="Logout"
-                                    className="hover:text-blue-500 dark:hover:text-gray-400 flex items-center"
+                                    className="p-2 flex items-center gap-2 text-gray-900 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <LogoutIcon />
                                 </button>

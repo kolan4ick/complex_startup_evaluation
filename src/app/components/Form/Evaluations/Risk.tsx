@@ -13,14 +13,14 @@ export default function Risk({ register }: any) {
                         <input
                             type="text"
                             placeholder="Linguistic"
-                            {...register(`evaluation.risk_operational_scores.${index}.linguistic`)}
+                            {...register(`risk_operational_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={0.01}
                             placeholder="Authenticity"
-                            {...register(`evaluation.risk_operational_scores.${index}.authenticity`)}
+                            {...register(`risk_operational_scores_attributes.${index}.authenticity`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
@@ -35,14 +35,14 @@ export default function Risk({ register }: any) {
                         <input
                             type="text"
                             placeholder="Linguistic"
-                            {...register(`evaluation.risk_investment_scores.${index}.linguistic`)}
+                            {...register(`risk_investment_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={0.01}
                             placeholder="Authenticity"
-                            {...register(`evaluation.risk_investment_scores.${index}.authenticity`)}
+                            {...register(`risk_investment_scores_attributes.${index}.authenticity`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
@@ -57,14 +57,14 @@ export default function Risk({ register }: any) {
                         <input
                             type="text"
                             placeholder="Linguistic"
-                            {...register(`evaluation.risk_financial_scores.${index}.linguistic`)}
+                            {...register(`risk_financial_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={0.01}
                             placeholder="Authenticity"
-                            {...register(`evaluation.risk_financial_scores.${index}.authenticity`)}
+                            {...register(`risk_financial_scores_attributes.${index}.authenticity`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
@@ -79,14 +79,14 @@ export default function Risk({ register }: any) {
                         <input
                             type="text"
                             placeholder="Linguistic"
-                            {...register(`evaluation.risk_innovation_activity_scores.${index}.linguistic`)}
+                            {...register(`risk_innovation_activity_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={0.01}
                             placeholder="Authenticity"
-                            {...register(`evaluation.risk_innovation_activity_scores.${index}.authenticity`)}
+                            {...register(`risk_innovation_activity_scores_attributes.${index}.authenticity`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>

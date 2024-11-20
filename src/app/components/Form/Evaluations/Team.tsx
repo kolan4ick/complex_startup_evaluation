@@ -14,7 +14,7 @@ export default function Team({ register }: any) {
                     <input
                         type="number"
                         placeholder="Team Stability"
-                        {...register('evaluation.team_stability')}
+                        {...register('team_stability')}
                         className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                     />
                 </div>
@@ -25,21 +25,21 @@ export default function Team({ register }: any) {
                         <input
                             type="text"
                             placeholder="Linguistic"
-                            {...register(`evaluation.team_stability_scores.${index}.linguistic`)}
+                            {...register(`team_stability_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={0.01}
                             placeholder="Confidence"
-                            {...register(`evaluation.team_stability_scores.${index}.confidence`)}
+                            {...register(`team_stability_scores_attributes.${index}.confidence`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={1}
                             placeholder="Weight"
-                            {...register(`evaluation.team_stability_scores.${index}.weight`)}
+                            {...register(`team_stability_scores_attributes.${index}.weight`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
@@ -60,7 +60,7 @@ export default function Team({ register }: any) {
                         <input
                             type="number"
                             placeholder={field.label}
-                            {...register(`evaluation.${field.name}`)}
+                            {...register(`${field.name}`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
@@ -72,21 +72,21 @@ export default function Team({ register }: any) {
                         <input
                             type="text"
                             placeholder="Linguistic"
-                            {...register(`evaluation.team_professional_competency_scores.${index}.linguistic`)}
+                            {...register(`team_professional_competency_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={0.01}
                             placeholder="Confidence"
-                            {...register(`evaluation.team_professional_competency_scores.${index}.confidence`)}
+                            {...register(`team_professional_competency_scores_attributes.${index}.confidence`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={1}
                             placeholder="Weight"
-                            {...register(`evaluation.team_professional_competency_scores.${index}.weight`)}
+                            {...register(`team_professional_competency_scores_attributes.${index}.weight`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>
@@ -102,7 +102,7 @@ export default function Team({ register }: any) {
                     <input
                         type="number"
                         placeholder="Team Professional Activity"
-                        {...register('evaluation.team_professional_activity')}
+                        {...register('team_professional_activity')}
                         className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                     />
                 </div>
@@ -113,21 +113,21 @@ export default function Team({ register }: any) {
                         <input
                             type="text"
                             placeholder="Linguistic"
-                            {...register(`evaluation.team_professional_activity_scores.${index}.linguistic`)}
+                            {...register(`team_professional_activity_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={0.01}
                             placeholder="Confidence"
-                            {...register(`evaluation.team_professional_activity_scores.${index}.confidence`)}
+                            {...register(`team_professional_activity_scores_attributes.${index}.confidence`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                         <input
                             type="number"
                             step={1}
                             placeholder="Weight"
-                            {...register(`evaluation.team_professional_activity_scores.${index}.weight`)}
+                            {...register(`team_professional_activity_scores_attributes.${index}.weight`)}
                             className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
                         />
                     </div>

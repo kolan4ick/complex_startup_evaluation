@@ -67,11 +67,61 @@
     }
   },
   "HomePage": {
-    "titles": {
-      "home": "Головна"
-    },
     "descriptions": {
       "home": "Головна сторінка"
+    },
+    "fields": {
+      "linguistics": {
+        "low": "Низький",
+        "below_middle": "Нижче середнього",
+        "middle": "Середній",
+        "above_middle": "Вище середнього",
+        "high": "Високий"
+      },
+      "effectiveness": {
+        "sum": "Сума",
+        "min": "Мінімум",
+        "max": "Максимум",
+        "desired": "Бажане",
+        "weight": "Вага"
+      }
+    },
+    "titles": {
+      "home": {
+        "title": "Головна",
+        "description": "Це головна сторінка",
+        "evaluation": "Оцінка стартапу"
+      },
+      "effectiveness": {
+        "title": "Ефективність"
+      },
+      "risks": {
+        "title": "Ризики",
+        "operational": "Операційні ризики",
+        "investment": "Інвестиційні ризики",
+        "financial": "Фінансові ризики",
+        "innovation": "Інноваційні ризики"
+      },
+      "team": {
+        "title": "Команда",
+        "stability": "Стабільність",
+        "competency": "Компетентність",
+        "activity": "Активність"
+      }
+    },
+    "placeholders": {
+      "authenticity": "Аутентичність",
+      "stability": "Стабільність",
+      "confidence": "Впевненість",
+      "weight": "Вага",
+      "competencies": "Компетентності",
+      "competencies_experience": "Досвід",
+      "leaders_competencies": "Компетентності лідера",
+      "activity": "Активність"
+    },
+    "buttons": {
+      "submit": "Оцінити",
+      "submitting": "Оцінювання..."
     }
   },
   "Navbar": {

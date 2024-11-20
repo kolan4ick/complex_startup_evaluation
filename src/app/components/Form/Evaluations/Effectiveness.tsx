@@ -1,72 +1,81 @@
 'use client';
 
-export default function Effectiveness({ register }: any) {
-    return (
-        <>
-            {/* Effectiveness Scores */}
-            <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-8">
-                <h2 className="text-xl font-semibold mb-4 text-center">Effectiveness Evaluation</h2>
+import {useTranslations} from "use-intl";
 
-                <div className="overflow-x-auto">
-                    <table className="table-auto border-collapse border border-gray-300 w-full">
-                        <thead>
-                        <tr>
-                            <th className="border border-gray-300 px-4 py-2">Sum</th>
-                            <th className="border border-gray-300 px-4 py-2">Min</th>
-                            <th className="border border-gray-300 px-4 py-2">Max</th>
-                            <th className="border border-gray-300 px-4 py-2">Desired</th>
-                            <th className="border border-gray-300 px-4 py-2">Weight</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {Array.from({ length: 5 }, (_, index) => (
-                            <tr key={index}>
-                                <td className="border border-gray-300 px-4 py-2">
-                                    <input
-                                        type="number"
-                                        step={0.01}
-                                        {...register(`effectiveness_sum_scores_attributes.${index}.value`)}
-                                        className="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    />
-                                </td>
-                                <td className="border border-gray-300 px-4 py-2">
-                                    <input
-                                        type="number"
-                                        step={0.01}
-                                        {...register(`effectiveness_min_scores_attributes.${index}.value`)}
-                                        className="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    />
-                                </td>
-                                <td className="border border-gray-300 px-4 py-2">
-                                    <input
-                                        type="number"
-                                        step={0.01}
-                                        {...register(`effectiveness_max_scores_attributes.${index}.value`)}
-                                        className="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    />
-                                </td>
-                                <td className="border border-gray-300 px-4 py-2">
-                                    <input
-                                        type="number"
-                                        step={0.01}
-                                        {...register(`effectiveness_desired_scores_attributes.${index}.value`)}
-                                        className="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    />
-                                </td>
-                                <td className="border border-gray-300 px-4 py-2">
-                                    <input
-                                        type="number"
-                                        step={0.01}
-                                        {...register(`effectiveness_weight_scores_attributes.${index}.value`)}
-                                        className="w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                                    />
-                                </td>
-                            </tr>
+export default function Effectiveness({ register }: any) {
+    const t = useTranslations('HomePage');
+
+    return (
+        <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 mb-8">
+            <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-6">
+                {t('titles.effectiveness.title')}
+            </h2>
+
+            <div className="overflow-x-auto">
+                <table className="table-auto border-collapse w-full">
+                    <thead>
+                    <tr className="bg-gray-100 dark:bg-gray-700 border-b">
+                        {['sum', 'min', 'max', 'desired', 'weight'].map((heading) => (
+                            <th
+                                key={heading}
+                                className="px-6 py-3 text-center font-medium text-gray-700 dark:text-gray-300 border-b border-gray-300"
+                            >
+                                {t(`fields.effectiveness.${heading}`)}
+                            </th>
                         ))}
-                        </tbody>
-                    </table>
-                </div>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {Array.from({ length: 5 }, (_, index) => (
+                        <tr
+                            key={index}
+                            className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                        >
+                            <td className="px-6 py-3">
+                                <input
+                                    type="number"
+                                    step={0.01}
+                                    {...register(`effectiveness_sum_scores_attributes.${index}.value`)}
+                                    className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+                                />
+                            </td>
+                            <td className="px-6 py-3">
+                                <input
+                                    type="number"
+                                    step={0.01}
+                                    {...register(`effectiveness_min_scores_attributes.${index}.value`)}
+                                    className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+                                />
+                            </td>
+                            <td className="px-6 py-3">
+                                <input
+                                    type="number"
+                                    step={0.01}
+                                    {...register(`effectiveness_max_scores_attributes.${index}.value`)}
+                                    className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+                                />
+                            </td>
+                            <td className="px-6 py-3">
+                                <input
+                                    type="number"
+                                    step={0.01}
+                                    {...register(`effectiveness_desired_scores_attributes.${index}.value`)}
+                                    className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+                                />
+                            </td>
+                            <td className="px-6 py-3">
+                                <input
+                                    type="number"
+                                    step={0.01}
+                                    {...register(`effectiveness_weight_scores_attributes.${index}.value`)}
+                                    className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+                                />
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
-        </>
+        </div>
     );
 }

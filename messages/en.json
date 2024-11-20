@@ -67,11 +67,61 @@
     }
   },
   "HomePage": {
-    "titles": {
-      "home": "Home"
-    },
     "descriptions": {
       "home": "Home page"
+    },
+    "fields": {
+      "linguistics": {
+        "low": "Low",
+        "below_middle": "Below Middle",
+        "middle": "Middle",
+        "above_middle": "Above Middle",
+        "high": "High"
+      },
+      "effectiveness": {
+        "sum": "Sum",
+        "min": "Minimum",
+        "max": "Maximum",
+        "desired": "Desired",
+        "weight": "Weight"
+      }
+    },
+    "titles": {
+      "home": {
+        "title": "Home",
+        "description": "This is the home page",
+        "evaluation": "Startup Evaluation"
+      },
+      "effectiveness": {
+        "title": "Effectiveness"
+      },
+      "risks": {
+        "title": "Risks",
+        "operational": "Operational Risks",
+        "investment": "Investment Risks",
+        "financial": "Financial Risks",
+        "innovation": "Innovation Risks"
+      },
+      "team": {
+        "title": "Team",
+        "stability": "Stability",
+        "competency": "Competency",
+        "activity": "Activity"
+      }
+    },
+    "placeholders": {
+      "authenticity": "Authenticity",
+      "stability": "Stability",
+      "confidence": "Confidence",
+      "weight": "Weight",
+      "competencies": "Competencies",
+      "competencies_experience": "Experience",
+      "leaders_competencies": "Leader's Competencies",
+      "activity": "Activity"
+    },
+    "buttons": {
+      "submit": "Evaluate",
+      "submitting": "Evaluating..."
     }
   },
   "Navbar": {

@@ -1,4 +1,8 @@
 {
+  "Lang": {
+    "uk": "UK",
+    "en": "EN"
+  },
   "LoginPage": {
     "titles": {
       "login": "Login"

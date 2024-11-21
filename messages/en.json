@@ -190,7 +190,8 @@
     "buttons": {
       "submit": "Evaluate",
       "submitting": "Evaluating..."
-    }
-
+    },
+    "loading": "Loading",
+    "loading_message": "Calculations are in progress, please wait."
   }
 }

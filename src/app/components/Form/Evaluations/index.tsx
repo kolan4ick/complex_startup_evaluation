@@ -7,10 +7,13 @@ import Risk from "@/app/components/Form/Evaluations/Risk";
 import Team from "@/app/components/Form/Evaluations/Team";
 import {createEvaluation} from "@/hooks/useEvaluation";
 import {useTranslations} from "use-intl";
+import {useState} from "react";
 
 export default function EvaluationForm({evaluation}: { evaluation?: any }) {
     const token = useAppSelector((state) => state.auth.token);
     const t = useTranslations('EvaluationForm');
+    const [submissionResult, setSubmissionResult] = useState<any>(null);
+    const [isLoading, setIsLoading] = useState(false); // State for loading
 
     let defaultValues;
 
@@ -116,26 +119,64 @@ export default function EvaluationForm({evaluation}: { evaluation?: any }) {
     });
 
     const onSubmit = async (data: any) => {
-        const response = await createEvaluation({params: data, token: token});
-
-        console.log(response);
-        alert('Form submitted successfully!');
+        setIsLoading(true); // Start loading
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate 2-second delay
+            const response = await createEvaluation({params: data, token: token});
+            setSubmissionResult(response); // Save the response
+            alert('Form submitted successfully!');
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            setSubmissionResult({ error: 'Submission failed. Please try again.' });
+        } finally {
+            setIsLoading(false); // Stop loading
+        }
     };
 
     return (
-        <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="space-y-12"
-        >
-            <Effectiveness register={register}/>
-            <Risk register={register}/>
-            <Team register={register}/>
-            <button
-                type="submit"
-                className="w-full bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none transition"
+        <div>
+            <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="space-y-12"
             >
-                {t('buttons.submit')}
-            </button>
-        </form>
+                <Effectiveness register={register}/>
+                <Risk register={register}/>
+                <Team register={register}/>
+                <button
+                    type="submit"
+                    className="w-full bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none transition"
+                >
+                    {t('buttons.submit')}
+                </button>
+            </form>
+
+            {submissionResult && (
+                <div className="mt-8 p-4 border rounded bg-gray-100">
+                    <h3 className="text-lg font-semibold">
+                        {submissionResult.error ? "Error" : "Submission Results"}
+                    </h3>
+                    <pre className="mt-2 bg-gray-200 p-4 rounded text-sm overflow-auto">
+                        {submissionResult.error
+                            ? submissionResult.error
+                            : JSON.stringify(submissionResult, null, 2)}
+                    </pre>
+                </div>
+            )}
+
+            {/* Modal Loading Spinner */}
+            {isLoading && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 w-100 text-center">
+                        <div className="w-16 h-16 mx-auto mb-6 border-4 border-t-blue-600 dark:border-t-blue-600 border-gray-300 dark:border-gray-600 rounded-full animate-spin"></div>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                            {t('loading')}
+                        </h3>
+                        <p className="mt-4 text-gray-700 dark:text-gray-300">
+                            {t('loading_message', { duration: 'a few seconds' })}
+                        </p>
+                    </div>
+                </div>
+            )}
+        </div>
     );
 }

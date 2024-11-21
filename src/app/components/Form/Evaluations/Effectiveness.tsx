@@ -3,7 +3,7 @@
 import {useTranslations} from "use-intl";
 
 export default function Effectiveness({ register }: any) {
-    const t = useTranslations('HomePage');
+    const t = useTranslations('EvaluationForm');
 
     return (
         <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 mb-8">

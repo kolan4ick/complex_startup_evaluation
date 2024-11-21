@@ -3,7 +3,7 @@
 import { useTranslations } from 'use-intl';
 
 export default function Team({ register }: any) {
-    const t = useTranslations('HomePage');
+    const t = useTranslations('EvaluationForm');
 
     const linguisticOptions = [
         { value: 'low', label: t('fields.linguistics.low') },

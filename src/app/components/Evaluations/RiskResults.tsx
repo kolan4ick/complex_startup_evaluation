@@ -1,4 +1,5 @@
 import React from "react";
+import {TArray} from "ts-interface-checker";
 
 export default function RiskResults({ risk }: { risk: any }) {
     const {
@@ -135,7 +136,7 @@ export default function RiskResults({ risk }: { risk: any }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {estimated_membership.map((value: any, idx: number) => {
+                        {estimated_membership.map((value: TArray, idx: number) => {
                             const [x, z] = Object.entries(value)[0];
                             return (
                                 <tr

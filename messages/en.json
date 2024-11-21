@@ -192,6 +192,27 @@
       "submitting": "Evaluating..."
     },
     "loading": "Loading",
-    "loading_message": "Calculations are in progress, please wait."
+    "loading_message": "Calculations are in progress, please wait.",
+    "results": {
+      "effectiveness": {
+        "title": "Effectiveness Evaluation Results",
+        "membership_actual_desired": "Membership (actual/desired)",
+        "membership_actual_desired_description": "The ratio of actual effectiveness to desired.",
+        "membership_u": "Membership (u)",
+        "membership_u_description": "Detailed breakdown of membership values U.",
+        "max_membership": "Maximum Membership",
+        "max_membership_description": "Highest membership values in groups.",
+        "headers": {
+          "group": "Group",
+          "membership_actual": "Membership (actual)",
+          "membership_desired": "Membership (desired)",
+          "membership_u": "Membership (u)",
+          "max_membership": "Maximum Membership"
+        },
+        "summary": "Summary Result",
+        "aggregated_score": "Aggregated Score",
+        "linguistic": "Linguistic Score"
+      }
+    }
   }
 }

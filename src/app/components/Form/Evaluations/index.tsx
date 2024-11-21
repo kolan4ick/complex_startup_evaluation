@@ -8,10 +8,10 @@ import Team from "@/app/components/Form/Evaluations/Team";
 import {createEvaluation} from "@/hooks/useEvaluation";
 import {useTranslations} from "use-intl";
 import {useState} from "react";
-import EffectivenessResults from "@/app/components/EffectivenessResults";
-import RiskResults from "@/app/components/RiskResults";
-import TeamResults from "@/app/components/TeamResults";
-import FinancingFeasibilityResults from "@/app/components/FinancingFeasibilityResults";
+import EffectivenessResults from "@/app/components/Evaluations/EffectivenessResults";
+import RiskResults from "@/app/components/Evaluations/RiskResults";
+import TeamResults from "@/app/components/Evaluations/TeamResults";
+import FinancingFeasibilityResults from "@/app/components/Evaluations/FinancingFeasibilityResults";
 
 export default function EvaluationForm({evaluation}: { evaluation?: any }) {
     const token = useAppSelector((state) => state.auth.token);

@@ -192,6 +192,27 @@
       "submitting": "Оцінювання..."
     },
     "loading": "Завантаження",
-    "loading_message": "Проводяться обчислення, зачекайте."
+    "loading_message": "Проводяться обчислення, зачекайте.",
+    "results": {
+      "effectiveness": {
+        "title": "Результати оцінювання ефективності",
+        "membership_actual_desired": "Належність (фактична/бажана)",
+        "membership_actual_desired_description": "Відношення фактичної ефективності до бажаної.",
+        "membership_u": "Належність (u)",
+        "membership_u_description": "Детальний розбір значень належності U.",
+        "max_membership": "Максимальна належність",
+        "max_membership_description": "Найвищі значення належності в групах.",
+        "headers": {
+          "group": "Група",
+          "membership_actual": "Належність (фактична)",
+          "membership_desired": "Належність (бажана)",
+          "membership_u": "Належність (u)",
+          "max_membership": "Максимальна належність"
+        },
+        "summary": "Сумарний результат",
+        "aggregated_score": "Агрегована оцінка",
+        "linguistic": "Лінгвістична оцінка"
+      }
+    }
   }
 }

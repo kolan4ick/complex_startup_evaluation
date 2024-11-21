@@ -7,7 +7,7 @@ export default function Home() {
     const t = useTranslations('HomePage');
 
     return (
-        <div className="min-h-screen p-8">
+        <div className="min-h-screen">
             <h1 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-100 mb-10">
                 {
                     t('titles.home.evaluation')

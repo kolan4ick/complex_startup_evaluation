@@ -8,6 +8,10 @@ import Team from "@/app/components/Form/Evaluations/Team";
 import {createEvaluation} from "@/hooks/useEvaluation";
 import {useTranslations} from "use-intl";
 import {useState} from "react";
+import EffectivenessResults from "@/app/components/EffectivenessResults";
+import RiskResults from "@/app/components/RiskResults";
+import TeamResults from "@/app/components/TeamResults";
+import FinancingFeasibilityResults from "@/app/components/FinancingFeasibilityResults";
 
 export default function EvaluationForm({evaluation}: { evaluation?: any }) {
     const token = useAppSelector((state) => state.auth.token);
@@ -124,7 +128,7 @@ export default function EvaluationForm({evaluation}: { evaluation?: any }) {
             await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate 2-second delay
             const response = await createEvaluation({params: data, token: token});
             setSubmissionResult(response); // Save the response
-            alert('Form submitted successfully!');
+            console.log("Form submitted successfully:", response);
         } catch (error) {
             console.error("Error submitting form:", error);
             setSubmissionResult({ error: 'Submission failed. Please try again.' });
@@ -137,7 +141,7 @@ export default function EvaluationForm({evaluation}: { evaluation?: any }) {
         <div>
             <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="space-y-12"
+                className="space-y-4"
             >
                 <Effectiveness register={register}/>
                 <Risk register={register}/>
@@ -150,18 +154,13 @@ export default function EvaluationForm({evaluation}: { evaluation?: any }) {
                 </button>
             </form>
 
-            {submissionResult && (
-                <div className="mt-8 p-4 border rounded bg-gray-100">
-                    <h3 className="text-lg font-semibold">
-                        {submissionResult.error ? "Error" : "Submission Results"}
-                    </h3>
-                    <pre className="mt-2 bg-gray-200 p-4 rounded text-sm overflow-auto">
-                        {submissionResult.error
-                            ? submissionResult.error
-                            : JSON.stringify(submissionResult, null, 2)}
-                    </pre>
-                </div>
-            )}
+            {submissionResult && submissionResult.effectiveness && submissionResult.risk && submissionResult.team && (
+                <div className={"pt-8"}>
+                    <EffectivenessResults effectiveness={submissionResult.effectiveness} />
+                    <RiskResults risk={submissionResult.risk} />
+                    <TeamResults team={submissionResult.team} />
+                    <FinancingFeasibilityResults financingFeasibility={submissionResult.financing_feasibility} />
+                </div>)}
 
             {/* Modal Loading Spinner */}
             {isLoading && (

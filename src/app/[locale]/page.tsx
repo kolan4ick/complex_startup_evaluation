@@ -17,7 +17,7 @@ export default async function HomePage() {
 
     return (
         <ProtectedRoute>
-            <Home></Home>
+            <Home/>
         </ProtectedRoute>
     );
 }

@@ -15,7 +15,6 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
         linguistic
     } = effectiveness;
 
-    // Array of sections
     const sections = [
         {
             title: t("results.effectiveness.membership_actual_desired"),
@@ -27,9 +26,9 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
                 t("results.effectiveness.headers.membership_desired")
             ],
             rows: membership_actual.map((value: number, index: number) => ({
-                col1: `G${index + 1}`,
-                col2: value.toFixed(2),
-                col3: membership_desired[index]?.toFixed(2)
+                col1: {value: `G${index + 1}`},
+                col2: {value: value.toFixed(2)},
+                col3: {value: membership_desired[index]?.toFixed(2)}
             }))
         },
         {
@@ -38,10 +37,12 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
             description: t("results.effectiveness.membership_u_description"),
             headers: [t("results.effectiveness.headers.group"), t("results.effectiveness.headers.membership_u")],
             rows: membership_u.map((u: TArray, index: number) => ({
-                col1: `G${index + 1}`,
-                col2: Object.entries(u)
-                    .map(([key, value]) => `U${index + 1}${key} = ${value.toFixed(2)}`)
-                    .join(", ")
+                col1: {value: `G${index + 1}`},
+                col2: {
+                    value: Object.entries(u)
+                        .map(([key, value]) => `U${index + 1}${key} = ${value.toFixed(2)}`)
+                        .join(", ")
+                }
             }))
         },
         {
@@ -50,8 +51,8 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
             description: t("results.effectiveness.max_membership_description"),
             headers: [t("results.effectiveness.headers.group"), t("results.effectiveness.headers.max_membership")],
             rows: max_membership.map((value: number, index: number) => ({
-                col1: `G${index + 1}`,
-                col2: value.toFixed(2)
+                col1: {value: `G${index + 1}`},
+                col2: {value: value.toFixed(2)}
             }))
         }
     ];

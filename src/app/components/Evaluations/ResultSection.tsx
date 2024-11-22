@@ -1,18 +1,23 @@
-export function ResultSection({
-                                  title,
-                                  icon,
-                                  description,
-                                  headers,
-                                  rows
-                              }: {
+export function ResultSection<T extends Record<string, {
+    value: string | number | undefined;
+    colSpan?: number;
+    rowSpan?: number
+}>>({
+        title,
+        icon,
+        description,
+        headers,
+        rows,
+    }: {
     title: string;
     icon: string;
     description: string;
     headers: string[];
-    rows: { col1: string; col2: string; col3?: string }[];
+    rows: T[];
 }) {
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-300 dark:border-gray-700 p-4 space-y-4">
+        <div
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-300 dark:border-gray-700 p-4 space-y-4">
             <div className="flex items-center space-x-3">
                 <span className="text-3xl">{icon}</span>
                 <div>
@@ -25,11 +30,11 @@ export function ResultSection({
             <div className="overflow-x-auto">
                 <table className="w-full table-auto border-collapse">
                     <thead>
-                    <tr className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text">
+                    <tr className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
                         {headers.map((header, index) => (
                             <th
                                 key={index}
-                                className="px-4 py-2 text-left text-sm font-medium uppercase"
+                                className="px-4 py-2 text-sm font-medium uppercase text-center"
                             >
                                 {header}
                             </th>
@@ -37,22 +42,21 @@ export function ResultSection({
                     </tr>
                     </thead>
                     <tbody>
-                    {rows.map((row, index) => (
+                    {rows.map((row, rowIndex) => (
                         <tr
-                            key={index}
+                            key={rowIndex}
                             className="hover:bg-gray-50 dark:hover:bg-gray-700 transition"
                         >
-                            <td className="px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-300">
-                                {row.col1}
-                            </td>
-                            <td className="px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400">
-                                {row.col2}
-                            </td>
-                            {row.col3 && (
-                                <td className="px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400">
-                                    {row.col3}
+                            {Object.entries(row).map(([key, cell], colIndex) => (
+                                <td
+                                    key={colIndex}
+                                    className={`px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-300 text-center`}
+                                    colSpan={cell?.colSpan}
+                                    rowSpan={cell?.rowSpan}
+                                >
+                                    {cell?.value ?? "-"}
                                 </td>
-                            )}
+                            ))}
                         </tr>
                     ))}
                     </tbody>

@@ -1,7 +1,9 @@
 import React from "react";
 import {TArray} from "ts-interface-checker";
+import {SummaryCard} from "@/app/components/Evaluations/SummaryCard";
+import {ResultSection} from "@/app/components/Evaluations/ResultSection";
 
-export default function RiskResults({ risk }: { risk: any }) {
+export default function RiskResults({risk}: { risk: any }) {
     const {
         res_term_estimate,
         aggregated_reliability_assessment,
@@ -9,164 +11,127 @@ export default function RiskResults({ risk }: { risk: any }) {
         aggregated_membership,
         security_level,
     } = risk;
-
+    console.log(aggregated_reliability_assessment);
     return (
         <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 mb-8 space-y-8">
             <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
                 Risk Results
             </h2>
+            <div className="grid gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <ResultSection
+                        title={"Res Term Estimate"}
+                        icon={"📊"}
+                        description={"asd"}
+                        headers={["Index", "K", "Linguistic", "Aggregated Assessment"]}
+                        rows={res_term_estimate.flatMap((estimate: any, index: number) => {
+                            const headerRow = {
+                                col1: {
+                                    value: `K${index}`,
+                                    colSpan: 4,
+                                },
+                            };
 
-            {/* First Level Results */}
-            <div>
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
-                    Res Term Estimate
-                </h3>
-                <table className="table-auto w-full text-center border-collapse">
-                    <thead>
-                        <tr className="bg-gray-100 dark:bg-gray-700">
-                            <th className="px-4 py-2">Index</th>
-                            <th className="px-4 py-2">K</th>
-                            <th className="px-4 py-2">Linguistic</th>
-                            <th className="px-4 py-2">Aggregated Assessment</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {res_term_estimate.map((estimate: any, index: number) => (
-                            <React.Fragment key={index}>
-                                <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                                    <td className="border px-4 py-2" colSpan={4}>
-                                        K{index}
-                                    </td>
-                                </tr>
-                                {estimate.k.map((value: [string, number], idx: number) => (
-                                    <tr
-                                        key={`${index}-${idx}`}
-                                        className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                                    >
-                                        <td className="border px-4 py-2">{idx + 1}</td>
-                                        <td className="border px-4 py-2">K{index}{idx + 1}</td>
-                                        <td className="border px-4 py-2">{value[0]}</td>
-                                        {idx === 0 && (
-                                            <td
-                                                className="border px-4 py-2"
-                                                rowSpan={estimate.k.length}
-                                            >
-                                                {estimate.aggregated_assessment}
-                                            </td>
-                                        )}
-                                    </tr>
-                                ))}
-                            </React.Fragment>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                            const dataRows = estimate.k.map((value: [string, number], idx: number) => {
+                                const row: Record<string, { value: string | number | undefined; rowSpan?: number }> = {
+                                    col1: {value: idx + 1},
+                                    col2: {value: `K${index}${idx + 1}`},
+                                    col3: {value: value[0]}, // Assuming value[0] exists
+                                };
 
-            {/* Second Level Results */}
-            <div>
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
-                    Aggregated Reliability Assessment
-                </h3>
-                <table className="table-auto w-full text-center border-collapse">
-                    <thead>
-                        <tr className="bg-gray-100 dark:bg-gray-700">
-                            <th className="px-4 py-2">Index</th>
-                            <th className="px-4 py-2">K</th>
-                            <th className="px-4 py-2">Linguistic</th>
-                            <th className="px-4 py-2">Authenticity</th>
-                            <th className="px-4 py-2">Aggregated Reliability</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {aggregated_reliability_assessment.map(
-                            (assessment: any, index: number) => (
-                                <React.Fragment key={index}>
-                                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                                        <td className="border px-4 py-2" colSpan={4}>
-                                            K{index}
-                                        </td>
-                                        <td className="border px-4 py-2">
-                                            {assessment.k.aggregated_assessment}
-                                        </td>
-                                    </tr>
-                                    {assessment.k.map(
-                                        (value: [string, number], idx: number) => (
-                                            <tr
-                                                key={`${index}-${idx}`}
-                                                className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                                            >
-                                                <td className="border px-4 py-2">{idx + 1}</td>
-                                                <td className="border px-4 py-2">
-                                                    K{index}{idx + 1}
-                                                </td>
-                                                <td className="border px-4 py-2">{value[0]}</td>
-                                                <td className="border px-4 py-2">
-                                                    {value[1].toFixed(2)}
-                                                </td>
-                                                {idx === 0 && (
-                                                    <td
-                                                        className="border px-4 py-2"
-                                                        rowSpan={assessment.k.length}
-                                                    >
-                                                        {assessment.aggregate_reliability_assessment.toFixed(
-                                                            2
-                                                        )}
-                                                    </td>
-                                                )}
-                                            </tr>
-                                        )
-                                    )}
-                                </React.Fragment>
-                            )
-                        )}
-                    </tbody>
-                </table>
-            </div>
+                                if (idx === 0 && estimate.aggregated_assessment) {
+                                    row.col4 = {
+                                        value: estimate.aggregated_assessment,
+                                        rowSpan: estimate.k.length,
+                                    };
+                                }
 
-            {/* Third Level Results */}
-            <div>
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
-                    Estimated Membership
-                </h3>
-                <table className="table-auto w-full text-center border-collapse">
-                    <thead>
-                        <tr className="bg-gray-100 dark:bg-gray-700">
-                            <th className="px-4 py-2">X</th>
-                            <th className="px-4 py-2">Z</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {estimated_membership.map((value: TArray, idx: number) => {
-                            const [x, z] = Object.entries(value)[0];
-                            return (
-                                <tr
-                                    key={idx}
-                                    className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                                >
-                                    <td className="border px-4 py-2">x{idx} = {parseFloat(x).toFixed(1)}</td>
-                                    <td className="border px-4 py-2">z{idx} = {parseFloat(z).toFixed(2)}</td>
-                                </tr>
-                            );
+                                return row;
+                            });
+
+                            return [headerRow, ...dataRows];
                         })}
-                    </tbody>
-                </table>
+                    />
+                    <ResultSection
+                        title={"Aggregated Reliability Assessment"}
+                        icon={"📊"}
+                        description={"asd"}
+                        headers={["Index", "K", "Linguistic", "Authenticity", "Aggregated Reliability"]}
+                        rows={aggregated_reliability_assessment.flatMap((assessment: any, index: number) => {
+                            const headerRow = {
+                                col1: {
+                                    value: `K${index}`,
+                                    colSpan: 4,
+                                },
+                                col2: {
+                                    value: res_term_estimate[index].aggregated_assessment
+                                }
+                            };
+
+                            const dataRows = assessment.k.map((value: [string, number], idx: number) => {
+                                const row: Record<string, { value: string | number | undefined; rowSpan?: number }> = {
+                                    col1: {value: idx + 1},
+                                    col2: {value: `K${index}${idx + 1}`},
+                                    col3: {value: value[0]},
+                                    col4: {value: value[1]},
+                                };
+
+                                if (idx === 0 && assessment.aggregate_reliability_assessment) {
+                                    row.col5 = {
+                                        value: assessment.aggregate_reliability_assessment.toFixed(2),
+                                        rowSpan: assessment.k.length,
+                                    };
+                                }
+
+                                return row;
+                            });
+
+                            return [headerRow, ...dataRows];
+                        })}
+                    />
+                </div>
+                <div className="flex justify-center">
+                    <div className="w-full md:w-1/2">
+                        <ResultSection
+                            title={"Estimated Membership"}
+                            icon={""}
+                            description={"A description of the estimated membership details"}
+                            headers={["X", "Z"]}
+                            rows={estimated_membership.map((value: TArray, idx: number) => {
+                                    const [x, z] = Object.entries(value)[0];
+                                    return {
+                                        col1: {
+                                            value: `x${idx} = ${(+x).toFixed(2)}`
+                                        },
+                                        col2: {
+                                            value: `z${idx} = ${(+z).toFixed(2)}`
+                                        }
+                                    }
+                                })}
+                        />
+                    </div>
+                </div>
             </div>
 
-            {/* Fourth Level Results */}
-            <div className="text-center space-y-4">
-                <div>
-                    <h5 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                        Aggregated Membership
-                    </h5>
-                    <b className="text-xl text-blue-600 dark:text-blue-400">
-                        {aggregated_membership.toFixed(2)}
-                    </b>
-                </div>
-                <div>
-                    <h5 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                        Security Level
-                    </h5>
-                    <b className="text-xl text-blue-600 dark:text-blue-400">{security_level}</b>
+            <div className="mt-8">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+                    summary
+                </h3>
+                <div className="grid grid-cols-2 gap-6">
+                    <SummaryCard
+                        title="Aggregated Membership"
+                        value={aggregated_membership.toFixed(2)}
+                        progress={aggregated_membership}
+                        color="bg-green-500"
+                        icon="🏆"
+                    />
+                    <SummaryCard
+                        title="Security Level"
+                        value={security_level}
+                        progress={aggregated_membership}
+                        color="bg-blue-500"
+                        icon="🔒️"
+                    />
                 </div>
             </div>
         </div>

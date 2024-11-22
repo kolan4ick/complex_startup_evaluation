@@ -4,7 +4,7 @@ import { useState } from "react";
 import EvaluationCard from "@/app/components/Evaluations/EvaluationCard";
 import {useTranslations} from "next-intl";
 
-export default function Evaluations({ evaluations }: { evaluations: any[] }) {
+export default function EvaluationsPage({ evaluations }: { evaluations: any[] }) {
     const t = useTranslations("EvaluationsPage");
     const [currentPage, setCurrentPage] = useState(1);
     const evaluationsPerPage = 20;

@@ -289,5 +289,13 @@
     "team_leaders_competencies": "Компетентності лідера",
     "team_professional_activity": "Професійна активність",
     "team_stability": "Стабільність команди"
+  },
+  "EvaluationPage": {
+    "titles": {
+      "evaluation": "Оцінка"
+    },
+    "descriptions": {
+      "evaluation": "Сторінка оцінки"
+    }
   }
 }

@@ -262,5 +262,14 @@
         "summary": "Summary"
       }
     }
+  },
+  "EvaluationsPage": {
+    "titles": {
+      "evaluations": "Evaluations",
+      "evaluation": "Evaluation"
+    },
+    "descriptions": {
+      "evaluations": "Evaluations page"
+    }
   }
 }

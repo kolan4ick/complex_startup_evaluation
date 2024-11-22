@@ -262,5 +262,14 @@
         "summary": "Сумарний результат"
       }
     }
+  },
+  "EvaluationsPage": {
+    "titles": {
+      "evaluations": "Оцінки",
+      "evaluation": "Оцінка"
+    },
+    "descriptions": {
+      "evaluations": "Сторінка проведених оцінок"
+    }
   }
 }

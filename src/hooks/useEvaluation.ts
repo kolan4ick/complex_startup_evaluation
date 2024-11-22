@@ -48,7 +48,7 @@ export const getEvaluations = async ({token}: { token: string | null }): Promise
     return response.data;
 };
 
-export const getEvaluation = async ({id, token}: { id: number, token: string | null }): Promise<Evaluation> => {
+export const getEvaluation = async ({id, token}: { id: string, token: string | null }): Promise<Evaluation> => {
     const response = await apiClient.get(`/evaluations/${id}`, {
         headers: {
             Authorization: `Bearer ${token}`,

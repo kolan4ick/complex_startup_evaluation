@@ -262,5 +262,40 @@
         "summary": "Сумарний результат"
       }
     }
+  },
+  "EvaluationsPage": {
+    "titles": {
+      "evaluations": "Оцінки",
+      "evaluation": "Оцінка"
+    },
+    "descriptions": {
+      "evaluations": "Сторінка проведених оцінок"
+    },
+    "pagination": {
+      "previous": "Попередня",
+      "next": "Наступна"
+    },
+    "feasibility_linguistic": "Лінгвістична можливість",
+    "feasibility_linguistics": {
+      "very_low": "Дуже низька",
+      "low": "Низька",
+      "middle": "Середня",
+      "above_middle": "Вище середнього",
+      "high": "Висока"
+    },
+    "team_competencies": "Компетентності команди",
+    "competencies_and_experience": "Компетентності та досвід",
+    "team_competencies_and_experience": "Компетентності та досвід команди",
+    "team_leaders_competencies": "Компетентності лідера",
+    "team_professional_activity": "Професійна активність",
+    "team_stability": "Стабільність команди"
+  },
+  "EvaluationPage": {
+    "titles": {
+      "evaluation": "Оцінка"
+    },
+    "descriptions": {
+      "evaluation": "Сторінка оцінки"
+    }
   }
 }

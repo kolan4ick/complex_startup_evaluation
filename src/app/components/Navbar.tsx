@@ -13,6 +13,7 @@ import ProfileIcon from "@/app/components/Icons/ProfileIcon";
 import LogoutIcon from "@/app/components/Icons/LogoutIcon";
 import HomeIcon from "@/app/components/Icons/HomeIcon";
 import LocaleSwitcher from "@/app/components/LocaleSwitcher";
+import EvaluationsIcon from "@/app/components/Icons/EvaluationsIcon";
 
 export default function Navbar() {
     const t = useTranslations('Navbar');
@@ -116,6 +117,14 @@ export default function Navbar() {
                                     className="p-2 flex items-center gap-2 text-gray-900 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 >
                                     <HomeIcon/>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    href={`/${locale}/evaluations`}
+                                    className="p-2 flex items-center gap-2 text-gray-900 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                >
+                                    <EvaluationsIcon/>
                                 </Link>
                             </li>
                             <li>

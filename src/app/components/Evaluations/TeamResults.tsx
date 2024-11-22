@@ -1,65 +1,71 @@
 import React from "react";
+import {ResultSection} from "@/app/components/Evaluations/ResultSection";
+import {SummaryCard} from "@/app/components/Evaluations/SummaryCard";
+import {useTranslations} from "use-intl";
 
-export default function TeamResults({ team }: { team: any }) {
-    const { membership, defuzzification, rate } = team;
+export default function TeamResults({team}: { team: any }) {
+    const {membership, defuzzification, rate} = team;
+    const t = useTranslations("EvaluationForm");
+
+    // Prepare sections data
+    const sections = [
+        {
+            title: t("results.team.membership"),
+            icon: "📊",
+            description: t("results.team.membership_description"),
+            headers: [t("results.team.headers.term"), t("results.team.headers.membership")],
+            rows: membership.flatMap((kArray: number[], i: number) =>
+                kArray.map((value: number, idx: number) => ({
+                    col1: {value: `K${i + 1}${idx + 1}`},
+                    col2: {value: value.toFixed(3)}
+                }))
+            )
+        }
+    ];
 
     return (
-        <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 mb-8 space-y-8">
-            <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
-                Team Results
+        <div
+            className="p-6 bg-gradient-to-b from-green-100 via-yellow-200 to-yellow-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-600">
+            <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-6">
+                {t("results.team.title")}
             </h2>
 
-            {/* First Level Results */}
-            <div>
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
-                    Membership Values
-                </h3>
-                <table className="table-auto w-full text-center border-collapse">
-                    <thead>
-                    <tr className="bg-gray-100 dark:bg-gray-700">
-                        <th className="px-4 py-2">K</th>
-                        <th className="px-4 py-2">Membership</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {membership.map((kArray: number[], i: number) =>
-                        kArray.map((value: number, idx: number) => (
-                            <tr
-                                key={`${i}-${idx}`}
-                                className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-                            >
-                                <td className="border px-4 py-2">
-                                    K{i + 1}{idx + 1}
-                                </td>
-                                <td className="border px-4 py-2">
-                                    {value.toFixed(3)}
-                                </td>
-                            </tr>
-                        ))
-                    )}
-                    </tbody>
-                </table>
-            </div>
-
-            {/* Defuzzification */}
-            <div className="text-center space-y-4">
-                <div>
-                    <h5 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                        Defuzzification (Z)
-                    </h5>
-                    <b className="text-xl text-blue-600 dark:text-blue-400">
-                        {defuzzification.toFixed(4)}
-                    </b>
+            <div className="grid gap-8">
+                <div className="flex justify-center">
+                    <div className="w-full md:w-1/2">
+                        {sections.map((section, index) => (
+                            <ResultSection
+                                key={index}
+                                title={section.title}
+                                icon={section.icon}
+                                description={section.description}
+                                headers={section.headers}
+                                rows={section.rows}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            {/* Team Rating */}
-            <div className="text-center space-y-4">
-                <div>
-                    <h5 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                        Team Rating
-                    </h5>
-                    <b className="text-xl text-blue-600 dark:text-blue-400">{rate}</b>
+            <div className="mt-8">
+                <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+                    {t("results.summary")}
+                </h3>
+                <div className="grid grid-cols-2 gap-6">
+                    <SummaryCard
+                        title={t("results.team.defuzzification")}
+                        value={defuzzification.toFixed(4)}
+                        progress={defuzzification}
+                        color="bg-green-500"
+                        icon="📈"
+                    />
+                    <SummaryCard
+                        title={t("results.team.rate")}
+                        value={rate}
+                        progress={defuzzification}
+                        color="bg-blue-500"
+                        icon="🌟"
+                    />
                 </div>
             </div>
         </div>

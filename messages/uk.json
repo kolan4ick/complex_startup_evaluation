@@ -231,6 +231,17 @@
         "estimated_membership": "Оцінена належність",
         "estimated_membership_description": "Оцінена належність ризиків.",
         "aggregated_membership": "Агрегована належність"
+      },
+      "team": {
+        "title": "Результати оцінювання команди",
+        "membership": "Належність",
+        "membership_description": "Оцінка належності команди.",
+        "defuzzification": "Дефазифікація",
+        "rate": "Оцінка",
+        "headers": {
+          "term": "Терм",
+          "membership": "Належність"
+        }
       }
     }
   }

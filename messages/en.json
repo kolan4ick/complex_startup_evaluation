@@ -231,6 +231,17 @@
         "estimated_membership": "Estimated Membership",
         "estimated_membership_description": "Estimated membership of risks.",
         "aggregated_membership": "Aggregated Membership"
+      },
+      "team": {
+        "title": "Team Evaluation Results",
+        "membership": "Membership",
+        "membership_description": "Membership of the team.",
+        "defuzzification": "Defuzzification",
+        "rate": "Rate",
+        "headers": {
+          "term": "Term",
+          "membership": "Membership"
+        }
       }
     }
   }

@@ -94,7 +94,7 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
             {/* Summary */}
             <div className="mt-8">
                 <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
-                    {t("results.effectiveness.summary")}
+                    {t("results.summary")}
                 </h3>
                 <div className="grid grid-cols-2 gap-6">
                     <SummaryCard
@@ -105,7 +105,7 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
                         icon="🏆"
                     />
                     <SummaryCard
-                        title={t("results.effectiveness.linguistic")}
+                        title={t("results.linguistic")}
                         value={linguistic}
                         progress={aggregated_score}
                         color="bg-blue-500"

@@ -194,6 +194,9 @@
     "loading": "Loading",
     "loading_message": "Calculations are in progress, please wait.",
     "results": {
+      "summary": "Summary",
+      "linguistic": "Linguistic Evaluation",
+      "security_level": "Security Level",
       "effectiveness": {
         "title": "Effectiveness Evaluation Results",
         "membership_actual_desired": "Membership (actual/desired)",
@@ -209,9 +212,25 @@
           "membership_u": "Membership (u)",
           "max_membership": "Maximum Membership"
         },
-        "summary": "Summary Result",
-        "aggregated_score": "Aggregated Score",
-        "linguistic": "Linguistic Score"
+        "aggregated_score": "Aggregated Score"
+      },
+      "risk": {
+        "title": "Risk Evaluation Results",
+        "res_term_estimate": "Risk Estimate",
+        "res_term_estimate_description": "Risk estimate based on the evaluation.",
+        "headers": {
+          "index": "Index",
+          "term": "Term",
+          "linguistic": "Linguistic",
+          "aggregated_assessment": "Aggregated Assessment",
+          "authenticity": "Authenticity",
+          "aggregated_reliability": "Aggregated Reliability"
+        },
+        "aggregated_reliability_assessment": "Aggregated Reliability Assessment",
+        "aggregated_reliability_assessment_description": "Aggregated reliability assessment of risks.",
+        "estimated_membership": "Estimated Membership",
+        "estimated_membership_description": "Estimated membership of risks.",
+        "aggregated_membership": "Aggregated Membership"
       }
     }
   }

@@ -194,6 +194,9 @@
     "loading": "Завантаження",
     "loading_message": "Проводяться обчислення, зачекайте.",
     "results": {
+      "summary": "Сумарний результат",
+      "linguistic": "Лінгвістична оцінка",
+      "security_level": "Рівень безпеки",
       "effectiveness": {
         "title": "Результати оцінювання ефективності",
         "membership_actual_desired": "Належність (фактична/бажана)",
@@ -209,9 +212,25 @@
           "membership_u": "Належність (u)",
           "max_membership": "Максимальна належність"
         },
-        "summary": "Сумарний результат",
-        "aggregated_score": "Агрегована оцінка",
-        "linguistic": "Лінгвістична оцінка"
+        "aggregated_score": "Агрегована оцінка"
+      },
+      "risk": {
+        "title": "Результати оцінювання ризиків",
+        "res_term_estimate": "Оцінка ризику",
+        "res_term_estimate_description": "Оцінка ризику відповідно до введених даних.",
+        "headers": {
+          "index": "Індекс",
+          "term": "Терм",
+          "linguistic": "Лінгвістична",
+          "aggregated_assessment": "Агрегована оцінка",
+          "authenticity": "Аутентичність",
+          "aggregated_reliability": "Агрегована надійність"
+        },
+        "aggregated_reliability_assessment": "Агрегована оцінка надійності",
+        "aggregated_reliability_assessment_description": "Агрегована оцінка надійності ризиків.",
+        "estimated_membership": "Оцінена належність",
+        "estimated_membership_description": "Оцінена належність ризиків.",
+        "aggregated_membership": "Агрегована належність"
       }
     }
   }

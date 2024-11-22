@@ -131,7 +131,7 @@ export default function EvaluationForm({evaluation}: { evaluation?: any }) {
             console.log("Form submitted successfully:", response);
         } catch (error) {
             console.error("Error submitting form:", error);
-            setSubmissionResult({ error: 'Submission failed. Please try again.' });
+            setSubmissionResult({error: 'Submission failed. Please try again.'});
         } finally {
             setIsLoading(false); // Stop loading
         }
@@ -155,23 +155,32 @@ export default function EvaluationForm({evaluation}: { evaluation?: any }) {
             </form>
 
             {submissionResult && submissionResult.effectiveness && submissionResult.risk && submissionResult.team && (
-                <div className={"pt-8"}>
-                    <EffectivenessResults effectiveness={submissionResult.effectiveness} />
-                    <RiskResults risk={submissionResult.risk} />
-                    <TeamResults team={submissionResult.team} />
-                    <FinancingFeasibilityResults financingFeasibility={submissionResult.financing_feasibility} />
+                <div>
+                    <div className={"mt-8"}>
+                        <EffectivenessResults effectiveness={submissionResult.effectiveness}/>
+                    </div>
+                    <div className={"mt-8"}>
+                        <RiskResults risk={submissionResult.risk}/>
+                    </div>
+                    <div className={"mt-8"}>
+                        <TeamResults team={submissionResult.team}/>
+                    </div>
+                    <div className={"mt-8"}>
+                        <FinancingFeasibilityResults financingFeasibility={submissionResult.financing_feasibility}/>
+                    </div>
                 </div>)}
 
             {/* Modal Loading Spinner */}
             {isLoading && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 w-100 text-center">
-                        <div className="w-16 h-16 mx-auto mb-6 border-4 border-t-blue-600 dark:border-t-blue-600 border-gray-300 dark:border-gray-600 rounded-full animate-spin"></div>
+                        <div
+                            className="w-16 h-16 mx-auto mb-6 border-4 border-t-blue-600 dark:border-t-blue-600 border-gray-300 dark:border-gray-600 rounded-full animate-spin"></div>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                             {t('loading')}
                         </h3>
                         <p className="mt-4 text-gray-700 dark:text-gray-300">
-                            {t('loading_message', { duration: 'a few seconds' })}
+                            {t('loading_message', {duration: 'a few seconds'})}
                         </p>
                     </div>
                 </div>

@@ -2,21 +2,39 @@
 
 import { useState } from "react";
 import EvaluationCard from "@/app/components/Evaluations/EvaluationCard";
-import {useTranslations} from "next-intl";
+import { useTranslations } from "next-intl";
+import {getEvaluations} from "@/hooks/useEvaluation";
+import {useAppSelector} from "@/lib/hooks";
 
-export default function EvaluationsPage({ evaluations }: { evaluations: any[] }) {
+export default function EvaluationsPage({ evaluations: initialEvaluations, totalPages }: { evaluations: any[], totalPages: number }) {
     const t = useTranslations("EvaluationsPage");
     const [currentPage, setCurrentPage] = useState(1);
-    const evaluationsPerPage = 20;
+    const [evaluations, setEvaluations] = useState(initialEvaluations);
+    const [isLoading, setIsLoading] = useState(false);
+    const token = useAppSelector((state) => state.auth.token);
 
-    const startIndex = (currentPage - 1) * evaluationsPerPage;
-    const currentEvaluations = evaluations.slice(startIndex, startIndex + evaluationsPerPage);
+    const fetchEvaluations = async (page: number) => {
+        setIsLoading(true);
+        try {
+            const data = await getEvaluations({
+                token,
+                page,
+                perPage: 20,
+                reverse: true,
+            })
 
-    const totalPages = Math.ceil(evaluations.length / evaluationsPerPage);
+            setEvaluations(data.evaluations);
+        } catch (error) {
+            console.error("Failed to fetch evaluations:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const goToPage = (page: number) => {
         if (page >= 1 && page <= totalPages) {
             setCurrentPage(page);
+            fetchEvaluations(page);
         }
     };
 
@@ -25,11 +43,19 @@ export default function EvaluationsPage({ evaluations }: { evaluations: any[] })
             <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-6">
                 {t("titles.evaluations")}
             </h1>
-            <div className="space-y-4">
-                {currentEvaluations.map((evaluation) => (
-                    <EvaluationCard key={evaluation.id} evaluation={evaluation} />
-                ))}
-            </div>
+
+            {isLoading ? (
+                <div className="flex justify-center items-center">
+                    <p className="text-gray-500 dark:text-gray-300">{t("loading")}</p>
+                </div>
+            ) : (
+                <div className="space-y-4">
+                    {evaluations.map((evaluation) => (
+                        <EvaluationCard key={evaluation.id} evaluation={evaluation} />
+                    ))}
+                </div>
+            )}
+
             <div className="mt-8 flex justify-center items-center space-x-2">
                 <button
                     onClick={() => goToPage(currentPage - 1)}

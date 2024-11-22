@@ -38,10 +38,20 @@ interface Evaluation {
     feasibility_linguistic: number;
 }
 
-export const getEvaluations = async ({token}: { token: string | null }): Promise<Evaluation[]> => {
+export const getEvaluations = async ({token, page = 1, perPage = 20, reverse = false}: {
+    token: string | null,
+    page?: number,
+    perPage?: number,
+    reverse?: boolean
+}): Promise<any> => {
     const response = await apiClient.get('/evaluations', {
         headers: {
             Authorization: `Bearer ${token}`,
+        },
+        params: {
+            page,
+            per_page: perPage,
+            reverse
         },
     });
 

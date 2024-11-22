@@ -13,7 +13,6 @@ export default function TeamResults({ team }: { team: any }) {
             icon: "📊",
             description: t("results.team.membership_description"),
             headers: [
-                t("results.team.headers.index"),
                 t("results.team.headers.term"),
                 t("results.team.headers.membership")
             ],
@@ -26,9 +25,8 @@ export default function TeamResults({ team }: { team: any }) {
                 };
 
                 const dataRows = kArray.map((value: number, idx: number) => ({
-                    col1: { value: idx + 1 },
-                    col2: { value: `K${index + 1}${idx + 1}` },
-                    col3: { value: value.toFixed(3) },
+                    col1: { value: `K${index + 1}${idx + 1}` },
+                    col2: { value: value.toFixed(3) },
                 }));
 
                 return [headerRow, ...dataRows];

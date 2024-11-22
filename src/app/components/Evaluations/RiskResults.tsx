@@ -1,4 +1,3 @@
-import React from "react";
 import {TArray} from "ts-interface-checker";
 import {SummaryCard} from "@/app/components/Evaluations/SummaryCard";
 import {ResultSection} from "@/app/components/Evaluations/ResultSection";

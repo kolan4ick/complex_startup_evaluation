@@ -1,25 +1,25 @@
-'use client';
-
-import {useForm} from 'react-hook-form';
-import {useAppSelector} from '@/lib/hooks';
+import { useTranslations } from "use-intl";
+import {useAppSelector} from "@/lib/hooks";
+import {useEffect, useRef, useState} from "react";
+import {useForm} from "react-hook-form";
+import {createEvaluation} from "@/hooks/useEvaluation";
 import Effectiveness from "@/app/components/Form/Evaluations/Effectiveness";
 import Risk from "@/app/components/Form/Evaluations/Risk";
 import Team from "@/app/components/Form/Evaluations/Team";
-import {createEvaluation} from "@/hooks/useEvaluation";
-import {useTranslations} from "use-intl";
-import {useState} from "react";
 import EffectivenessResults from "@/app/components/Evaluations/EffectivenessResults";
 import RiskResults from "@/app/components/Evaluations/RiskResults";
 import TeamResults from "@/app/components/Evaluations/TeamResults";
 import FinancingFeasibilityResults from "@/app/components/Evaluations/FinancingFeasibilityResults";
 
-export default function EvaluationForm({evaluation}: { evaluation?: any }) {
+export default function EvaluationForm({ evaluation }: { evaluation?: any }) {
     const token = useAppSelector((state) => state.auth.token);
-    const t = useTranslations('EvaluationForm');
+    const t = useTranslations("EvaluationForm");
     const [submissionResult, setSubmissionResult] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(false); // State for loading
+    const resultsRef = useRef<HTMLDivElement | null>(null); // Ref for SubmissionResults
 
     let defaultValues;
+
 
     if (evaluation) {
         defaultValues = evaluation;
@@ -118,69 +118,87 @@ export default function EvaluationForm({evaluation}: { evaluation?: any }) {
         }
     }
 
-    const {register, handleSubmit} = useForm({
+    const { register, handleSubmit } = useForm({
         defaultValues,
     });
 
     const onSubmit = async (data: any) => {
         setIsLoading(true); // Start loading
         try {
-            await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate 2-second delay
-            const response = await createEvaluation({params: data, token: token});
-            setSubmissionResult(response); // Save the response
-            console.log("Form submitted successfully:", response);
+            await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate delay
+            const response = await createEvaluation({ params: data, token: token });
+            setSubmissionResult(response);
         } catch (error) {
             console.error("Error submitting form:", error);
-            setSubmissionResult({error: 'Submission failed. Please try again.'});
+            setSubmissionResult({ error: "Submission failed. Please try again." });
         } finally {
             setIsLoading(false); // Stop loading
+            // Smooth scroll to results
+            setTimeout(() => {
+                resultsRef.current?.scrollIntoView({ behavior: "smooth" });
+                resultsRef.current?.focus(); // Optional: Focus for accessibility
+            }, 100); // Ensure DOM updates before scrolling
         }
     };
 
+    useEffect(() => {
+        if (isLoading) {
+            document.body.classList.add("overflow-hidden");
+        } else {
+            document.body.classList.remove("overflow-hidden");
+        }
+
+        return () => {
+            document.body.classList.remove("overflow-hidden");
+        };
+    }, [isLoading]);
+
     return (
         <div>
-            <form
-                onSubmit={handleSubmit(onSubmit)}
-                className="space-y-4"
-            >
-                <Effectiveness register={register}/>
-                <Risk register={register}/>
-                <Team register={register}/>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <Effectiveness register={register} />
+                <Risk register={register} />
+                <Team register={register} />
                 <button
                     type="submit"
                     className="w-full bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none transition"
                 >
-                    {t('buttons.submit')}
+                    {t("buttons.submit")}
                 </button>
             </form>
 
             {submissionResult && submissionResult.effectiveness && submissionResult.risk && submissionResult.team && (
-                <div>
-                    <div className={"mt-8"}>
-                        <EffectivenessResults effectiveness={submissionResult.effectiveness}/>
+                <div
+                    id="SubmissionResults"
+                    ref={resultsRef}
+                    tabIndex={-1} // Make it focusable for accessibility
+                    className="outline-none"
+                >
+                    <div className="mt-8">
+                        <EffectivenessResults effectiveness={submissionResult.effectiveness} />
                     </div>
-                    <div className={"mt-8"}>
-                        <RiskResults risk={submissionResult.risk}/>
+                    <div className="mt-8">
+                        <RiskResults risk={submissionResult.risk} />
                     </div>
-                    <div className={"mt-8"}>
-                        <TeamResults team={submissionResult.team}/>
+                    <div className="mt-8">
+                        <TeamResults team={submissionResult.team} />
                     </div>
-                    <div className={"mt-8"}>
-                        <FinancingFeasibilityResults financingFeasibility={submissionResult.financing_feasibility}/>
+                    <div className="mt-8">
+                        <FinancingFeasibilityResults financingFeasibility={submissionResult.financing_feasibility} />
                     </div>
-                </div>)}
+                </div>
+            )}
 
             {/* Modal Loading Spinner */}
             {isLoading && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 w-100 text-center">
-                        <div
-                            className="w-16 h-16 mx-auto mb-6 border-4 border-t-blue-600 dark:border-t-blue-600 border-gray-300 dark:border-gray-600 rounded-full animate-spin"></div>
+                        <div className="w-16 h-16 mx-auto mb-6 border-4 border-t-blue-600 dark:border-t-blue-600 border-gray-300 dark:border-gray-600 rounded-full animate-spin"></div>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                            {t('loading')}
+                            {t("loading")}
                         </h3>
                         <p className="mt-4 text-gray-700 dark:text-gray-300">
-                            {t('loading_message', {duration: 'a few seconds'})}
+                            {t("loading_message", { duration: "a few seconds" })}
                         </p>
                     </div>
                 </div>

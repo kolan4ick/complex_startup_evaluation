@@ -264,6 +264,7 @@
     }
   },
   "EvaluationsPage": {
+    "loading": "Завантаження...",
     "titles": {
       "evaluations": "Оцінки",
       "evaluation": "Оцінка"

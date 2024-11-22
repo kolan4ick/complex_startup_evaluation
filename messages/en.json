@@ -264,6 +264,7 @@
     }
   },
   "EvaluationsPage": {
+    "loading": "Loading...",
     "titles": {
       "evaluations": "Evaluations",
       "evaluation": "Evaluation"

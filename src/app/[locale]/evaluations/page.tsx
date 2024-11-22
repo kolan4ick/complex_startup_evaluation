@@ -20,9 +20,9 @@ export default async function EvaluationsPage() {
     const cookieStore = await cookies();
     const token = cookieStore.get("auth-token")?.value || null;
 
-    const evaluations = (await getEvaluations({token})).reverse();
+    const evaluationsData = await getEvaluations({page: 1, perPage: 20, token: token});
 
     return <ProtectedRoute>
-        <Evaluations evaluations={evaluations}/>
+        <Evaluations evaluations={evaluationsData.evaluations} totalPages={evaluationsData.meta.total_pages}/>
     </ProtectedRoute>;
 }

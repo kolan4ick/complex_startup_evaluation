@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import EvaluationCard from "@/app/components/Evaluations/EvaluationCard";
+import {useTranslations} from "next-intl";
 
-export default function EvaluationsPage({ evaluations }: { evaluations: any[] }) {
+export default function Evaluations({ evaluations }: { evaluations: any[] }) {
+    const t = useTranslations("EvaluationsPage");
     const [currentPage, setCurrentPage] = useState(1);
     const evaluationsPerPage = 20;
 
@@ -21,7 +23,7 @@ export default function EvaluationsPage({ evaluations }: { evaluations: any[] })
     return (
         <div className="p-6">
             <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mb-6">
-                User Evaluations
+                {t("titles.evaluations")}
             </h1>
             <div className="space-y-4">
                 {currentEvaluations.map((evaluation) => (
@@ -38,7 +40,7 @@ export default function EvaluationsPage({ evaluations }: { evaluations: any[] })
                             : "bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-500 dark:hover:bg-blue-600"
                     }`}
                 >
-                    Previous
+                    {t("pagination.previous")}
                 </button>
                 {[...Array(totalPages)].map((_, idx) => (
                     <button
@@ -62,7 +64,7 @@ export default function EvaluationsPage({ evaluations }: { evaluations: any[] })
                             : "bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-500 dark:hover:bg-blue-600"
                     }`}
                 >
-                    Next
+                    {t("pagination.next")}
                 </button>
             </div>
         </div>

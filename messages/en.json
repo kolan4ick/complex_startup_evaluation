@@ -270,6 +270,24 @@
     },
     "descriptions": {
       "evaluations": "Evaluations page"
-    }
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "feasibility_linguistic": "Feasibility Linguistic",
+    "feasibility_linguistics": {
+      "very_low": "Very Low",
+      "low": "Low",
+      "middle": "Middle",
+      "above_middle": "Above Middle",
+      "high": "High"
+    },
+    "team_competencies": "Team Competencies",
+    "competencies_and_experience": "Competencies & Experience",
+    "team_competencies_and_experience": "Team Competencies & Experience",
+    "team_leaders_competencies": "Leaders Competencies",
+    "team_professional_activity": "Professional Activity",
+    "team_stability": "Team Stability"
   }
 }

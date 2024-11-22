@@ -1,6 +1,6 @@
 'use server';
 
-import Profile from "@/app/components/Users/Profile";
+import Profile from "@/app/components/Form/Users/Profile";
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import {getTranslations} from "next-intl/server";
 import {Metadata} from "next";

@@ -71,11 +71,15 @@
     }
   },
   "HomePage": {
-    "titles": {
-      "home": "Home"
-    },
     "descriptions": {
       "home": "Home page"
+    },
+    "titles": {
+      "home": {
+        "title": "Home",
+        "description": "This is the home page",
+        "evaluation": "Startup Evaluation"
+      }
     }
   },
   "Navbar": {
@@ -140,6 +144,123 @@
       "notLoggedIn": "You must be logged in to view this page.",
       "required": "This field is required.",
       "invalidEmail": "Please enter a valid email address."
+    }
+  },
+  "EvaluationForm": {
+    "fields": {
+      "linguistics": {
+        "low": "Low",
+        "below_middle": "Below Middle",
+        "middle": "Middle",
+        "above_middle": "Above Middle",
+        "high": "High"
+      },
+      "effectiveness": {
+        "sum": "Sum",
+        "min": "Minimum",
+        "max": "Maximum",
+        "desired": "Desired",
+        "weight": "Weight"
+      }
+    },
+    "titles": {
+      "effectiveness": {
+        "title": "Effectiveness"
+      },
+      "risks": {
+        "title": "Risks",
+        "operational": "Operational Risks",
+        "investment": "Investment Risks",
+        "financial": "Financial Risks",
+        "innovation": "Innovation Risks"
+      },
+      "team": {
+        "title": "Team",
+        "stability": "Stability",
+        "competency": "Competency",
+        "activity": "Activity"
+      }
+    },
+    "placeholders": {
+      "authenticity": "Authenticity",
+      "stability": "Stability",
+      "confidence": "Confidence",
+      "weight": "Weight",
+      "competencies": "Competencies",
+      "competencies_experience": "Experience",
+      "leaders_competencies": "Leader's Competencies",
+      "activity": "Activity"
+    },
+    "buttons": {
+      "submit": "Evaluate",
+      "submitting": "Evaluating..."
+    },
+    "loading": "Loading",
+    "loading_message": "Calculations are in progress, please wait.",
+    "results": {
+      "summary": "Summary",
+      "linguistic": "Linguistic Evaluation",
+      "security_level": "Security Level",
+      "effectiveness": {
+        "title": "Effectiveness Evaluation Results",
+        "membership_actual_desired": "Membership (actual/desired)",
+        "membership_actual_desired_description": "The ratio of actual effectiveness to desired.",
+        "membership_u": "Membership (u)",
+        "membership_u_description": "Detailed breakdown of membership values U.",
+        "max_membership": "Maximum Membership",
+        "max_membership_description": "Highest membership values in groups.",
+        "headers": {
+          "group": "Group",
+          "membership_actual": "Membership (actual)",
+          "membership_desired": "Membership (desired)",
+          "membership_u": "Membership (u)",
+          "max_membership": "Maximum Membership"
+        },
+        "aggregated_score": "Aggregated Score"
+      },
+      "risk": {
+        "title": "Risk Evaluation Results",
+        "res_term_estimate": "Risk Estimate",
+        "res_term_estimate_description": "Risk estimate based on the evaluation.",
+        "headers": {
+          "index": "Index",
+          "term": "Term",
+          "linguistic": "Linguistic",
+          "aggregated_assessment": "Aggregated Assessment",
+          "authenticity": "Authenticity",
+          "aggregated_reliability": "Aggregated Reliability"
+        },
+        "aggregated_reliability_assessment": "Aggregated Reliability Assessment",
+        "aggregated_reliability_assessment_description": "Aggregated reliability assessment of risks.",
+        "estimated_membership": "Estimated Membership",
+        "estimated_membership_description": "Estimated membership of risks.",
+        "aggregated_membership": "Aggregated Membership"
+      },
+      "team": {
+        "title": "Team Evaluation Results",
+        "membership": "Membership",
+        "membership_description": "Membership of the team.",
+        "defuzzification": "Defuzzification",
+        "rate": "Rate",
+        "headers": {
+          "index": "Index",
+          "term": "Term",
+          "membership": "Membership"
+        }
+      },
+      "financing": {
+        "title": "Financing Feasibility Results",
+        "membership_values": "Membership Values",
+        "membership_values_description": "The membership values for the financing feasibility of projects.",
+        "headers": {
+          "type": "Type",
+          "value": "Value"
+        },
+        "cone_shaped_membership": "Cone-Shaped Membership",
+        "membership": "Membership",
+        "triangle_membership": "Triangle Membership",
+        "summary": "Summary"
+      }
     }
   }
 }

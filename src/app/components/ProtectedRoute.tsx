@@ -10,31 +10,23 @@ interface ProtectedRouteProps {
     reverse?: boolean;
 }
 
-export default async function ProtectedRoute({ children, reverse = false}: ProtectedRouteProps) {
+export default async function ProtectedRoute({ children, reverse = false }: ProtectedRouteProps) {
     const cookieStore = await cookies();
     const token = cookieStore.get("auth-token")?.value;
 
-    // If no token, handle reverse logic or redirect to login
     if (!token) {
         return reverse ? <>{children}</> : redirect(`/login`);
     }
 
-    // Fetch the user data with the token
     const user = (await loginUser({ token }))?.user;
 
-    // Handle reverse protection (for public pages)
-    if (reverse) {
-        if (user) {
-            return redirect(`/`);
-        } else {
-            return <>{children}</>;
-        }
+    if (!user) {
+        cookieStore.set("auth-token", "", { expires: new Date(0) });
     }
 
-    // Handle protected routes (for authenticated pages)
-    if (user) {
-        return <>{children}</>;
-    } else {
-        return redirect(`/login`);
+    if (reverse) {
+        return user ? redirect(`/`) : <>{children}</>;
     }
+
+    return user ? <>{children}</> : redirect(`/login`);
 }

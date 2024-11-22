@@ -9,7 +9,7 @@ export async function generateMetadata() : Promise<Metadata> {
     const t = await getTranslations({namespace: 'HomePage'});
 
     return {
-        title: `${t('titles.home')} | ${process.env.NEXT_PUBLIC_SITE_NAME}`,
+        title: `${t('titles.home.title')} | ${process.env.NEXT_PUBLIC_SITE_NAME}`,
         description: t('descriptions.home'),
     }
 }
@@ -17,7 +17,7 @@ export default async function HomePage() {
 
     return (
         <ProtectedRoute>
-            <Home></Home>
+            <Home/>
         </ProtectedRoute>
     );
 }

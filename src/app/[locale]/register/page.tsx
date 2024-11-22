@@ -1,6 +1,6 @@
 'use server';
 
-import Register from "@/app/components/Users/Register";
+import Register from "@/app/components/Form/Users/Register";
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import {getTranslations} from "next-intl/server";
 import {Metadata} from "next";

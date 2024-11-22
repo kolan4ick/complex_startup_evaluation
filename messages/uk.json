@@ -71,11 +71,15 @@
     }
   },
   "HomePage": {
-    "titles": {
-      "home": "Головна"
-    },
     "descriptions": {
       "home": "Головна сторінка"
+    },
+    "titles": {
+      "home": {
+        "title": "Головна",
+        "description": "Це головна сторінка",
+        "evaluation": "Оцінка стартапу"
+      }
     }
   },
   "Navbar": {
@@ -140,6 +144,123 @@
       "edit": "Редагувати",
       "save": "Зберегти",
       "cancel": "Скасувати"
+    }
+  },
+  "EvaluationForm": {
+    "fields": {
+      "linguistics": {
+        "low": "Низький",
+        "below_middle": "Нижче середнього",
+        "middle": "Середній",
+        "above_middle": "Вище середнього",
+        "high": "Високий"
+      },
+      "effectiveness": {
+        "sum": "Сума",
+        "min": "Мінімум",
+        "max": "Максимум",
+        "desired": "Бажане",
+        "weight": "Вага"
+      }
+    },
+    "titles": {
+      "effectiveness": {
+        "title": "Ефективність"
+      },
+      "risks": {
+        "title": "Ризики",
+        "operational": "Операційні ризики",
+        "investment": "Інвестиційні ризики",
+        "financial": "Фінансові ризики",
+        "innovation": "Інноваційні ризики"
+      },
+      "team": {
+        "title": "Команда",
+        "stability": "Стабільність",
+        "competency": "Компетентність",
+        "activity": "Активність"
+      }
+    },
+    "placeholders": {
+      "authenticity": "Аутентичність",
+      "stability": "Стабільність",
+      "confidence": "Впевненість",
+      "weight": "Вага",
+      "competencies": "Компетентності",
+      "competencies_experience": "Досвід",
+      "leaders_competencies": "Компетентності лідера",
+      "activity": "Активність"
+    },
+    "buttons": {
+      "submit": "Оцінити",
+      "submitting": "Оцінювання..."
+    },
+    "loading": "Завантаження",
+    "loading_message": "Проводяться обчислення, зачекайте.",
+    "results": {
+      "summary": "Сумарний результат",
+      "linguistic": "Лінгвістична оцінка",
+      "security_level": "Рівень безпеки",
+      "effectiveness": {
+        "title": "Результати оцінювання ефективності",
+        "membership_actual_desired": "Належність (фактична/бажана)",
+        "membership_actual_desired_description": "Відношення фактичної ефективності до бажаної.",
+        "membership_u": "Належність (u)",
+        "membership_u_description": "Детальний розбір значень належності U.",
+        "max_membership": "Максимальна належність",
+        "max_membership_description": "Найвищі значення належності в групах.",
+        "headers": {
+          "group": "Група",
+          "membership_actual": "Належність (фактична)",
+          "membership_desired": "Належність (бажана)",
+          "membership_u": "Належність (u)",
+          "max_membership": "Максимальна належність"
+        },
+        "aggregated_score": "Агрегована оцінка"
+      },
+      "risk": {
+        "title": "Результати оцінювання ризиків",
+        "res_term_estimate": "Оцінка ризику",
+        "res_term_estimate_description": "Оцінка ризику відповідно до введених даних.",
+        "headers": {
+          "index": "Індекс",
+          "term": "Терм",
+          "linguistic": "Лінгвістична",
+          "aggregated_assessment": "Агрегована оцінка",
+          "authenticity": "Аутентичність",
+          "aggregated_reliability": "Агрегована надійність"
+        },
+        "aggregated_reliability_assessment": "Агрегована оцінка надійності",
+        "aggregated_reliability_assessment_description": "Агрегована оцінка надійності ризиків.",
+        "estimated_membership": "Оцінена належність",
+        "estimated_membership_description": "Оцінена належність ризиків.",
+        "aggregated_membership": "Агрегована належність"
+      },
+      "team": {
+        "title": "Результати оцінювання команди",
+        "membership": "Належність",
+        "membership_description": "Оцінка належності команди.",
+        "defuzzification": "Дефазифікація",
+        "rate": "Оцінка",
+        "headers": {
+          "index": "Індекс",
+          "term": "Терм",
+          "membership": "Належність"
+        }
+      },
+      "financing": {
+        "title": "Результати оцінювання фінансування",
+        "membership_values": "Значення належності",
+        "membership_values_description": "Значення належності для фінансування.",
+        "headers": {
+          "type" : "Тип",
+          "value": "Значення"
+        },
+        "cone_shaped_membership": "Конусоподібна належність",
+        "membership": "Належність",
+        "triangle_membership": "Трикутна належність",
+        "summary": "Сумарний результат"
+      }
     }
   }
 }

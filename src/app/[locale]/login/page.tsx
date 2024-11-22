@@ -1,6 +1,6 @@
 'use server';
 
-import Login from "@/app/components/Users/Login";
+import Login from "@/app/components/Form/Users/Login";
 import ProtectedRoute from "@/app/components/ProtectedRoute";
 import {getTranslations} from "next-intl/server";
 import {Metadata} from "next";

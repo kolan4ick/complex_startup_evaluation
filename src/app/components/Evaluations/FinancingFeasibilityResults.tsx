@@ -1,41 +1,40 @@
-import React from "react";
+import { SummaryCard } from "@/app/components/Evaluations/SummaryCard";
+import { useTranslations } from "use-intl";
 
 export default function FinancingFeasibilityResults({ financingFeasibility }: { financingFeasibility: any }) {
+    const t = useTranslations("EvaluationForm"); // Assuming the translation namespace is "EvaluationForm"
+
     const { cone_shaped_membership, membership, triangle_membership } = financingFeasibility;
 
     return (
-        <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 mb-8 space-y-8">
-            <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100">
-                Financing Feasibility Results
+        <div
+            className="p-6 bg-gradient-to-b from-purple-100 via-pink-200 to-pink-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-600">
+            <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-6">
+                {t("results.financing.title")}
             </h2>
 
-            {/* Membership Values */}
-            <div>
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
-                    Membership Values
-                </h3>
-                <table className="table-auto w-full text-center border-collapse">
-                    <thead>
-                    <tr className="bg-gray-100 dark:bg-gray-700">
-                        <th className="px-4 py-2">Type</th>
-                        <th className="px-4 py-2">Value</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                        <td className="border px-4 py-2">Cone-Shaped Membership</td>
-                        <td className="border px-4 py-2">{cone_shaped_membership.toFixed(4)}</td>
-                    </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                        <td className="border px-4 py-2">Membership</td>
-                        <td className="border px-4 py-2">{membership.toFixed(4)}</td>
-                    </tr>
-                    <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                        <td className="border px-4 py-2">Triangle Membership</td>
-                        <td className="border px-4 py-2">{triangle_membership.toFixed(4)}</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <SummaryCard
+                    title={t("results.financing.cone_shaped_membership")}
+                    value={cone_shaped_membership.toFixed(4)}
+                    progress={cone_shaped_membership}
+                    color="bg-blue-500"
+                    icon="🔺"
+                />
+                <SummaryCard
+                    title={t("results.financing.membership")}
+                    value={membership.toFixed(4)}
+                    progress={membership}
+                    color="bg-purple-500"
+                    icon="⚙️"
+                />
+                <SummaryCard
+                    title={t("results.financing.triangle_membership")}
+                    value={triangle_membership.toFixed(4)}
+                    progress={triangle_membership}
+                    color="bg-green-500"
+                    icon="🔻"
+                />
             </div>
         </div>
     );

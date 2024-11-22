@@ -239,9 +239,23 @@
         "defuzzification": "Дефазифікація",
         "rate": "Оцінка",
         "headers": {
+          "index": "Індекс",
           "term": "Терм",
           "membership": "Належність"
         }
+      },
+      "financing": {
+        "title": "Результати оцінювання фінансування",
+        "membership_values": "Значення належності",
+        "membership_values_description": "Значення належності для фінансування.",
+        "headers": {
+          "type" : "Тип",
+          "value": "Значення"
+        },
+        "cone_shaped_membership": "Конусоподібна належність",
+        "membership": "Належність",
+        "triangle_membership": "Трикутна належність",
+        "summary": "Сумарний результат"
       }
     }
   }

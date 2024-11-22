@@ -239,9 +239,23 @@
         "defuzzification": "Defuzzification",
         "rate": "Rate",
         "headers": {
+          "index": "Index",
           "term": "Term",
           "membership": "Membership"
         }
+      },
+      "financing": {
+        "title": "Financing Feasibility Results",
+        "membership_values": "Membership Values",
+        "membership_values_description": "The membership values for the financing feasibility of projects.",
+        "headers": {
+          "type": "Type",
+          "value": "Value"
+        },
+        "cone_shaped_membership": "Cone-Shaped Membership",
+        "membership": "Membership",
+        "triangle_membership": "Triangle Membership",
+        "summary": "Summary"
       }
     }
   }

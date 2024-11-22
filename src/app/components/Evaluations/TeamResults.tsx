@@ -1,10 +1,9 @@
-import React from "react";
-import {ResultSection} from "@/app/components/Evaluations/ResultSection";
-import {SummaryCard} from "@/app/components/Evaluations/SummaryCard";
-import {useTranslations} from "use-intl";
+import { ResultSection } from "@/app/components/Evaluations/ResultSection";
+import { SummaryCard } from "@/app/components/Evaluations/SummaryCard";
+import { useTranslations } from "use-intl";
 
-export default function TeamResults({team}: { team: any }) {
-    const {membership, defuzzification, rate} = team;
+export default function TeamResults({ team }: { team: any }) {
+    const { membership, defuzzification, rate } = team;
     const t = useTranslations("EvaluationForm");
 
     // Prepare sections data
@@ -13,14 +12,28 @@ export default function TeamResults({team}: { team: any }) {
             title: t("results.team.membership"),
             icon: "📊",
             description: t("results.team.membership_description"),
-            headers: [t("results.team.headers.term"), t("results.team.headers.membership")],
-            rows: membership.flatMap((kArray: number[], i: number) =>
-                kArray.map((value: number, idx: number) => ({
-                    col1: {value: `K${i + 1}${idx + 1}`},
-                    col2: {value: value.toFixed(3)}
-                }))
-            )
-        }
+            headers: [
+                t("results.team.headers.index"),
+                t("results.team.headers.term"),
+                t("results.team.headers.membership")
+            ],
+            rows: membership.flatMap((kArray: number[], index: number) => {
+                const headerRow = {
+                    col1: {
+                        value: `K${index + 1}`,
+                        colSpan: 3,
+                    },
+                };
+
+                const dataRows = kArray.map((value: number, idx: number) => ({
+                    col1: { value: idx + 1 },
+                    col2: { value: `K${index + 1}${idx + 1}` },
+                    col3: { value: value.toFixed(3) },
+                }));
+
+                return [headerRow, ...dataRows];
+            }),
+        },
     ];
 
     return (
@@ -31,20 +44,16 @@ export default function TeamResults({team}: { team: any }) {
             </h2>
 
             <div className="grid gap-8">
-                <div className="flex justify-center">
-                    <div className="w-full md:w-1/2">
-                        {sections.map((section, index) => (
-                            <ResultSection
-                                key={index}
-                                title={section.title}
-                                icon={section.icon}
-                                description={section.description}
-                                headers={section.headers}
-                                rows={section.rows}
-                            />
-                        ))}
-                    </div>
-                </div>
+                {sections.map((section, index) => (
+                    <ResultSection
+                        key={index}
+                        title={section.title}
+                        icon={section.icon}
+                        description={section.description}
+                        headers={section.headers}
+                        rows={section.rows}
+                    />
+                ))}
             </div>
 
             <div className="mt-8">

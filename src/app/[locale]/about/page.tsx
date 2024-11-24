@@ -1,6 +1,5 @@
 'use server';
 
-import ProtectedRoute from "@/app/components/ProtectedRoute";
 import {getTranslations} from "next-intl/server";
 import {Metadata} from "next";
 import About from "@/app/components/Pages/About";
@@ -17,8 +16,6 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AboutPage() {
 
     return (
-        <ProtectedRoute>
-            <About/>
-        </ProtectedRoute>
+        <About/>
     );
 }

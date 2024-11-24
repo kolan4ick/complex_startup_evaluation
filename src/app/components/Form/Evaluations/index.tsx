@@ -11,7 +11,7 @@ import RiskResults from "@/app/components/Evaluations/RiskResults";
 import TeamResults from "@/app/components/Evaluations/TeamResults";
 import FinancingFeasibilityResults from "@/app/components/Evaluations/FinancingFeasibilityResults";
 
-export default function EvaluationForm({ evaluation }: { evaluation?: any }) {
+export default function EvaluationForm({ evaluation, result }: { evaluation?: any, result?: any }) {
     const token = useAppSelector((state) => state.auth.token);
     const t = useTranslations("EvaluationForm");
     const [submissionResult, setSubmissionResult] = useState<any>(null);
@@ -163,6 +163,12 @@ export default function EvaluationForm({ evaluation }: { evaluation?: any }) {
             document.body.classList.remove("overflow-hidden");
         };
     }, [isLoading]);
+
+    useEffect(() => {
+        if (result) {
+            setSubmissionResult(result);
+        }
+    }, []);
 
     return (
         <div>

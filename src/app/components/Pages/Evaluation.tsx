@@ -3,8 +3,11 @@
 import EvaluationForm from "@/app/components/Form/Evaluations";
 import {useTranslations} from "use-intl";
 
-export default function EvaluationPage({evaluation}: {evaluation: any}) {
+export default function EvaluationPage({data}: {data?: any}) {
     const t = useTranslations('HomePage');
+
+    const evaluation = data.evaluation;
+    const result = data.result;
 
     return (
         <div className="min-h-screen">
@@ -13,7 +16,7 @@ export default function EvaluationPage({evaluation}: {evaluation: any}) {
                     `${t('titles.home.evaluation')} #${evaluation.id}`
                 }
             </h1>
-            <EvaluationForm evaluation={evaluation}/>
+            <EvaluationForm evaluation={evaluation} result={result}/>
         </div>
     );
 }

@@ -21,9 +21,9 @@ export default async function EvaluationsPage({params}: {params: {id: string}}) 
     const token = cookieStore.get("auth-token")?.value || null;
     const id = params.id;
 
-    const evaluation = (await getEvaluation({id: id, token: token}));
+    const evaluationData = (await getEvaluation({id: id, token: token}));
 
     return <ProtectedRoute>
-        <EvaluationPage evaluation={evaluation}/>
+        <EvaluationPage data={evaluationData}/>
     </ProtectedRoute>;
 }

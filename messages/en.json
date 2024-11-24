@@ -265,6 +265,7 @@
   },
   "EvaluationsPage": {
     "loading": "Loading...",
+    "emptyMessage": "No evaluations",
     "titles": {
       "evaluations": "Evaluations",
       "evaluation": "Evaluation"
@@ -297,6 +298,34 @@
     },
     "descriptions": {
       "evaluation": "Evaluation page"
+    }
+  },
+  "AboutPage": {
+    "titles": {
+      "about": "About",
+      "aboutUs": "About Startup Evaluation Platform",
+      "whatWeOffer": "What We Offer",
+      "keyFeatures": "Key Features of Our Evaluation Process",
+      "tools": "Our Tools and Methodology",
+      "invitation": "Start Evaluating Your Startup Today"
+    },
+    "descriptions": {
+      "about": "About page",
+      "welcome": "Welcome to the ultimate solution for evaluating your startup ideas.",
+      "intro": "Our platform provides a comprehensive approach to assess the viability of your entrepreneurial ventures. With a focus on key areas such as Effectiveness, Risks, Team, and Financial Feasibility, we empower you to understand the strengths and weaknesses of your business ideas.",
+      "effectivenessTitle": "Effectiveness Assessment",
+      "effectiveness": "Measure the potential impact and innovation level of your idea.",
+      "risksTitle": "Risk Analysis",
+      "risks": "Identify potential obstacles and mitigation strategies to ensure smooth project execution.",
+      "teamTitle": "Team Evaluation",
+      "team": "Gauge the stability, cohesion, and professional competencies of your team.",
+      "financialTitle": "Financial Feasibility",
+      "financial": "Understand the financial dynamics and investment attractiveness of your project.",
+      "tools": "We integrate modern tools such as linguistic variables and fuzzy logic models to provide precise and reliable evaluations tailored to investor priorities and market demands.",
+      "invitationDetails": "Join us today to transform your startup idea into a robust business plan, secure funding, and achieve success."
+    },
+    "buttons": {
+      "getStarted": "Get Started"
     }
   }
 }

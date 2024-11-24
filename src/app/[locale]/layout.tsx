@@ -20,13 +20,17 @@ export default async function LocaleLayout({ children, params }: {
     const { locale } = await params;
 
     const cookieStorage = await cookies();
-    const token = cookieStorage.get("auth-token")?.value || null;
+    let token = cookieStorage.get("auth-token")?.value || null;
     const messages = await getMessages({ locale });
     let user = null;
 
     if (token) {
         const userData = await loginUser({ token });
         user = userData?.user as User;
+
+        if (!user) {
+            token = null;
+        }
     }
 
     return (

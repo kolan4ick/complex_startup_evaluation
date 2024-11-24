@@ -1,32 +1,53 @@
-'use server';
+'use client';
 
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
-import { loginUser } from "@/hooks/useUser";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAppSelector } from "@/lib/hooks";
+import { useRouter } from "next/navigation";
 
 interface ProtectedRouteProps {
     children: React.ReactNode;
     reverse?: boolean;
 }
 
-export default async function ProtectedRoute({ children, reverse = false }: ProtectedRouteProps) {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("auth-token")?.value;
+export default function ProtectedRoute({ children, reverse = false }: ProtectedRouteProps) {
+    const [isLoading, setIsLoading] = useState(true);
+    const token = useAppSelector((state) => state.auth.token);
+    const router = useRouter();
 
-    if (!token) {
-        return reverse ? <>{children}</> : redirect(`/login`);
+    useEffect(() => {
+        const handleNavigation = async () => {
+            if (reverse && token) {
+                router.push('/');
+            } else if (!reverse && !token) {
+                router.push('/login');
+            } else {
+                setIsLoading(false); // Only stop loading when navigation is not required
+            }
+        };
+
+        handleNavigation().then();
+    }, [token, reverse, router]);
+
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+                <div className="flex items-center space-x-2">
+                    <div
+                        className="w-4 h-4 bg-blue-500 rounded-full animate-bounce"
+                        style={{ animationDelay: '0s' }}
+                    ></div>
+                    <div
+                        className="w-4 h-4 bg-blue-500 rounded-full animate-bounce"
+                        style={{ animationDelay: '0.2s' }}
+                    ></div>
+                    <div
+                        className="w-4 h-4 bg-blue-500 rounded-full animate-bounce"
+                        style={{ animationDelay: '0.4s' }}
+                    ></div>
+                </div>
+            </div>
+        );
     }
 
-    const user = (await loginUser({ token }))?.user;
-
-    if (!user) {
-        cookieStore.set("auth-token", "", { expires: new Date(0) });
-    }
-
-    if (reverse) {
-        return user ? redirect(`/`) : <>{children}</>;
-    }
-
-    return user ? <>{children}</> : redirect(`/login`);
+    return <>{children}</>;
 }

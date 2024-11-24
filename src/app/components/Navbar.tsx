@@ -31,8 +31,6 @@ export default function Navbar() {
         setIsMounted(true);
     }, []);
 
-    const mainLink = user ? `/${locale}` : `/${locale}/login`;
-
     const authLink = useMemo(() => {
         if (!isMounted) return null;
 
@@ -73,9 +71,9 @@ export default function Navbar() {
     }
 
     return (
-        <nav className="bg-white dark:bg-gray-800 text-black dark:text-gray-200 border-b-2 border-gray-200 dark:border-gray-700 p-4">
+        <nav className="sticky top-0 z-50 bg-white dark:bg-gray-800 text-black dark:text-gray-200 border-b-2 border-gray-200 dark:border-gray-700 p-4">
             <div className="container mx-auto flex justify-between items-center">
-                <Link href={mainLink} className="flex items-center space-x-2">
+                <Link href="/" className="flex items-center space-x-2">
                     <Image
                         src="/favicon.svg"
                         alt="Logo"

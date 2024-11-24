@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { getEvaluations } from "@/hooks/useEvaluation";
 import { useAppSelector } from "@/lib/hooks";
 
-export default function EvaluationsPage({ evaluations: initialEvaluations, totalPages }: { evaluations: any[], totalPages: number }) {
+export default function Evaluations({ evaluations: initialEvaluations, totalPages }: { evaluations: any[], totalPages: number }) {
     const t = useTranslations("EvaluationsPage");
     const [currentPage, setCurrentPage] = useState(1);
     const [evaluations, setEvaluations] = useState(initialEvaluations);

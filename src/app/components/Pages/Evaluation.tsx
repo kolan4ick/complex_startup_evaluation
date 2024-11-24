@@ -3,7 +3,7 @@
 import EvaluationForm from "@/app/components/Form/Evaluations";
 import {useTranslations} from "use-intl";
 
-export default function EvaluationPage({data}: {data?: any}) {
+export default function Evaluation({data}: {data?: any}) {
     const t = useTranslations('HomePage');
 
     const evaluation = data.evaluation;

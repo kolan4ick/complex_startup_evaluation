@@ -5,7 +5,7 @@ import {getTranslations} from "next-intl/server";
 import {Metadata} from "next";
 import {getEvaluation} from "@/hooks/useEvaluation";
 import {cookies} from "next/headers";
-import EvaluationPage from "@/app/components/Pages/Evaluation";
+import Evaluation from "@/app/components/Pages/Evaluation";
 
 export async function generateMetadata() : Promise<Metadata> {
     const t = await getTranslations({namespace: 'EvaluationPage'});
@@ -24,6 +24,6 @@ export default async function EvaluationsPage({params}: {params: {id: string}}) 
     const evaluationData = (await getEvaluation({id: id, token: token}));
 
     return <ProtectedRoute>
-        <EvaluationPage data={evaluationData}/>
+        <Evaluation data={evaluationData}/>
     </ProtectedRoute>;
 }

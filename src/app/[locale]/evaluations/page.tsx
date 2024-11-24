@@ -20,7 +20,13 @@ export default async function EvaluationsPage() {
     const cookieStore = await cookies();
     const token = cookieStore.get("auth-token")?.value || null;
 
-    const evaluationsData = await getEvaluations({page: 1, perPage: 20, token: token});
+    let evaluationsData = {evaluations: [], meta: {total_pages: 0}};
+
+    try {
+        evaluationsData = await getEvaluations({page: 1, perPage: 20, token: token});
+    } catch {
+        console.log(evaluationsData);
+    }
 
     return <ProtectedRoute>
         <Evaluations evaluations={evaluationsData.evaluations} totalPages={evaluationsData.meta.total_pages}/>

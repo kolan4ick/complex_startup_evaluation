@@ -265,6 +265,7 @@
   },
   "EvaluationsPage": {
     "loading": "Loading...",
+    "emptyMessage": "No evaluations",
     "titles": {
       "evaluations": "Evaluations",
       "evaluation": "Evaluation"
@@ -297,6 +298,14 @@
     },
     "descriptions": {
       "evaluation": "Evaluation page"
+    }
+  },
+  "AboutPage": {
+    "titles": {
+      "about": "About Us"
+    },
+    "descriptions": {
+      "about": "About Us page"
     }
   }
 }

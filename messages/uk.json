@@ -265,6 +265,7 @@
   },
   "EvaluationsPage": {
     "loading": "Завантаження...",
+    "emptyMessage": "Немає оцінок",
     "titles": {
       "evaluations": "Оцінки",
       "evaluation": "Оцінка"
@@ -297,6 +298,14 @@
     },
     "descriptions": {
       "evaluation": "Сторінка оцінки"
+    }
+  },
+  "AboutPage": {
+    "titles": {
+      "about": "About Us"
+    },
+    "descriptions": {
+      "about": "About Us page"
     }
   }
 }

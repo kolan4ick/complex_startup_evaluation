@@ -13,8 +13,6 @@ export default function Evaluations({ evaluations: initialEvaluations, totalPage
     const [isLoading, setIsLoading] = useState(false);
     const token = useAppSelector((state) => state.auth.token);
 
-    console.log(totalPages);
-
     const fetchEvaluations = async (page: number) => {
         setIsLoading(true);
         try {

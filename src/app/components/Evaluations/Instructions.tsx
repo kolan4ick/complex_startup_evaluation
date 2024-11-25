@@ -1,10 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { InformationCircleIcon } from '@heroicons/react/24/solid';
+import {useState, useEffect} from 'react';
+import {InformationCircleIcon} from '@heroicons/react/24/solid';
+import {useTranslations} from "next-intl";
+import EvaluationList from "@/app/components/Instructions/EvaluationList";
 
 export default function Instructions() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const t = useTranslations("Instructions");
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -31,7 +34,7 @@ export default function Instructions() {
                 onClick={handleOpenModal}
                 className="p-2 flex items-center gap-2 text-gray-900 dark:text-gray-200 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-                <InformationCircleIcon className="w-8 h-8" />
+                <InformationCircleIcon className="w-8 h-8"/>
             </button>
 
             {isModalOpen && (
@@ -39,7 +42,8 @@ export default function Instructions() {
                     <div
                         className="relative w-5/6 max-w-6xl max-h-screen bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-300 dark:border-gray-700"
                     >
-                        <div className="flex justify-between items-center p-6 border-b border-gray-300 dark:border-gray-700">
+                        <div
+                            className="flex justify-between items-center p-6 border-b border-gray-300 dark:border-gray-700">
                             <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">
                                 Instructions
                             </h2>
@@ -53,16 +57,24 @@ export default function Instructions() {
 
                         <div className="p-6 overflow-y-auto max-h-[calc(70vh-4rem)]">
                             <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                                Here are the detailed instructions for using this application. These instructions are comprehensive and intended to guide you through all the necessary steps to maximize the application's functionality.
+                                {t("welcome")}
                             </p>
-                            <ul className="list-disc pl-5 text-gray-600 dark:text-gray-300 mt-4 space-y-2">
-                                <li>Step 1: Start by reviewing the form below and ensuring all fields are accurate.</li>
-                                <li>Step 2: Fill out the required fields carefully and ensure no mistakes.</li>
-                                <li>Step 3: Submit the form to evaluate the results.</li>
-                                <li>Step 4: Review the results provided and use them to make informed decisions.</li>
-                                <li>Step 5: If necessary, edit the form and resubmit for updated evaluations.</li>
-                                <li>Step 6: Save or export the results for your records.</li>
-                            </ul>
+                            <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                                {t("functionality.title")}
+                            </p>
+                            <div>
+                                <ul className={"list-disc pl-6"}>
+                                    {['1', '2', '3', '4'].map(function (position) {
+                                        return <li key={`evaluations-${position}`}>
+                                            {t(`functionality.evaluations.${position}`)}
+                                        </li>
+                                    })}
+                                </ul>
+                                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                                    {t("functionality.startEvaluation")}
+                                </p>
+                            </div>
+                            <EvaluationList/>
                         </div>
 
                         <div className="p-6 border-t border-gray-300 dark:border-gray-700 flex justify-end">

@@ -267,6 +267,11 @@
         "triangle_membership": "Triangle Membership",
         "summary": "Summary"
       }
+    },
+    "errors": {
+      "required": "This field is required.",
+      "min": "The value must be greater than or equal to {min}.",
+      "unknown": "An unknown error occurred. Please try again."
     }
   },
   "EvaluationsPage": {

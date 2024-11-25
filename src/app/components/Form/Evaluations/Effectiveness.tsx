@@ -2,8 +2,16 @@
 
 import {useTranslations} from "use-intl";
 
-export default function Effectiveness({ register }: any) {
+export default function Effectiveness({ register, errors }: any) {
     const t = useTranslations('EvaluationForm');
+
+    const valueValidation = {
+        required: t('errors.required'),
+        min: {
+            value: 1,
+            message: t('errors.min', { min: 1 }),
+        }
+    };
 
     return (
         <div className="bg-white dark:bg-gray-800 shadow-xl rounded-2xl p-8 mb-8">
@@ -34,50 +42,86 @@ export default function Effectiveness({ register }: any) {
                             <td className="px-6 py-3">
                                 <input
                                     type="number"
-                                    step={0.01}
+                                    step={1}
                                     {...register(`effectiveness_sum_scores_attributes.${index}.value`)}
                                     className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                                 />
+                                <div className="h-5">
+                                    {errors.effectiveness_sum_scores_attributes?.[index]?.value && (
+                                        <p className="text-red-600 text-sm">
+                                            {errors.effectiveness_sum_scores_attributes?.[index]?.value.message}
+                                        </p>
+                                    )}
+                                </div>
                             </td>
                             <td className="px-6 py-3">
                                 <input
                                     type="number"
-                                    step={0.01}
-                                    {...register(`effectiveness_min_scores_attributes.${index}.value`)}
+                                    step={1}
+                                    {...register(`effectiveness_min_scores_attributes.${index}.value`, valueValidation)}
                                     className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                                 />
+                                <div className="h-5">
+                                    {errors.effectiveness_min_scores_attributes?.[index]?.value && (
+                                        <p className="text-red-600 text-sm">
+                                            {errors.effectiveness_min_scores_attributes?.[index]?.value.message}
+                                        </p>
+                                    )}
+                                </div>
                             </td>
                             <td className="px-6 py-3">
                                 <input
                                     type="number"
-                                    step={0.01}
-                                    {...register(`effectiveness_max_scores_attributes.${index}.value`)}
+                                    step={1}
+                                    {...register(`effectiveness_max_scores_attributes.${index}.value`, valueValidation)}
                                     className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                                 />
+                                <div className="h-5">
+                                    {errors.effectiveness_max_scores_attributes?.[index]?.value && (
+                                        <p className="text-red-600 text-sm">
+                                            {errors.effectiveness_max_scores_attributes?.[index]?.value.message}
+                                        </p>
+                                    )}
+                                </div>
                             </td>
                             <td className="px-6 py-3">
                                 <input
                                     type="number"
-                                    step={0.01}
-                                    {...register(`effectiveness_desired_scores_attributes.${index}.value`)}
+                                    step={1}
+                                    {...register(`effectiveness_desired_scores_attributes.${index}.value`, valueValidation)}
                                     className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                                 />
+                                <div className="h-5">
+                                    {errors.effectiveness_desired_scores_attributes?.[index]?.value && (
+                                        <p className="text-red-600 text-sm">
+                                            {errors.effectiveness_desired_scores_attributes?.[index]?.value.message}
+                                        </p>
+                                    )}
+                                </div>
                             </td>
                             <td className="px-6 py-3">
-                                <input
-                                    type="number"
-                                    step={0.01}
+                                <select
                                     {...register(`effectiveness_desired_term_scores_attributes.${index}.value`)}
                                     className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
-                                />
+                                >
+                                {[1, 2, 3, 4, 5].map((value) => (
+                                        <option key={value} value={value}>
+                                            {value}
+                                        </option>
+                                    ))}
+                                </select>
                             </td>
                             <td className="px-6 py-3">
-                                <input
-                                    type="number"
-                                    step={0.01}
+                                <select
                                     {...register(`effectiveness_weight_scores_attributes.${index}.value`)}
                                     className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
-                                />
+                                >
+                                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+                                        <option key={value} value={value}>
+                                            {value}
+                                        </option>
+                                    ))}
+                                </select>
                             </td>
                         </tr>
                     ))}

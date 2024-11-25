@@ -136,7 +136,7 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
         };
     }
 
-    const { register, handleSubmit } = useForm({
+    const { register, handleSubmit, formState: { errors } } = useForm({
         defaultValues,
     });
 
@@ -176,9 +176,9 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <Effectiveness register={register} />
-                <Risk register={register} />
-                <Team register={register} />
+                <Effectiveness register={register} errors={errors} />
+                <Risk register={register} errors={errors} />
+                <Team register={register} errors={errors} />
                 <button
                     id="EvaluationSubmitButton"
                     ref={submitButtonRef}

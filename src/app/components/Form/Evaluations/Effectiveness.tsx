@@ -15,7 +15,7 @@ export default function Effectiveness({ register }: any) {
                 <table className="table-auto border-collapse w-full">
                     <thead>
                     <tr className="bg-gray-100 dark:bg-gray-700 border-b">
-                        {['sum', 'min', 'max', 'desired', 'weight'].map((heading) => (
+                        {['sum', 'min', 'max', 'desired', "desired_term", 'weight'].map((heading) => (
                             <th
                                 key={heading}
                                 className="px-6 py-3 text-center font-medium text-gray-700 dark:text-gray-300 border-b border-gray-300"
@@ -60,6 +60,14 @@ export default function Effectiveness({ register }: any) {
                                     type="number"
                                     step={0.01}
                                     {...register(`effectiveness_desired_scores_attributes.${index}.value`)}
+                                    className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
+                                />
+                            </td>
+                            <td className="px-6 py-3">
+                                <input
+                                    type="number"
+                                    step={0.01}
+                                    {...register(`effectiveness_desired_term_scores_attributes.${index}.value`)}
                                     className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200"
                                 />
                             </td>

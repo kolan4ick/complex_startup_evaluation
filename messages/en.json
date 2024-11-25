@@ -165,6 +165,7 @@
         "min": "Minimum",
         "max": "Maximum",
         "desired": "Desired",
+        "desired_term": "Desired Term",
         "weight": "Weight"
       }
     },
@@ -363,10 +364,13 @@
       "financialFeasibility": "Financing feasibility"
     },
     "effectiveness": {
-      "header": "Effectiveness is divided into five groups of coefficients with the following values: Sum, Minimum, Maximum, Desired, Desired Deviation, and Weight. To obtain these coefficients, you need to complete a <link>questionnaire</link>.\nAs you can see, it consists of questions that correspond to their numbers. After completing this questionnaire, you will be able to obtain the sum value, the minimum value (the lowest score among the questions), and the maximum value (the highest score among the questions).",
+      "header": "Effectiveness is divided into six groups of coefficients with the following values: Sum, Minimum, Maximum, Desired, Desired Term, and Weight. To obtain these coefficients, you need to complete a <link>questionnaire</link>.\nAs you can see, it consists of questions that correspond to their numbers. After completing this questionnaire, you will be able to obtain the sum value, the minimum value (the lowest score among the questions), and the maximum value (the highest score among the questions).",
       "inputs": {
         "desired": {
-          "header": "The \"Desired\" value corresponds to your expectation regarding what the value for this group should be, i.e., what you anticipate.\nThe \"Desired Deviation\" value reflects your considerations about acceptable deviations for the criteria groups. The values range from 1 to 5, essentially representing the deviation of the desired value from the actual one. Let’s consider each:",
+          "header": "The \"Desired\" value corresponds to your expectation regarding what the value for this group should be, i.e., what you anticipate."
+        },
+        "desired_term": {
+          "header": "The \"Desired Term\" value reflects your considerations about acceptable deviations for the criteria groups. The values range from 1 to 5, essentially representing the deviation of the desired value from the actual one. Let’s consider each:",
           "values": {
             "1": {
               "title": "1",

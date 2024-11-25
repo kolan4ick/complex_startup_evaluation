@@ -80,6 +80,11 @@
         "description": "This is the home page",
         "evaluation": "Startup Evaluation"
       }
+    },
+    "modal": {
+      "welcomeTitle": "Welcome to our platform!",
+      "welcomeMessage": "We're glad to have you here. Learn more about us on the <aboutLink>About</aboutLink> page or check out <instructionsLink>Instructions</instructionsLink>.",
+      "closeButton": "Got it!"
     }
   },
   "Navbar": {

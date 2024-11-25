@@ -103,7 +103,7 @@
     "links": {
       "home": "Home",
       "about": "About Us",
-      "contact": "Contact"
+      "instructions": "Instructions"
     }
   },
   "ProfilePage": {
@@ -328,8 +328,19 @@
       "getStarted": "Get Started"
     }
   },
-  "Instructions": {
-    "welcome": "Welcome to the application for a comprehensive evaluation of startup projects!",
+  "InstructionsPage": {
+    "titles": {
+      "welcome": "Welcome to the application for a comprehensive evaluation of startup projects!",
+      "instructions": {
+        "title": "Instructions"
+      }
+    },
+    "descriptions": {
+      "instructions": "Instructions page"
+    },
+    "buttons": {
+      "backToHome": "Back to Home"
+    },
     "functionality": {
       "title": "In this application, you can obtain:",
       "evaluations": {

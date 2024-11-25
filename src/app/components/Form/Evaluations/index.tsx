@@ -77,6 +77,13 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
                 { value: 7 },
                 { value: 4 },
             ],
+            effectiveness_desired_term_scores_attributes: [
+                { value: 3 },
+                { value: 3 },
+                { value: 5 },
+                { value: 4 },
+                { value: 3 },
+            ],
             risk_financial_scores_attributes: [
                 { linguistic: "middle", authenticity: 0.8 },
                 { linguistic: "low", authenticity: 0.9 },

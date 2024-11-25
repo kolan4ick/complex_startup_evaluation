@@ -165,6 +165,7 @@
         "min": "Minimum",
         "max": "Maximum",
         "desired": "Desired",
+        "desired_term": "Desired Term",
         "weight": "Weight"
       }
     },

@@ -1,6 +1,8 @@
 'use client';
 
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import {useLocale} from "use-intl";
 
 export default function EvaluationGroup({ evaluation }: { evaluation: string }) {
     const t = useTranslations("InstructionsPage");
@@ -9,14 +11,24 @@ export default function EvaluationGroup({ evaluation }: { evaluation: string }) 
         return t.has(path) ? t.raw(path) : defaultValue;
     };
 
-    const header = t(`${evaluation}.header`, { defaultValue: "" });
+    const header = t.rich(`${evaluation}.header`, {
+        link: (chunks) => (
+            <Link
+                href={`/questionnaire_${useLocale()}.pdf`}
+                className="text-blue-600 underline hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-600"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                {chunks}
+            </Link>
+        ),
+    });
     const inputs = getOptionalTranslation(`${evaluation}.inputs`, {});
     const conclusion = getOptionalTranslation(`${evaluation}.conclusion`, "");
 
     const renderInputs = (inputs: any) => {
         return Object.entries(inputs).map(([key, content]: any) => (
             <div key={key} className="mb-6">
-                {/* Render the header without a marker */}
                 {content.header && (
                     <div className="flex items-center gap-2 mb-3">
                         <span className="text-red-500">📌</span>
@@ -25,7 +37,6 @@ export default function EvaluationGroup({ evaluation }: { evaluation: string }) 
                         </h3>
                     </div>
                 )}
-                {/* Render values with markers */}
                 {content.values && (
                     <ul
                         className={`${
@@ -46,7 +57,6 @@ export default function EvaluationGroup({ evaluation }: { evaluation: string }) 
                         {subContent.value}
                     </span>
                                 )}
-                                {/* Recursively render nested values */}
                                 {subContent.values && renderInputs({ [subKey]: subContent })}
                             </li>
                         ))}

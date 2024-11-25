@@ -1,8 +1,8 @@
 import { useTranslations } from "use-intl";
-import {useAppSelector} from "@/lib/hooks";
+import { useAppSelector } from "@/lib/hooks";
 import {useEffect, useRef, useState} from "react";
-import {useForm} from "react-hook-form";
-import {createEvaluation} from "@/hooks/useEvaluation";
+import { useForm } from "react-hook-form";
+import { createEvaluation } from "@/hooks/useEvaluation";
 import Effectiveness from "@/app/components/Form/Evaluations/Effectiveness";
 import Risk from "@/app/components/Form/Evaluations/Risk";
 import Team from "@/app/components/Form/Evaluations/Team";
@@ -11,18 +11,18 @@ import RiskResults from "@/app/components/Evaluations/RiskResults";
 import TeamResults from "@/app/components/Evaluations/TeamResults";
 import FinancingFeasibilityResults from "@/app/components/Evaluations/FinancingFeasibilityResults";
 
-export default function EvaluationForm({ evaluation, result }: { evaluation?: any, result?: any }) {
+export default function EvaluationForm({ evaluation, result }: { evaluation?: any; result?: any }) {
     const token = useAppSelector((state) => state.auth.token);
     const t = useTranslations("EvaluationForm");
     const [submissionResult, setSubmissionResult] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(false); // State for loading
-    const resultsRef = useRef<HTMLDivElement | null>(null); // Ref for SubmissionResults
+
+    const submitButtonRef = useRef<HTMLButtonElement>(null);
 
     let defaultValues;
 
-
     if (evaluation) {
-        const renameArraysToAttributes = (data: { [s: string]: unknown; } | ArrayLike<unknown>) => {
+        const renameArraysToAttributes = (data: { [s: string]: unknown } | ArrayLike<unknown>) => {
             return Object.fromEntries(
                 Object.entries(data).map(([key, value]) => {
                     if (Array.isArray(value)) {
@@ -143,12 +143,7 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
             console.error("Error submitting form:", error);
             setSubmissionResult({ error: "Submission failed. Please try again." });
         } finally {
-            setIsLoading(false); // Stop loading
-            // Smooth scroll to results
-            setTimeout(() => {
-                resultsRef.current?.scrollIntoView({ behavior: "smooth" });
-                resultsRef.current?.focus(); // Optional: Focus for accessibility
-            }, 100); // Ensure DOM updates before scrolling
+            setIsLoading(false);
         }
     };
 
@@ -161,6 +156,7 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
 
         return () => {
             document.body.classList.remove("overflow-hidden");
+            submitButtonRef.current?.scrollIntoView({ behavior: "smooth" });
         };
     }, [isLoading]);
 
@@ -177,6 +173,8 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
                 <Risk register={register} />
                 <Team register={register} />
                 <button
+                    id="EvaluationSubmitButton"
+                    ref={submitButtonRef}
                     type="submit"
                     className="w-full bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none transition"
                 >
@@ -186,10 +184,8 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
 
             {submissionResult && submissionResult.effectiveness && submissionResult.risk && submissionResult.team && (
                 <div
-                    id="SubmissionResults"
-                    ref={resultsRef}
-                    tabIndex={-1} // Make it focusable for accessibility
-                    className="outline-none"
+                    tabIndex={-1}
+                    className="outline-none mt-8"
                 >
                     <div className="mt-8">
                         <EffectivenessResults effectiveness={submissionResult.effectiveness} />
@@ -206,7 +202,6 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
                 </div>
             )}
 
-            {/* Modal Loading Spinner */}
             {isLoading && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 w-100 text-center">

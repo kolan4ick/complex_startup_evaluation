@@ -103,7 +103,7 @@
     "links": {
       "home": "Home",
       "about": "About Us",
-      "contact": "Contact"
+      "instructions": "Instructions"
     }
   },
   "ProfilePage": {
@@ -326,6 +326,412 @@
     },
     "buttons": {
       "getStarted": "Get Started"
+    }
+  },
+  "InstructionsPage": {
+    "titles": {
+      "welcome": "Welcome to the application for a comprehensive evaluation of startup projects!",
+      "instructions": {
+        "title": "Instructions"
+      }
+    },
+    "descriptions": {
+      "instructions": "Instructions page"
+    },
+    "buttons": {
+      "backToHome": "Back to Home"
+    },
+    "functionality": {
+      "title": "In this application, you can obtain:",
+      "evaluations": {
+        "1": "The level of efficiency of a startup idea.",
+        "2": "The level of risk of a startup idea.",
+        "3": "The team level.",
+        "4": "The feasibility level of funding a startup project."
+      },
+      "startEvaluation": "To start the evaluation, you need to review the form on the main page. It is clearly divided into three sections: efficiency, risk, and team, respectively.\nLet’s examine each section individually to understand where to get the data for the evaluation process."
+    },
+    "evaluations": {
+      "effectiveness": "Effectiveness",
+      "risks": "Risks",
+      "team": "Team",
+      "financialFeasibility": "Financing feasibility"
+    },
+    "effectiveness": {
+      "header": "Effectiveness is divided into five groups of coefficients with the following values: Sum, Minimum, Maximum, Desired, Desired Deviation, and Weight. To obtain these coefficients, you need to complete a <link>questionnaire</link>.\nAs you can see, it consists of questions that correspond to their numbers. After completing this questionnaire, you will be able to obtain the sum value, the minimum value (the lowest score among the questions), and the maximum value (the highest score among the questions).",
+      "inputs": {
+        "desired": {
+          "header": "The \"Desired\" value corresponds to your expectation regarding what the value for this group should be, i.e., what you anticipate.\nThe \"Desired Deviation\" value reflects your considerations about acceptable deviations for the criteria groups. The values range from 1 to 5, essentially representing the deviation of the desired value from the actual one. Let’s consider each:",
+          "values": {
+            "1": {
+              "title": "1",
+              "value": "Indicates a significant difference between the actual value and the desired value, with the desired value being much greater."
+            },
+            "2": {
+              "title": "2",
+              "value": "Indicates a considerable difference between the actual and desired values, with the desired value being greater."
+            },
+            "3": {
+              "title": "3",
+              "value": "Indicates a slight deviation between the desired and actual values."
+            },
+            "4": {
+              "title": "4",
+              "value": "Indicates a significant difference, with the actual value being greater."
+            },
+            "5": {
+              "title": "5",
+              "value": "Indicates a substantial difference, with the actual value being much greater."
+            }
+          }
+        },
+        "weight": {
+          "header": "The \"Weight\" value determines the importance of the coefficient group. Values range from 1 to 10, where 1 is the lowest priority and 10 is the highest."
+        }
+      }
+    },
+    "risks": {
+      "header": "Risk criteria are divided into four groups: \"Operational Risks,\" \"Investment Risks,\" \"Financial Risks,\" and \"Innovative Activity Risks.\"",
+      "inputs": {
+        "operational": {
+          "header": "Operational Risks include the following indicators:",
+          "values": {
+            "1": {
+              "value": "Risk of losing the customer base."
+            },
+            "2": {
+              "value": "Risk of losing suppliers."
+            },
+            "3": {
+              "value": "Risk of losing market share."
+            },
+            "4": {
+              "value": "Risk of declining management quality."
+            },
+            "5": {
+              "value": "Risk of production conflicts and ineffective motivation."
+            },
+            "6": {
+              "value": "Risk of decreasing process quality."
+            },
+            "7": {
+              "value": "Risk of reduced labor productivity."
+            },
+            "8": {
+              "value": "Risk of insufficient resources."
+            },
+            "9": {
+              "value": "Personnel risks."
+            }
+          }
+        },
+        "investments": {
+          "header": "Investment Risks include:",
+          "values": {
+            "1": {
+              "value": "Risk of ineffective investments."
+            },
+            "2": {
+              "value": "Risk of failing to meet return on capital targets."
+            },
+            "3": {
+              "value": "Risk of delays in creating production facilities."
+            },
+            "4": {
+              "value": "Risk of exceeding initial investment volumes."
+            },
+            "5": {
+              "value": "Risk of insufficient investment capital."
+            }
+          }
+        },
+        "financial": {
+          "header": "Financial Risks include:",
+          "values": {
+            "1": {
+              "value": "Risk of inefficient capital utilization."
+            },
+            "2": {
+              "value": "Risk of losses."
+            },
+            "3": {
+              "value": "Risk of losing investors."
+            },
+            "4": {
+              "value": "Risk of insolvency."
+            },
+            "5": {
+              "value": "Risk of suboptimal capital costs."
+            }
+          }
+        },
+        "innovativeActivity": {
+          "header": "Innovative Activity Risks include:",
+          "values": {
+            "1": {
+              "value": "Risk of ineffective innovative investments."
+            },
+            "2": {
+              "value": "Risk of ineffective innovation promotion."
+            },
+            "3": {
+              "value": "Risk of delays in innovation development."
+            },
+            "4": {
+              "value": "Risk of technology violations in innovation."
+            },
+            "5": {
+              "value": "Resource insufficiency risks during innovation design."
+            }
+          }
+        }
+      },
+      "conclusion": "Each risk criterion is assessed by an expert using one of the following linguistic variables: \"Low,\" \"Below Average,\" \"Average,\" \"Above Average,\" \"High.\"\nAdditionally, for each risk assessment, the expert assigns a \"confidence level\" ranging from [0; 1]."
+    },
+    "team": {
+      "header": "To evaluate the team rating, a three-tier criteria system is used. Let’s examine all levels and their evaluation criteria in detail. The criteria are presented in the form of a questionnaire, where the team selects the most suitable answers.",
+      "inputs": {
+        "teamStabilityAndCohesion": {
+          "header": "First Group – Team Stability and Cohesion\nThis group includes the following indicators and answers:",
+          "values": {
+            "projectWorkExperience": {
+              "header": "K11 – Project work experience, measured in months:",
+              "values": {
+                "1": {
+                  "value": "0–3 months."
+                },
+                "2": {
+                  "value": "3–6 months."
+                },
+                "3": {
+                  "value": "6–12 months."
+                },
+                "4": {
+                  "value": "More than 12 months."
+                }
+              }
+            },
+            "teamStability": {
+              "header": "K12 – Team stability, assessed by changes in team leaders and members:",
+              "values": {
+                "1": {
+                  "value": "Entirely new team members and some new leaders."
+                },
+                "2": {
+                  "value": "Minor changes in team composition."
+                },
+                "3": {
+                  "value": "The team remains unchanged, with all members and leaders meeting professionalism requirements."
+                },
+                "4": {
+                  "value": "The original team remains unchanged, with added members and leaders to enhance competence."
+                }
+              }
+            }
+          }
+        },
+        "professionalCompetenceAndExperience": {
+          "header": "Second Group – Professional Competence and Experience\nThis group is divided into two subgroups: leader competence and team member competence.",
+          "values": {
+            "relatedExperience": {
+              "header": "K21 – Successful experience in the field or a related area:",
+              "values": {
+                "1": {
+                  "value": "No experience; this is the first project."
+                },
+                "2": {
+                  "value": "Initial experience with some income generated."
+                },
+                "3": {
+                  "value": "Successfully implemented an innovative project in the field."
+                },
+                "4": {
+                  "value": "Multiple successful projects in the field or related areas."
+                }
+              }
+            },
+            "successfulManagement": {
+              "header": "K22 – Successful management experience:",
+              "values": {
+                "1": {
+                  "value": "No management experience; this is the first project."
+                },
+                "2": {
+                  "value": "Limited management experience."
+                },
+                "3": {
+                  "value": "Presence of mid-level managers."
+                },
+                "4": {
+                  "value": "Presence of senior-level managers."
+                }
+              }
+            },
+            "leaderEducation": {
+              "header": "K23 – Leader education:",
+              "values": {
+                "1": {
+                  "value": "No technical or managerial education."
+                },
+                "2": {
+                  "value": "Completed college or currently a technical/managerial university student."
+                },
+                "3": {
+                  "value": "Completed higher technical or managerial education."
+                },
+                "4": {
+                  "value": "At least one leader has an academic degree."
+                }
+              }
+            },
+            "successfulExperience": {
+              "header": "K24 – Successful experience in large or similar projects:",
+              "values": {
+                "1": {
+                  "value": "No experience; this is the first project."
+                },
+                "2": {
+                  "value": "Experience in small projects."
+                },
+                "3": {
+                  "value": "Experience in large projects, but not all team members have it."
+                },
+                "4": {
+                  "value": "All team members have experience in large or successful projects."
+                }
+              }
+            },
+            "professionalEducation": {
+              "header": "K25 – Professional education:",
+              "values": {
+                "1": {
+                  "value": "Team members lack specialized education."
+                },
+                "2": {
+                  "value": "Some team members have specialized education."
+                },
+                "3": {
+                  "value": "Most team members have specialized education."
+                },
+                "4": {
+                  "value": "All team members have specialized education."
+                }
+              }
+            }
+          }
+        },
+        "teamProfessionalActivity": {
+          "header": "Third Group – Team Professional Activity\nThis group includes:",
+          "values": {
+            "eventsParticipation": {
+              "header": "K31 – Participation in professional events (conferences, investment sessions, etc.):",
+              "values": {
+                "1": {
+                  "value": "No participation."
+                },
+                "2": {
+                  "value": "Occasional activity."
+                },
+                "3": {
+                  "value": "Regular activity."
+                },
+                "4": {
+                  "value": "Systematic activity for skill improvement."
+                }
+              }
+            },
+            "mediaPublications": {
+              "header": "K32 – Publications in media or professional platforms:",
+              "values": {
+                "1": {
+                  "value": "No publications."
+                },
+                "2": {
+                  "value": "Limited information, mainly on social media."
+                },
+                "3": {
+                  "value": "Frequent information about the project and team."
+                },
+                "4": {
+                  "value": "Systematic activity in promoting the project."
+                }
+              }
+            },
+            "socialMediaConnections": {
+              "header": "K33 – Social media connections among the team:",
+              "values": {
+                "1": {
+                  "value": "No connections."
+                },
+                "2": {
+                  "value": "Limited and occasional connections."
+                },
+                "3": {
+                  "value": "Wide network of friends across platforms."
+                },
+                "4": {
+                  "value": "Significant activity with a large number of followers."
+                }
+              }
+            },
+            "connectionsWithAdvisors": {
+              "header": "K34 – Connections with advisors on social media:",
+              "values": {
+                "1": {
+                  "value": "No connections."
+                },
+                "2": {
+                  "value": "Limited connections."
+                },
+                "3": {
+                  "value": "Established connections."
+                },
+                "4": {
+                  "value": "Established connections."
+                }
+              }
+            }
+          }
+        }
+      },
+      "conclusion": "Each criterion is assessed using linguistic variables: \"Low,\" \"Below Average,\" \"Average,\" \"High.\"\nFor each evaluation, an expert assigns a \"confidence coefficient\" (d) in the range [0; 1]. If no suitable answer matches the team, the value of d adjusts the evaluation's accuracy. Also, for each group or subgroup of criteria, a weight value is entered."
+    },
+    "financialFeasibility": {
+      "header": "Financial feasibility is calculated based on the results of prior computations. It indicates the extent to which funding a given startup project is viable. Financial feasibility does not have a separate section in the form, as it is specifically tailored to meet individual needs and is configured in the user profile. You can adjust the following parameters:",
+      "inputs": {
+        "thresholdSettings": {
+          "header": "Threshold settings: Defines the likelihood of achieving the project’s goals in alignment with the investors' objectives."
+        },
+        "adjustmentDelta": {
+          "header": "Adjustment delta: Used to calculate decision-making levels based on triangular membership functions."
+        },
+        "linguistic": {
+          "header": "Experts evaluating the projects provide conclusions on the likelihood of achieving the goals of enhancing the sustainability and well-being of regions and cities through the implementation of the project, supported by investors and considering their objectives. To facilitate such conclusions, linguistic variables called \"Feasibility Levels\" have been introduced, where:",
+          "values": {
+            "high": {
+              "title": "High",
+              "value": "The project is highly likely to achieve its goals."
+            },
+            "aboveMiddle": {
+              "title": "Above Middle",
+              "value": "The project has a high likelihood of achieving its goals."
+            },
+            "middle": {
+              "title": "Middle",
+              "value": "The project has an average likelihood of achieving its goals."
+            },
+            "low": {
+              "title": "Low",
+              "value": "The project has a low likelihood of achieving its goals."
+            },
+            "veryLow": {
+              "title": "Very Low",
+              "value": "The project is unlikely to achieve its goals."
+            }
+          }
+        }
+      },
+      "conclusion": "The value is specified in a numeric format from 0 to 1, the name value is optional."
     }
   }
 }

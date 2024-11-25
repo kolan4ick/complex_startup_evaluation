@@ -67,15 +67,15 @@ export default function Team({ register }: any) {
             </div>
 
             {/* Team Professional Competency */}
-            <div className="p-6 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg">
+            <div
+                className="p-6 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg">
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
                     {t('titles.team.competency')}
                 </h3>
 
                 {[
-                    { name: 'team_competencies', label: t('placeholders.competencies') },
-                    { name: 'team_competencies_and_experience', label: t('placeholders.competencies_experience') },
-                    { name: 'team_leaders_competencies', label: t('placeholders.leaders_competencies') },
+                    {name: 'team_competencies', label: t('placeholders.competencies')},
+                    {name: 'team_leaders_competencies', label: t('placeholders.leaders_competencies')}
                 ].map((field) => (
                     <div key={field.name} className="mb-6 px-2">
                         <input
@@ -87,7 +87,7 @@ export default function Team({ register }: any) {
                     </div>
                 ))}
 
-                {Array.from({ length: 5 }, (_, index) => (
+                {Array.from({length: 3}, (_, index) => (
                     <div
                         key={index}
                         className="grid grid-cols-3 gap-6 mb-4 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg"
@@ -96,7 +96,7 @@ export default function Team({ register }: any) {
                             {...register(`team_professional_competency_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
                         >
-                            {linguisticOptions.map(({ value, label }) => (
+                            {linguisticOptions.map(({value, label}) => (
                                 <option key={value} value={value}>
                                     {label}
                                 </option>
@@ -118,10 +118,50 @@ export default function Team({ register }: any) {
                         />
                     </div>
                 ))}
+                <div key={"team_competencies_and_experience"} className="mb-6 px-2">
+                    <input
+                        type="number"
+                        placeholder={t('placeholders.competencies_experience')}
+                        {...register(`${"team_competencies_and_experience"}`)}
+                        className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                    />
+                </div>
+                {Array.from({length: 2}, (_, index = 3) => (
+                    <div
+                        key={index + 3}
+                        className="grid grid-cols-3 gap-6 mb-4 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg"
+                    >
+                        <select
+                            {...register(`team_professional_competency_scores_attributes.${index + 3}.linguistic`)}
+                            className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                        >
+                            {linguisticOptions.map(({value, label}) => (
+                                <option key={value} value={value}>
+                                    {label}
+                                </option>
+                            ))}
+                        </select>
+                        <input
+                            type="number"
+                            step={0.01}
+                            placeholder={t('placeholders.confidence')}
+                            {...register(`team_professional_competency_scores_attributes.${index + 3}.confidence`)}
+                            className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                        />
+                        <input
+                            type="number"
+                            step={1}
+                            placeholder={t('placeholders.weight')}
+                            {...register(`team_professional_competency_scores_attributes.${index + 3}.weight`)}
+                            className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
+                        />
+                    </div>
+                ))}
             </div>
 
             {/* Team Professional Activity */}
-            <div className="p-6 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg">
+            <div
+                className="p-6 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg">
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">
                     {t('titles.team.activity')}
                 </h3>
@@ -135,7 +175,7 @@ export default function Team({ register }: any) {
                     />
                 </div>
 
-                {Array.from({ length: 4 }, (_, index) => (
+                {Array.from({length: 4}, (_, index) => (
                     <div
                         key={index}
                         className="grid grid-cols-3 gap-6 mb-4 hover:bg-gray-100 dark:hover:bg-gray-700 p-2 rounded-lg"
@@ -144,7 +184,7 @@ export default function Team({ register }: any) {
                             {...register(`team_professional_activity_scores_attributes.${index}.linguistic`)}
                             className="w-full border border-gray-300 dark:border-gray-700 rounded-lg px-4 py-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
                         >
-                            {linguisticOptions.map(({ value, label }) => (
+                            {linguisticOptions.map(({value, label}) => (
                                 <option key={value} value={value}>
                                     {label}
                                 </option>

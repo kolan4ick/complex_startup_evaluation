@@ -38,12 +38,12 @@ export default function RiskResults({risk}: { risk: any }) {
                                 const row: Record<string, { value: string | number | undefined; rowSpan?: number }> = {
                                     col1: {value: idx + 1},
                                     col2: {value: `K${index}${idx + 1}`},
-                                    col3: {value: t(`fields.linguistics.${value[0]}`)}, // Assuming value[0] exists
+                                    col3: {value: t(`risks.fields.linguistics.${value[0]}`)}, // Assuming value[0] exists
                                 };
 
                                 if (idx === 0 && estimate.aggregated_assessment) {
                                     row.col4 = {
-                                        value: t(`fields.linguistics.${estimate.aggregated_assessment}`),
+                                        value: t(`risks.fields.linguistics.${estimate.aggregated_assessment}`),
                                         rowSpan: estimate.k.length,
                                     };
                                 }
@@ -66,7 +66,7 @@ export default function RiskResults({risk}: { risk: any }) {
                                     colSpan: 4,
                                 },
                                 col2: {
-                                    value: t(`fields.linguistics.${res_term_estimate[index].aggregated_assessment}`)
+                                    value: t(`risks.fields.linguistics.${res_term_estimate[index].aggregated_assessment}`)
                                 }
                             };
 
@@ -74,7 +74,7 @@ export default function RiskResults({risk}: { risk: any }) {
                                 const row: Record<string, { value: string | number | undefined; rowSpan?: number }> = {
                                     col1: {value: idx + 1},
                                     col2: {value: `K${index}${idx + 1}`},
-                                    col3: {value: t(`fields.linguistics.${value[0]}`)},
+                                    col3: {value: t(`risks.fields.linguistics.${value[0]}`)},
                                     col4: {value: value[1]},
                                 };
 

@@ -37,8 +37,8 @@ export default function TeamGroup({group, length, from = 0, register, errors}: a
                         key={index}
                         className="flex gap-4 items-start mb-4 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                     >
-                        {/* Linguistic Select */}
                         <select
+                            title={t('team.fields.linguistic')}
                             {...register(`team_${group}_scores_attributes.${index + from}.linguistic`)}
                             className={`${commonStyles} flex-1`}
                         >
@@ -49,9 +49,9 @@ export default function TeamGroup({group, length, from = 0, register, errors}: a
                             ))}
                         </select>
 
-                        {/* Confidence Input */}
                         <div className="flex-1">
                             <input
+                                title={t('team.fields.confidence')}
                                 type="number"
                                 step={0.01}
                                 placeholder={t('placeholders.confidence')}
@@ -70,8 +70,8 @@ export default function TeamGroup({group, length, from = 0, register, errors}: a
                             </div>
                         </div>
 
-                        {/* Weight Select */}
                         <select
+                            title={t('team.fields.weight')}
                             {...register(`team_${group}_scores_attributes.${index + from}.weight`)}
                             className={`${commonStyles} flex-1`}
                         >

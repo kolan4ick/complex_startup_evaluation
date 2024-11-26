@@ -185,6 +185,9 @@
     },
     "team": {
       "fields": {
+        "linguistic": "Linguistic",
+        "confidence": "Confidence",
+        "weight": "Weight",
         "linguistics": {
           "low": "Low",
           "below_middle": "Below Middle",

@@ -185,6 +185,9 @@
     },
     "team": {
       "fields": {
+        "linguistic": "Лінгвістична оцінка",
+        "confidence": "Впевненість",
+        "weight": "Вага",
         "linguistics": {
           "low": "Низький",
           "below_middle": "Нижче середнього",

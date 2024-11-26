@@ -29,6 +29,7 @@ export default function Team({register, errors}: any) {
 
                 <div className="mb-6 px-2">
                     <select
+                        title={t("team.fields.stability")}
                         {...register('team_stability')}
                         className={commonStyles}
                     >
@@ -52,12 +53,13 @@ export default function Team({register, errors}: any) {
                 </h3>
 
                 {[
-                    {name: 'team_competencies', label: t('placeholders.competencies')},
-                    {name: 'team_leaders_competencies', label: t('placeholders.leaders_competencies')},
+                    {name: 'competencies', label: t('placeholders.competencies')},
+                    {name: 'leaders_competencies', label: t('placeholders.leaders_competencies')},
                 ].map((field) => (
                     <div key={field.name} className="mb-6 px-2">
                         <select
-                            {...register(`${field.name}`)}
+                            title={t(`team.fields.${field.name}`)}
+                            {...register(`team_${field.name}`)}
                             className={commonStyles}
                         >
                             {numberOptions.map((value) => (
@@ -73,6 +75,7 @@ export default function Team({register, errors}: any) {
 
                 <div key={"team_competencies_and_experience"} className="mb-6 px-2">
                     <select
+                        title={t(`team.fields.team_professional_competency`)}
                         {...register(`team_competencies_and_experience`)}
                         className={commonStyles}
                     >
@@ -97,6 +100,7 @@ export default function Team({register, errors}: any) {
 
                 <div className="mb-6 px-2">
                     <select
+                        title={t(`team.fields.activity`)}
                         {...register('team_professional_activity')}
                         className={commonStyles}
                     >

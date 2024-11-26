@@ -188,6 +188,11 @@
         "linguistic": "Linguistic",
         "confidence": "Confidence",
         "weight": "Weight",
+        "stability": "Team Stability and Cohesion",
+        "competencies": "Team Professional Competence and Experience",
+        "leaders_competencies": "Leader's Competencies",
+        "team_professional_competency": "Team Competencies",
+        "activity": "Team Professional Activity",
         "linguistics": {
           "low": "Low",
           "below_middle": "Below Middle",
@@ -250,7 +255,7 @@
             "2": "Team stability"
           },
           "professional_competency": {
-            "title": "Professional Competence and Experience",
+            "title": "Team Professional Competence and Experience",
             "1": "Successful experience in the field or a related area",
             "2": "Successful management experience",
             "3": "Leader education",

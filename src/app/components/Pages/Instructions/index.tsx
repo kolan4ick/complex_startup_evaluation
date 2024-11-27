@@ -19,7 +19,7 @@ export default function InstructionsPage() {
             </h1>
 
             <div
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-300 dark:border-gray-700 p-6 space-y-6">
+                className="bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-700 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg p-8 space-y-8">
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                     {t('titles.welcome')}
                 </p>

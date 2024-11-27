@@ -270,7 +270,9 @@
             "4": "Connections with advisors on social media"
           }
         }
-      }
+      },
+      "downloadButtonText": "Download result of evaluation",
+      "downloadError": "An error occurred while downloading the evaluation result. Please try again."
     },
     "placeholders": {
       "authenticity": "Authenticity",
@@ -352,6 +354,10 @@
         "cone_shaped_membership": "Cone-Shaped Membership",
         "membership": "Membership",
         "triangle_membership": "Triangle Membership",
+        "triangle_memberships": {
+          "1": "Lower",
+          "2": "Higher"
+        },
         "summary": "Summary"
       }
     },

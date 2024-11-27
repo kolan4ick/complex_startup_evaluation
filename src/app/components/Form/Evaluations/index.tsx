@@ -6,16 +6,15 @@ import { createEvaluation } from "@/hooks/useEvaluation";
 import Effectiveness from "@/app/components/Form/Evaluations/Effectiveness";
 import Risk from "@/app/components/Form/Evaluations/Risk";
 import Team from "@/app/components/Form/Evaluations/Team";
-import EffectivenessResults from "@/app/components/Evaluations/EffectivenessResults";
-import RiskResults from "@/app/components/Evaluations/RiskResults";
-import TeamResults from "@/app/components/Evaluations/TeamResults";
-import FinancingFeasibilityResults from "@/app/components/Evaluations/FinancingFeasibilityResults";
+import Results from "@/app/components/Evaluations/Results";
+import ResultPdfButton from "@/app/components/Evaluations/Results/ResultPdfButton";
 
 export default function EvaluationForm({ evaluation, result }: { evaluation?: any; result?: any }) {
     const token = useAppSelector((state) => state.auth.token);
     const t = useTranslations("EvaluationForm");
     const [submissionResult, setSubmissionResult] = useState<any>(null);
-    const [isLoading, setIsLoading] = useState(false); // State for loading
+    const [isLoading, setIsLoading] = useState(false);
+    const [evaluationId, setEvaluationId] = useState<string | null>(null);
 
     const submitButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -146,6 +145,7 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
             await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate delay
             const response = await createEvaluation({ params: data, token: token });
             setSubmissionResult(response);
+            setEvaluationId(response.evaluation.id);
         } catch (error) {
             console.error("Error submitting form:", error);
             setSubmissionResult({ error: "Submission failed. Please try again." });
@@ -168,51 +168,45 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
     }, [isLoading]);
 
     useEffect(() => {
-        if (result) {
+        if (result)
             setSubmissionResult(result);
-        }
+
+        if(evaluation)
+            setEvaluationId(evaluation.id);
     }, []);
 
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <Effectiveness register={register} errors={errors} />
-                <Risk register={register} errors={errors} />
-                <Team register={register} errors={errors} />
-                <button
-                    id="EvaluationSubmitButton"
-                    ref={submitButtonRef}
-                    type="submit"
-                    className="w-full bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none transition"
-                >
-                    {t("buttons.submit")}
-                </button>
+                <Effectiveness register={register} errors={errors}/>
+                <Risk register={register} errors={errors}/>
+                <Team register={register} errors={errors}/>
+                <div className="flex justify-center items-center gap-4 mt-4">
+                    <button
+                        id="EvaluationSubmitButton"
+                        ref={submitButtonRef}
+                        type="submit"
+                        className="w-auto bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none transition-all duration-300 transform hover:scale-105"
+                    >
+                        {t("buttons.submit")}
+                    </button>
+                </div>
             </form>
+            {evaluationId && <ResultPdfButton evaluationId={evaluationId}/>}
 
             {submissionResult && submissionResult.effectiveness && submissionResult.risk && submissionResult.team && (
                 <div
                     tabIndex={-1}
                     className="outline-none mt-8"
                 >
-                    <div className="mt-8">
-                        <EffectivenessResults effectiveness={submissionResult.effectiveness} />
-                    </div>
-                    <div className="mt-8">
-                        <RiskResults risk={submissionResult.risk} />
-                    </div>
-                    <div className="mt-8">
-                        <TeamResults team={submissionResult.team} />
-                    </div>
-                    <div className="mt-8">
-                        <FinancingFeasibilityResults financingFeasibility={submissionResult.financing_feasibility} />
-                    </div>
+                    <Results results={submissionResult}/>
                 </div>
             )}
 
             {isLoading && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 w-100 text-center">
-                        <div className="w-16 h-16 mx-auto mb-6 border-4 border-t-blue-600 dark:border-t-blue-600 border-gray-300 dark:border-gray-600 rounded-full animate-spin"></div>
+                    <div className="w-16 h-16 mx-auto mb-6 border-4 border-t-blue-600 dark:border-t-blue-600 border-gray-300 dark:border-gray-600 rounded-full animate-spin"></div>
                         <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                             {t("loading")}
                         </h3>

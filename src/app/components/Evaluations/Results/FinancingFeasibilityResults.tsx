@@ -1,4 +1,4 @@
-import { SummaryCard } from "@/app/components/Evaluations/SummaryCard";
+import { SummaryCard } from "@/app/components/Evaluations/Results/SummaryCard";
 import { useTranslations } from "use-intl";
 
 export default function FinancingFeasibilityResults({ financingFeasibility }: { financingFeasibility: any }) {

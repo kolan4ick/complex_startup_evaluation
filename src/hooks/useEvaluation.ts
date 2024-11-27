@@ -26,6 +26,7 @@ interface EvaluationResponse {
     risk: any;
     team: any;
     financing_feasibility: any;
+    evaluation: any;
 }
 
 interface Evaluation {
@@ -83,3 +84,13 @@ export const createEvaluation = async (
 
     return response.data;
 };
+
+export const resultPdf = async ({id, token}: { id: string, token: string | null }): Promise<any> => {
+    return await apiClient.get(`/evaluations/${id}/result_pdf`, {
+        headers: {
+            "Content-Type": "application/pdf",
+            Authorization: `Bearer ${token}`,
+        },
+        responseType: "blob"
+    });
+}

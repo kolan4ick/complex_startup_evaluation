@@ -6,6 +6,7 @@ import {Metadata} from "next";
 import {getEvaluation} from "@/hooks/useEvaluation";
 import {cookies} from "next/headers";
 import Evaluation from "@/app/components/Pages/Evaluation";
+import {notFound} from "next/navigation";
 
 export async function generateMetadata() : Promise<Metadata> {
     const t = await getTranslations({namespace: 'EvaluationPage'});
@@ -20,8 +21,13 @@ export default async function EvaluationsPage({params}: {params: {id: string}}) 
     const cookieStore = await cookies();
     const token = cookieStore.get("auth-token")?.value || null;
     const id = params.id;
+    let evaluationData;
 
-    const evaluationData = (await getEvaluation({id: id, token: token}));
+    try {
+        evaluationData = (await getEvaluation({id: id, token: token}));
+    } catch {
+        return notFound();
+    }
 
     return <ProtectedRoute>
         <Evaluation data={evaluationData}/>

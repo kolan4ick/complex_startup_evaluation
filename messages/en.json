@@ -3,6 +3,17 @@
     "uk": "UK",
     "en": "EN"
   },
+  "NotFoundPage": {
+    "titles": {
+      "notFound": "Uh-oh!"
+    },
+    "messages": {
+      "pageNotFound": "We can't find that page."
+    },
+    "buttons": {
+      "returnHome": "Return Home"
+    }
+  },
   "LoginPage": {
     "titles": {
       "login": "Login"

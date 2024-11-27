@@ -41,7 +41,7 @@ export default function FinancingFeasibilityResults({ financingFeasibility }: { 
                 {triangle_membership.map((triangle: { value: number; linguistic: string; }, index: number) => (
                     <div className={"mt-4"} key={index}>
                         {
-                            triangle_membership.size > 1 &&
+                            triangle_membership.length > 1 &&
                             <h3 className={"font-bold text-gray-800 dark:text-gray-100 mb-4"}>
                                 {t("results.financing.triangle_membership")} - {t(`results.financing.triangle_memberships.${index + 1}`)}
                             </h3>

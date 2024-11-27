@@ -6,10 +6,7 @@ import { createEvaluation } from "@/hooks/useEvaluation";
 import Effectiveness from "@/app/components/Form/Evaluations/Effectiveness";
 import Risk from "@/app/components/Form/Evaluations/Risk";
 import Team from "@/app/components/Form/Evaluations/Team";
-import EffectivenessResults from "@/app/components/Evaluations/EffectivenessResults";
-import RiskResults from "@/app/components/Evaluations/RiskResults";
-import TeamResults from "@/app/components/Evaluations/TeamResults";
-import FinancingFeasibilityResults from "@/app/components/Evaluations/FinancingFeasibilityResults";
+import Results from "@/app/components/Evaluations/Results";
 
 export default function EvaluationForm({ evaluation, result }: { evaluation?: any; result?: any }) {
     const token = useAppSelector((state) => state.auth.token);
@@ -194,18 +191,7 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
                     tabIndex={-1}
                     className="outline-none mt-8"
                 >
-                    <div className="mt-8">
-                        <EffectivenessResults effectiveness={submissionResult.effectiveness} />
-                    </div>
-                    <div className="mt-8">
-                        <RiskResults risk={submissionResult.risk} />
-                    </div>
-                    <div className="mt-8">
-                        <TeamResults team={submissionResult.team} />
-                    </div>
-                    <div className="mt-8">
-                        <FinancingFeasibilityResults financingFeasibility={submissionResult.financing_feasibility} />
-                    </div>
+                    <Results results={submissionResult}/>
                 </div>
             )}
 

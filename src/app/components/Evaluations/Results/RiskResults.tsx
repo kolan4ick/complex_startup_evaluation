@@ -1,6 +1,6 @@
 import {TArray} from "ts-interface-checker";
-import {SummaryCard} from "@/app/components/Evaluations/SummaryCard";
-import {ResultSection} from "@/app/components/Evaluations/ResultSection";
+import {SummaryCard} from "@/app/components/Evaluations/Results/SummaryCard";
+import {ResultSection} from "@/app/components/Evaluations/Results/ResultSection";
 import {useTranslations} from "use-intl";
 
 export default function RiskResults({risk}: { risk: any }) {

@@ -1,5 +1,5 @@
-import { ResultSection } from "@/app/components/Evaluations/ResultSection";
-import { SummaryCard } from "@/app/components/Evaluations/SummaryCard";
+import { ResultSection } from "@/app/components/Evaluations/Results/ResultSection";
+import { SummaryCard } from "@/app/components/Evaluations/Results/SummaryCard";
 import { useTranslations } from "use-intl";
 
 export default function TeamResults({ team }: { team: any }) {

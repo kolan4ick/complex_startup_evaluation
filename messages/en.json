@@ -352,6 +352,10 @@
         "cone_shaped_membership": "Cone-Shaped Membership",
         "membership": "Membership",
         "triangle_membership": "Triangle Membership",
+        "triangle_memberships": {
+          "1": "Lower",
+          "2": "Higher"
+        },
         "summary": "Summary"
       }
     },

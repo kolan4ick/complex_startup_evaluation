@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useTranslations } from "use-intl";
+import {useLocale} from "next-intl";
 
 export default function NotFound() {
     const t = useTranslations("NotFoundPage");
@@ -39,7 +40,7 @@ export default function NotFound() {
                 </h1>
 
                 <div className="mt-4">
-                    <Link href="/public">
+                    <Link href={`/${useLocale()}`}>
                         <button
                             type="button"
                             className="w-auto bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none transition-all duration-300 transform hover:scale-105"

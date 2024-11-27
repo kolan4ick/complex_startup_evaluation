@@ -26,7 +26,6 @@ export default function Navbar() {
     const user = useAppSelector((state) => state.auth.user);
     const { theme, toggleTheme } = useTheme();
 
-    // Client-side only state to prevent hydration issues
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {

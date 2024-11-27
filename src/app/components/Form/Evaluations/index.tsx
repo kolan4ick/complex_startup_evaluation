@@ -181,12 +181,12 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
                 <Effectiveness register={register} errors={errors}/>
                 <Risk register={register} errors={errors}/>
                 <Team register={register} errors={errors}/>
-                <div className="flex justify-center items-center gap-4 mt-4">
+                <div className="flex justify-end items-center gap-4 mt-4">
                     <button
                         id="EvaluationSubmitButton"
                         ref={submitButtonRef}
                         type="submit"
-                        className="w-auto bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none transition-all duration-300 transform hover:scale-105"
+                        className="w-1/6 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none transition-all duration-300 transform hover:scale-105"
                     >
                         {t("buttons.submit")}
                     </button>

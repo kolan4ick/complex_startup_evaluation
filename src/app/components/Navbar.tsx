@@ -2,7 +2,7 @@
 
 import { useMemo, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { setUser, setToken } from '@/lib/features/users/usersSlice';
+import {clearAuth} from '@/lib/features/users/usersSlice';
 import { useLocale, useTranslations } from 'use-intl';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
@@ -14,17 +14,18 @@ import LogoutIcon from "@/app/components/Icons/LogoutIcon";
 import HomeIcon from "@/app/components/Icons/HomeIcon";
 import LocaleSwitcher from "@/app/components/LocaleSwitcher";
 import EvaluationsIcon from "@/app/components/Icons/EvaluationsIcon";
+import {useCookies} from "next-client-cookies";
 
 export default function Navbar() {
     const t = useTranslations('Navbar');
     const dispatch = useAppDispatch();
+    const cookies = useCookies();
     const router = useRouter();
     const pathname = usePathname();
     const locale = useLocale();
     const user = useAppSelector((state) => state.auth.user);
     const { theme, toggleTheme } = useTheme();
 
-    // Client-side only state to prevent hydration issues
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
@@ -56,10 +57,10 @@ export default function Navbar() {
 
     const handleLogout = async () => {
         try {
-            dispatch(setUser(null));
-            dispatch(setToken(null));
-            document.cookie = 'auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+            cookies.remove('auth-token');
+
             router.push(`/${locale}/login`);
+            dispatch(clearAuth());
         } catch (error) {
             console.error('Logout failed:', error);
             alert(t('errors.logoutFailed'));

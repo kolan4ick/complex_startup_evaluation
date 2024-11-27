@@ -19,7 +19,7 @@ export default function InstructionsPage() {
             </h1>
 
             <div
-                className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-300 dark:border-gray-700 p-6 space-y-6">
+                className="bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-700 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg p-8 space-y-8">
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
                     {t('titles.welcome')}
                 </p>
@@ -45,7 +45,7 @@ export default function InstructionsPage() {
             <div className="mt-8 flex justify-center">
                 <button
                     onClick={handleBackClick}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+                    className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none transition-all duration-300 transform hover:scale-105"
                 >
                     {t('buttons.backToHome')}
                 </button>

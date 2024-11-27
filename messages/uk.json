@@ -3,6 +3,17 @@
     "uk": "UK",
     "en": "EN"
   },
+  "NotFoundPage": {
+    "titles": {
+      "notFound": "Сторінку не знайдено"
+    },
+    "messages": {
+      "pageNotFound": "Сторінку не знайдено"
+    },
+    "buttons": {
+      "returnHome": "На головну"
+    }
+  },
   "LoginPage": {
     "titles": {
       "login": "Вхід"
@@ -103,7 +114,7 @@
     }
   },
   "Footer": {
-    "companyName": "ElevateX",
+    "brandName": "ElevateX",
     "rightsReserved": "Всі права захищені",
     "links": {
       "home": "Головна",

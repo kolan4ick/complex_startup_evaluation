@@ -36,7 +36,7 @@ export default function TeamResults({ team }: { team: any }) {
 
     return (
         <div
-            className="p-6 bg-gradient-to-b from-green-100 via-yellow-200 to-yellow-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-600">
+            className="p-6 bg-gradient-to-b from-blue-100 via-gray-200 to-gray-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-600">
             <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-6">
                 {t("results.team.title")}
             </h2>

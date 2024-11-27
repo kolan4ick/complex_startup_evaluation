@@ -101,9 +101,12 @@
   "Navbar": {
     "brandName": "ElevateX",
     "welcome": "Ласкаво просимо",
+    "toggleTheme": "Змінити тему",
     "links": {
       "home": "Головна",
       "profile": "Профіль",
+      "logout": "Вийти",
+      "evaluations": "Оцінки",
       "login": "Увійти",
       "register": "Реєстрація"
     },

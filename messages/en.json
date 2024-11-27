@@ -101,8 +101,11 @@
   "Navbar": {
     "brandName": "ElevateX",
     "welcome": "Welcome",
+    "toggleTheme": "Toggle Theme",
     "links": {
       "home": "Home",
+      "logout": "Logout",
+      "evaluations": "Evaluations",
       "login": "Login",
       "profile": "Profile",
       "register": "Register"

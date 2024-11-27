@@ -343,6 +343,8 @@
         "title": "Financing Feasibility Results",
         "membership_values": "Membership Values",
         "membership_values_description": "The membership values for the financing feasibility of projects.",
+        "memberships": "Memberships",
+        "triangle_membership_linguistic": "Triangle Membership Linguistic",
         "headers": {
           "type": "Type",
           "value": "Value"

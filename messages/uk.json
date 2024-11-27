@@ -341,8 +341,10 @@
       },
       "financing": {
         "title": "Результати оцінювання фінансування",
+        "memberships": "Належності",
         "membership_values": "Значення належності",
         "membership_values_description": "Значення належності для фінансування.",
+        "triangle_membership_linguistic": "Лінгвістичне значення належності для фінансування",
         "headers": {
           "type": "Тип",
           "value": "Значення"
@@ -350,6 +352,10 @@
         "cone_shaped_membership": "Конусоподібна належність",
         "membership": "Належність",
         "triangle_membership": "Трикутна належність",
+        "triangle_memberships": {
+          "1": "Нижча",
+          "2": "Вища"
+        },
         "summary": "Сумарний результат"
       }
     },

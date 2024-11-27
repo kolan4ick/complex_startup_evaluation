@@ -270,7 +270,9 @@
             "4": "Connections with advisors on social media"
           }
         }
-      }
+      },
+      "downloadButtonText": "Download result of evaluation",
+      "downloadError": "An error occurred while downloading the evaluation result. Please try again."
     },
     "placeholders": {
       "authenticity": "Authenticity",

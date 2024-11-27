@@ -26,6 +26,7 @@ interface EvaluationResponse {
     risk: any;
     team: any;
     financing_feasibility: any;
+    evaluation: any;
 }
 
 interface Evaluation {

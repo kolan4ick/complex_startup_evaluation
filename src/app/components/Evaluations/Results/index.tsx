@@ -21,7 +21,6 @@ export default function Results({ results }: { results: any }) {
             <div className="mt-8">
                 <FinancingFeasibilityResults financingFeasibility={results.financing_feasibility}/>
             </div>
-            <ResultPdfButton evaluationId={results.evaluation.id}/>
         </>
     )
 }

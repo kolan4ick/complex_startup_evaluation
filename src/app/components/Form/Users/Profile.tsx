@@ -34,7 +34,7 @@ export default function Profile() {
     });
 
     const toggleEditMode = () => {
-        if (isEditing) reset(); // Reset form fields to default values when exiting edit mode
+        if (isEditing) reset();
         setIsEditing(!isEditing);
     };
 
@@ -49,10 +49,13 @@ export default function Profile() {
         setIsEditing(false);
     };
 
+    if (!user) {
+        return null;
+    }
+
     return (
         <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
             <div className="container mx-auto max-w-4xl p-6">
-                {/* Header Section */}
                 <div className="flex items-center space-x-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
                     <div className="flex-shrink-0">
                         <UserCircleIcon className="h-24 w-24 text-gray-400 dark:text-gray-600"/>
@@ -69,7 +72,6 @@ export default function Profile() {
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 mt-8">
-                    {/* User Related Info Section */}
                     <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
                         <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
                             {t('titles.userInformation')}
@@ -123,13 +125,11 @@ export default function Profile() {
                         </div>
                     </div>
 
-                    {/* Evaluation Related Info Section */}
                     <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
                         <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
                             {t('titles.evaluationSettings')}
                         </h2>
                         <div className="space-y-4">
-                            {/* Evaluation Fields */}
                             {[
                                 {
                                     id: 'feasibility_threshold' as const,
@@ -171,7 +171,6 @@ export default function Profile() {
                                 </div>
                             ))}
 
-                            {/* Feasibility Levels */}
                             <div>
                                 <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
                                     {t('titles.feasibilityLevels')}
@@ -182,7 +181,6 @@ export default function Profile() {
                                             key={level.id}
                                             className="flex gap-4 items-start mb-4 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
                                         >
-                                            {/* Linguistic */}
                                             <div className={"flex-1"}>
                                                 <label
                                                     htmlFor={`feasibility_levels_attributes.${index}.linguistic`}
@@ -207,7 +205,6 @@ export default function Profile() {
                                                 </select>
                                             </div>
 
-                                            {/* Title */}
                                             <div className={"flex-1"}>
                                                 <label
                                                     htmlFor={`feasibility_levels_attributes.${index}.title`}
@@ -227,7 +224,6 @@ export default function Profile() {
                                                 />
                                             </div>
 
-                                            {/* Value */}
                                             <div className={"flex-1"}>
                                                 <label
                                                     htmlFor={`feasibility_levels_attributes.${index}.value`}
@@ -267,7 +263,6 @@ export default function Profile() {
                         </div>
                     </div>
 
-                    {/* Buttons */}
                     {isEditing && (
                         <button
                             type="submit"

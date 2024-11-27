@@ -45,7 +45,7 @@ export default function InstructionsPage() {
             <div className="mt-8 flex justify-center">
                 <button
                     onClick={handleBackClick}
-                    className="px-6 py-3 bg-blue-600 text-white rounded-lg text-lg font-semibold shadow hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition"
+                    className="bg-gradient-to-r from-blue-500 to-blue-700 text-white text-lg font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-blue-800 focus:ring-4 focus:ring-blue-300 focus:outline-none transition-all duration-300 transform hover:scale-105"
                 >
                     {t('buttons.backToHome')}
                 </button>

@@ -74,7 +74,9 @@
     },
     "buttons": {
       "register": "Register",
-      "submitting": "Registering..."
+      "submitting": "Registering...",
+      "hidePassword": "Hide Password",
+      "showPassword": "Show Password"
     },
     "links": {
       "alreadyHaveAccount": "Already have an account?",

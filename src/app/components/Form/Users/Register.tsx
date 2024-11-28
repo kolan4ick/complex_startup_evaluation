@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import { useState } from 'react';
 import { useAppDispatch } from '@/lib/hooks';
 import { setUser, setToken } from '@/lib/features/users/usersSlice';
 import { registerUser } from '@/hooks/useUser';
@@ -8,6 +8,7 @@ import { useTranslations } from 'use-intl';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 interface FormData {
     name: string;
@@ -22,7 +23,11 @@ export default function Register() {
     const t = useTranslations('RegisterPage');
     const router = useRouter();
 
-    // Watch the password for confirmation validation
+    const [passwordVisibility, setPasswordVisibility] = useState<{ [key: string]: boolean }>({
+        password: false,
+        passwordConfirmation: false,
+    });
+
     const password = watch('password');
 
     const onSubmit = async (data: FormData) => {
@@ -108,13 +113,31 @@ export default function Register() {
                             >
                                 {label}
                             </label>
-                            <input
-                                type={type}
-                                id={id}
-                                {...register(id as keyof FormData, validation)}
-                                className="text-gray-800 dark:text-gray-200 mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
-                                placeholder={placeholder}
-                            />
+                            <div className="relative">
+                                <input
+                                    type={type === 'password' ? (passwordVisibility[id] ? 'text' : 'password') : type}
+                                    id={id}
+                                    {...register(id as keyof FormData, validation)}
+                                    className="text-gray-800 dark:text-gray-200 mt-1 w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500"
+                                    placeholder={placeholder}
+                                />
+                                {type === 'password' && (
+                                    <button
+                                        type="button"
+                                        onClick={() =>
+                                            setPasswordVisibility(prev => ({ ...prev, [id]: !prev[id] }))
+                                        }
+                                        className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400 focus:outline-none"
+                                        aria-label={passwordVisibility[id] ? t('buttons.hidePassword') : t('buttons.showPassword')}
+                                    >
+                                        {passwordVisibility[id] ? (
+                                            <EyeSlashIcon className="h-5 w-5" aria-hidden="true" />
+                                        ) : (
+                                            <EyeIcon className="h-5 w-5" aria-hidden="true" />
+                                        )}
+                                    </button>
+                                )}
+                            </div>
                             <div className="h-5">
                                 {error && <p className="text-red-600 text-sm">{error}</p>}
                             </div>

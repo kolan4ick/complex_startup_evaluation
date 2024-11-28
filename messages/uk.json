@@ -74,7 +74,9 @@
     },
     "buttons": {
       "register": "Зареєструватися",
-      "submitting": "Реєстрація..."
+      "submitting": "Реєстрація...",
+      "hidePassword": "Приховати пароль",
+      "showPassword": "Показати пароль"
     },
     "links": {
       "alreadyHaveAccount": "Вже маєте акаунт?",

@@ -1,19 +1,31 @@
-export function ResultSection({
-                                  title,
-                                  icon,
-                                  description,
-                                  headers,
-                                  rows,
-                              }) {
+export function ResultSection<T extends Record<string, {
+    value: string | number | undefined;
+    colSpan?: number;
+    rowSpan?: number;
+}>>({
+        title,
+        icon,
+        description,
+        headers,
+        rows,
+    }: {
+    title: string;
+    icon: string;
+    description: string;
+    headers: string[];
+    rows: T[];
+}) {
     return (
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-300 dark:border-gray-700 p-4 sm:p-6 space-y-4">
-            <div className="flex items-start space-x-3">
-                {icon && <span className="text-3xl">{icon}</span>}
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-300 dark:border-gray-700 p-4 space-y-4">
+            <div className="flex items-center space-x-3">
+                <span className="text-2xl md:text-3xl">{icon}</span>
                 <div>
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
+                    <h3 className="text-base md:text-lg font-semibold text-gray-800 dark:text-gray-200">
                         {title}
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+                    <p className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
+                        {description}
+                    </p>
                 </div>
             </div>
             <div className="overflow-x-auto">
@@ -23,7 +35,7 @@ export function ResultSection({
                         {headers.map((header, index) => (
                             <th
                                 key={index}
-                                className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium uppercase text-center"
+                                className="px-4 py-2 text-xs md:text-sm font-medium uppercase text-center"
                             >
                                 {header}
                             </th>
@@ -39,7 +51,7 @@ export function ResultSection({
                             {Object.entries(row).map(([key, cell], colIndex) => (
                                 <td
                                     key={colIndex}
-                                    className="px-2 sm:px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-300 text-center text-xs sm:text-sm"
+                                    className="px-4 py-2 border-t border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-300 text-center text-xs md:text-sm"
                                     colSpan={cell?.colSpan}
                                     rowSpan={cell?.rowSpan}
                                 >

@@ -6,7 +6,6 @@ export default function TeamResults({ team }: { team: any }) {
     const { membership, defuzzification, rate } = team;
     const t = useTranslations("EvaluationForm");
 
-    // Prepare sections data
     const sections = [
         {
             title: t("results.team.membership"),
@@ -14,13 +13,13 @@ export default function TeamResults({ team }: { team: any }) {
             description: t("results.team.membership_description"),
             headers: [
                 t("results.team.headers.term"),
-                t("results.team.headers.membership")
+                t("results.team.headers.membership"),
             ],
             rows: membership.flatMap((kArray: number[], index: number) => {
                 const headerRow = {
                     col1: {
                         value: `K${index + 1}`,
-                        colSpan: 3,
+                        colSpan: 2,
                     },
                 };
 
@@ -35,8 +34,7 @@ export default function TeamResults({ team }: { team: any }) {
     ];
 
     return (
-        <div
-            className="p-6 bg-gradient-to-b from-blue-100 via-gray-200 to-gray-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-600">
+        <div className="p-6 bg-gradient-to-b from-blue-100 via-gray-200 to-gray-100 dark:from-gray-700 dark:via-gray-800 dark:to-gray-900 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-600">
             <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-6">
                 {t("results.team.title")}
             </h2>
@@ -58,7 +56,7 @@ export default function TeamResults({ team }: { team: any }) {
                 <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
                     {t("results.summary")}
                 </h3>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <SummaryCard
                         title={t("results.team.defuzzification")}
                         value={defuzzification.toFixed(4)}

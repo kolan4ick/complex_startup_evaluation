@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/navigation";
+import {useLocale} from "next-intl";
 
 interface ProtectedRouteProps {
     children: React.ReactNode;
@@ -13,11 +14,12 @@ export default function ProtectedRoute({ children, reverse = false }: ProtectedR
     const [isLoading, setIsLoading] = useState(true);
     const token = useAppSelector((state) => state.auth.token);
     const router = useRouter();
+    const locale = useLocale();
 
     useEffect(() => {
         const handleNavigation = async () => {
             if (reverse && token) {
-                router.push('/');
+                router.push(`/${locale}`);
             } else if (!reverse && !token) {
                 router.push('/login');
             } else {

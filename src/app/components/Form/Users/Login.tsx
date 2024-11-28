@@ -7,6 +7,7 @@ import { useTranslations } from 'use-intl';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import {useLocale} from "next-intl";
 
 interface FormData {
     email: string;
@@ -18,6 +19,7 @@ export default function Login() {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>();
     const t = useTranslations('LoginPage');
     const router = useRouter();
+    const locale = useLocale();
 
     const onSubmit = async (data: FormData) => {
         try {
@@ -29,7 +31,7 @@ export default function Login() {
 
                 document.cookie = `auth-token=${token}; path=/`;
 
-                router.push('/');
+                router.push(`/${locale}`);
             } else {
                 alert(t('errors.unknown'));
             }

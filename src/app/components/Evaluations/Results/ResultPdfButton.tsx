@@ -22,7 +22,12 @@ export default function ResultPdfButton({ evaluationId }: ResultPdfButtonProps) 
 
             const url = URL.createObjectURL(response.data);
 
-            window.open(url, "_blank");
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'evaluation.pdf'; // Set your desired filename here
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
             setTimeout(() => {
                 URL.revokeObjectURL(url);

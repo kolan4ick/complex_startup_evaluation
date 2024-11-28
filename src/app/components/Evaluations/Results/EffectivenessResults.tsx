@@ -1,7 +1,7 @@
-import {TArray} from "ts-interface-checker";
-import {ResultSection} from "@/app/components/Evaluations/Results/ResultSection";
-import {SummaryCard} from "@/app/components/Evaluations/Results/SummaryCard";
-import {useTranslations} from "use-intl";
+import { TArray } from "ts-interface-checker";
+import { ResultSection } from "@/app/components/Evaluations/Results/ResultSection";
+import { SummaryCard } from "@/app/components/Evaluations/Results/SummaryCard";
+import { useTranslations } from "use-intl";
 
 export default function EffectivenessResults({effectiveness}: { effectiveness: any }) {
     const t = useTranslations("EvaluationForm");
@@ -12,7 +12,7 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
         membership_u,
         max_membership,
         aggregated_score,
-        linguistic
+        linguistic,
     } = effectiveness;
 
     const sections = [
@@ -23,7 +23,7 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
             headers: [
                 t("results.effectiveness.headers.group"),
                 t("results.effectiveness.headers.membership_actual"),
-                t("results.effectiveness.headers.membership_desired")
+                t("results.effectiveness.headers.membership_desired"),
             ],
             rows: membership_actual.map((value: number, index: number) => ({
                 col1: {value: `G${index + 1}`},
@@ -41,9 +41,9 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
                 col2: {
                     value: Object.entries(u)
                         .map(([key, value]) => `U${index + 1}${key} = ${value.toFixed(2)}`)
-                        .join(", ")
-                }
-            }))
+                        .join(", "),
+                },
+            })),
         },
         {
             title: t("results.effectiveness.max_membership"),
@@ -58,15 +58,14 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
     ];
 
     return (
-        <div
-            className="p-6 bg-gradient-to-b from-blue-100 via-gray-200 to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-700 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-600">
-            <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-6">
+        <div className="p-4 md:p-6 bg-gradient-to-b from-blue-100 via-gray-200 to-gray-100 dark:from-gray-800 dark:via-gray-900 dark:to-gray-700 rounded-2xl shadow-lg border border-gray-300 dark:border-gray-600">
+            <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 dark:text-gray-100 mb-4 md:mb-6">
                 {t("results.effectiveness.title")}
             </h2>
 
             {/* Main Layout */}
-            <div className="grid gap-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid gap-6 md:gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                     {sections.slice(0, 2).map((section, index) => (
                         <ResultSection
                             key={index}
@@ -79,7 +78,7 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
                     ))}
                 </div>
                 <div className="flex justify-center">
-                    <div className="w-full md:w-1/2">
+                    <div className="w-full lg:w-2/3 xl:w-1/2">
                         <ResultSection
                             title={sections[2].title}
                             icon={sections[2].icon}
@@ -92,11 +91,11 @@ export default function EffectivenessResults({effectiveness}: { effectiveness: a
             </div>
 
             {/* Summary */}
-            <div className="mt-8">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+            <div className="mt-6 md:mt-8">
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 dark:text-gray-100 mb-4">
                     {t("results.summary")}
                 </h3>
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <SummaryCard
                         title={t("results.effectiveness.aggregated_score")}
                         value={aggregated_score.toFixed(2)}

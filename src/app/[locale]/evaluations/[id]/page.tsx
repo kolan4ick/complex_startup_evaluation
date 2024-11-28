@@ -8,7 +8,7 @@ import {cookies} from "next/headers";
 import Evaluation from "@/app/components/Pages/Evaluation";
 import {notFound} from "next/navigation";
 
-export async function generateMetadata() : Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
     const t = await getTranslations({namespace: 'EvaluationPage'});
 
     return {
@@ -17,10 +17,10 @@ export async function generateMetadata() : Promise<Metadata> {
     }
 }
 
-export default async function EvaluationsPage({params}: {params: {id: string}}) {
+export default async function EvaluationsPage({params}: { params: Promise<{ id: string }> }) {
     const cookieStore = await cookies();
     const token = cookieStore.get("auth-token")?.value || null;
-    const id = params.id;
+    const id = (await params).id;
     let evaluationData;
 
     try {

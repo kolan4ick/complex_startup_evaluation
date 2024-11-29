@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/lib/hooks';
 import { setUser } from '@/lib/features/users/usersSlice';
 import { User } from '@/lib/types/User';
@@ -17,6 +17,7 @@ export default function Profile() {
     const token = useAppSelector((state) => state.auth.token);
 
     const [isEditing, setIsEditing] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const {
         register,
@@ -45,15 +46,26 @@ export default function Profile() {
     };
 
     const onSubmit = async (data: any) => {
-        const response = await updateUser({ token: token, ...data });
+        try {
+            const response = await updateUser({ token, ...data });
 
-        if (!response) {
-            return;
+            dispatch(setUser(response));
+            setIsEditing(false);
+            setErrorMessage('');
+        } catch (err: any) {
+            if (err.response?.data?.message) {
+                setErrorMessage(err.response.data.message);
+            } else {
+                setErrorMessage(t('errors.unknown'));
+            }
         }
-
-        dispatch(setUser(response));
-        setIsEditing(false);
     };
+
+    useEffect(() => {
+        if (errorMessage) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }, [errorMessage]);
 
     if (!user) {
         return null;
@@ -78,6 +90,11 @@ export default function Profile() {
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+                    {errorMessage && (
+                        <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                            {errorMessage}
+                        </div>
+                    )}
                     <div className="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
                         <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
                             {t('titles.userInformation')}
@@ -141,14 +158,22 @@ export default function Profile() {
                                     id: 'feasibility_threshold' as const,
                                     label: t('fields.feasibilityThreshold'),
                                     type: 'number',
-                                    validation: { required: t('errors.required'), min: 0, max: 1 },
+                                    validation: {
+                                        required: t('errors.required'),
+                                        min: {value: 0.01, message: t('errors.minValue', {min: 0.01})},
+                                        max: {value: 1.0, message: t('errors.maxValue', {max: 1.0})},
+                                    },
                                     error: errors.feasibility_threshold?.message,
                                 },
                                 {
                                     id: 'adjustment_delta' as const,
                                     label: t('fields.adjustmentDelta'),
                                     type: 'number',
-                                    validation: { required: t('errors.required'), min: 0, max: 1 },
+                                    validation: {
+                                        required: t('errors.required'),
+                                        min: {value: 0.01, message: t('errors.minValue', {min: 0.01})},
+                                        max: {value: 1.0, message: t('errors.maxValue', {max: 1.0})},
+                                    },
                                     error: errors.adjustment_delta?.message,
                                 },
                             ].map(({ id, label, type, validation, error }) => (
@@ -238,8 +263,8 @@ export default function Profile() {
                                                     step="0.01"
                                                     {...register(`feasibility_levels_attributes.${index}.value`, {
                                                         required: t('errors.required'),
-                                                        min: 0,
-                                                        max: 1,
+                                                        min: {value: 0.01, message: t('errors.minValue', {min: 0.01})},
+                                                        max: {value: 1.0, message: t('errors.maxValue', {max: 1.0})},
                                                     })}
                                                     className={`mt-1 w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 ${
                                                         isEditing

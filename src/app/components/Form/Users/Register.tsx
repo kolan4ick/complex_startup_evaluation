@@ -28,6 +28,7 @@ export default function Register() {
         passwordConfirmation: false,
     });
 
+    const [errorMessage, setErrorMessage] = useState('');
     const password = watch('password');
 
     const onSubmit = async (data: FormData) => {
@@ -44,10 +45,10 @@ export default function Register() {
 
             router.push('/');
         } catch (err: any) {
-            if (err.response.data.message) {
-                alert(err.response.data.message);
+            if (err.response?.data?.message) {
+                setErrorMessage(err.response.data.message);
             } else {
-                alert(t(`errors.${err.status}`));
+                setErrorMessage(t(`errors.${err.status}`) || t('errors.unknown'));
             }
         }
     };
@@ -58,6 +59,11 @@ export default function Register() {
                 <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200">
                     {t("titles.registration")}
                 </h2>
+                {errorMessage && (
+                    <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                        {errorMessage}
+                    </div>
+                )}
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     {[
                         {

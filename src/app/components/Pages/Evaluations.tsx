@@ -65,8 +65,14 @@ export default function Evaluations({ evaluations: initialEvaluations, totalPage
                 </div>
             ) : (
                 <div className="space-y-4">
-                    {evaluations.map((evaluation) => (
-                        <EvaluationCard key={evaluation.id} evaluation={evaluation} />
+                    {evaluations.map((evaluation, index) => (
+                        <EvaluationCard
+                            key={evaluation.id}
+                            evaluation={{
+                                ...evaluation,
+                                order: (currentPage - 1) * 20 + index + 1, // Calculate the order dynamically
+                            }}
+                        />
                     ))}
                 </div>
             )}

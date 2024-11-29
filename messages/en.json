@@ -26,7 +26,8 @@
       "required": "This field is required.",
       "invalidEmail": "Please enter a valid email address.",
       "passwordMinLength": "Password must be at least 6 characters.",
-      "unknown": "An unknown error occurred. Please try again."
+      "unknown": "An unknown error occurred. Please try again.",
+      "invalidCredentials": "Invalid credentials."
     },
     "fields": {
       "email": "Email",
@@ -164,7 +165,9 @@
     "errors": {
       "notLoggedIn": "You must be logged in to view this page.",
       "required": "This field is required.",
-      "invalidEmail": "Please enter a valid email address."
+      "invalidEmail": "Please enter a valid email address.",
+      "maxValue": "The value must be <= to {max}.",
+      "minValue": "The value must be >= to {min}."
     }
   },
   "EvaluationForm": {

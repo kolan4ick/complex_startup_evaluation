@@ -13,6 +13,7 @@ export default function EvaluationCard({evaluation}: { evaluation: any }) {
 
     const {
         id,
+        order,
         created_at,
         feasibility_linguistic,
         team_competencies,
@@ -28,7 +29,7 @@ export default function EvaluationCard({evaluation}: { evaluation: any }) {
                 className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700 transition-transform transform-gpu hover:scale-105 hover:bg-gray-50 dark:hover:bg-gray-700 hover:shadow-lg">
                 <div className="flex flex-col sm:flex-row items-center justify-between">
                     <h2 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
-                        {t("titles.evaluation")} #{id}
+                        {t("titles.evaluation")} #{order}
                     </h2>
                     <span
                         className="text-sm sm:text-base text-gray-500 dark:text-gray-400 flex items-center mt-2 sm:mt-0">

@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import {useLocale} from "next-intl";
+import {useState} from "react";
 
 interface FormData {
     email: string;
@@ -20,6 +21,7 @@ export default function Login() {
     const t = useTranslations('LoginPage');
     const router = useRouter();
     const locale = useLocale();
+    const [errorMessage, setErrorMessage] = useState('');
 
     const onSubmit = async (data: FormData) => {
         try {
@@ -33,13 +35,13 @@ export default function Login() {
 
                 router.push(`/${locale}`);
             } else {
-                alert(t('errors.unknown'));
+                setErrorMessage(t('errors.invalidCredentials'));
             }
         } catch (err: any) {
             if (err.status) {
-                alert(t(`errors.${err.status}`));
+                setErrorMessage(t(`errors.${err.status}`));
             } else {
-                alert(t('errors.unknown'));
+                setErrorMessage(t('errors.unknown'));
             }
         }
     };
@@ -50,6 +52,11 @@ export default function Login() {
                 <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-gray-200">
                     {t("titles.login")}
                 </h2>
+                {errorMessage && (
+                    <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                        {errorMessage}
+                    </div>
+                )}
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                     {[
                         {

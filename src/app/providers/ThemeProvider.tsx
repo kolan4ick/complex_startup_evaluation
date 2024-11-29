@@ -18,7 +18,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
             setTheme(storedTheme);
             document.documentElement.classList.add(storedTheme);
         } else {
-            document.documentElement.classList.add('light');
+            const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const defaultTheme = userPrefersDark ? 'dark' : 'light';
+            setTheme(defaultTheme);
+            document.documentElement.classList.add(defaultTheme);
         }
     }, []);
 

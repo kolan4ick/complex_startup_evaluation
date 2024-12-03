@@ -844,9 +844,6 @@
         "feasibilityLinguistic": {
           "header": "Linguistic feasibility: Defines the likelihood of achieving the project’s goals in alignment with the investors' objectives. Configured on the main page in the last section."
         },
-        "thresholdSettings": {
-          "header": "Threshold settings: Defines the likelihood of achieving the project’s goals in alignment with the investors' objectives."
-        },
         "adjustmentDelta": {
           "header": "Adjustment delta: Used to calculate decision-making levels based on triangular membership functions."
         },

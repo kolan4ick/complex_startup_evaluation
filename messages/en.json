@@ -220,6 +220,18 @@
         }
       }
     },
+    "feasibility": {
+        "fields": {
+        "feasibility_linguistic": "Feasibility Linguistic",
+          "feasibility_linguistics": {
+            "very_low": "Very Low",
+            "low": "Low",
+            "middle": "Middle",
+            "above_middle": "Above Middle",
+            "high": "High"
+          }
+      }
+    },
     "titles": {
       "effectiveness": {
         "title": "Effectiveness"
@@ -289,6 +301,10 @@
             "4": "Connections with advisors on social media"
           }
         }
+      },
+      "feasibility": {
+        "title": "Financing Feasibility",
+        "subtitle": "The level of confidence in obtaining financing for the project"
       },
       "downloadButtonText": "Download result of evaluation",
       "downloadError": "An error occurred while downloading the evaluation result. Please try again."

@@ -8,6 +8,7 @@ import Risk from "@/app/components/Form/Evaluations/Risk";
 import Team from "@/app/components/Form/Evaluations/Team";
 import Results from "@/app/components/Evaluations/Results";
 import ResultPdfButton from "@/app/components/Evaluations/Results/ResultPdfButton";
+import FinancingFeasibility from "@/app/components/Form/Evaluations/FinancingFeasibility";
 
 export default function EvaluationForm({ evaluation, result }: { evaluation?: any; result?: any }) {
     const token = useAppSelector((state) => state.auth.token);
@@ -40,7 +41,7 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
             team_leaders_competencies: 10,
             team_professional_activity: 8,
             team_stability: 10,
-            feasibility_linguistic: 4,
+            feasibility_linguistic: "high",
             effectiveness_sum_scores_attributes: [
                 { value: 78.0 },
                 { value: 45.0 },
@@ -181,6 +182,7 @@ export default function EvaluationForm({ evaluation, result }: { evaluation?: an
                 <Effectiveness register={register} errors={errors}/>
                 <Risk register={register} errors={errors}/>
                 <Team register={register} errors={errors}/>
+                <FinancingFeasibility register={register} errors={errors}/>
                 <div className="flex justify-center sm:justify-end items-center gap-4 mt-4">
                     <button
                         id="EvaluationSubmitButton"

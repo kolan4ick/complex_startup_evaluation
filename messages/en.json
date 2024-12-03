@@ -839,8 +839,11 @@
       "conclusion": "Each criterion is assessed using linguistic variables: \"Low,\" \"Below Average,\" \"Average,\" \"High.\"\nFor each evaluation, an expert assigns a \"confidence coefficient\" (d) in the range [0; 1]. If no suitable answer matches the team, the value of d adjusts the evaluation's accuracy. Also, for each group or subgroup of criteria, a weight value is entered."
     },
     "financialFeasibility": {
-      "header": "Financial feasibility is calculated based on the results of prior computations. It indicates the extent to which funding a given startup project is viable. Financial feasibility does not have a separate section in the form, as it is specifically tailored to meet individual needs and is configured in the user profile. You can adjust the following parameters:",
+      "header": "Financial feasibility is calculated based on the results of prior computations. It indicates the extent to which funding a given startup project is viable. The main part of it is configured in the user profile. You can adjust the following parameters:",
       "inputs": {
+        "feasibilityLinguistic": {
+          "header": "Linguistic feasibility: Defines the likelihood of achieving the project’s goals in alignment with the investors' objectives. Configured on the main page in the last section."
+        },
         "thresholdSettings": {
           "header": "Threshold settings: Defines the likelihood of achieving the project’s goals in alignment with the investors' objectives."
         },

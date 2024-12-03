@@ -29,7 +29,6 @@ export default function Profile() {
         defaultValues: {
             name: user?.name,
             email: user?.email,
-            feasibility_threshold: user?.feasibility_threshold,
             adjustment_delta: user?.adjustment_delta,
             feasibility_levels_attributes: user?.feasibility_levels || [],
         },
@@ -153,55 +152,33 @@ export default function Profile() {
                             {t('titles.evaluationSettings')}
                         </h2>
                         <div className="space-y-4">
-                            {[
-                                {
-                                    id: 'feasibility_threshold' as const,
-                                    label: t('fields.feasibilityThreshold'),
-                                    type: 'number',
-                                    validation: {
+                            <div key={"adjustment_delta"}>
+                                <label
+                                    htmlFor={"adjustment_delta"}
+                                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                                >
+                                    {t('fields.adjustmentDelta')}
+                                </label>
+                                <input
+                                    type={'number'}
+                                    id={"adjustment_delta"}
+                                    step={0.01}
+                                    {...register("adjustment_delta", {
                                         required: t('errors.required'),
                                         min: {value: 0.01, message: t('errors.minValue', {min: 0.01})},
                                         max: {value: 1.0, message: t('errors.maxValue', {max: 1.0})},
-                                    },
-                                    error: errors.feasibility_threshold?.message,
-                                },
-                                {
-                                    id: 'adjustment_delta' as const,
-                                    label: t('fields.adjustmentDelta'),
-                                    type: 'number',
-                                    validation: {
-                                        required: t('errors.required'),
-                                        min: {value: 0.01, message: t('errors.minValue', {min: 0.01})},
-                                        max: {value: 1.0, message: t('errors.maxValue', {max: 1.0})},
-                                    },
-                                    error: errors.adjustment_delta?.message,
-                                },
-                            ].map(({ id, label, type, validation, error }) => (
-                                <div key={id}>
-                                    <label
-                                        htmlFor={id}
-                                        className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                                    >
-                                        {label}
-                                    </label>
-                                    <input
-                                        type={type}
-                                        id={id}
-                                        step={0.01}
-                                        {...register(id, validation)}
-                                        className={`mt-1 w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 ${
-                                            isEditing
-                                                ? 'bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 border-gray-300 dark:border-gray-700'
-                                                : 'bg-gray-100 dark:bg-gray-700 text-gray-500 cursor-not-allowed'
-                                        }`}
-                                        disabled={!isEditing}
-                                    />
-                                    <div className="h-5">
-                                        {error && <p className="text-red-600 text-sm">{error}</p>}
-                                    </div>
+                                    })}
+                                    className={`mt-1 w-full px-4 py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500 ${
+                                        isEditing
+                                            ? 'bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 border-gray-300 dark:border-gray-700'
+                                            : 'bg-gray-100 dark:bg-gray-700 text-gray-500 cursor-not-allowed'
+                                    }`}
+                                    disabled={!isEditing}
+                                />
+                                <div className="h-5">
+                                    {errors.adjustment_delta?.message && <p className="text-red-600 text-sm">{errors.adjustment_delta?.message}</p>}
                                 </div>
-                            ))}
-
+                            </div>
                             <div>
                                 <h2 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
                                     {t('titles.feasibilityLevels')}
